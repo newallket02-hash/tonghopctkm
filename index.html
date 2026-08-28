@@ -121,11 +121,18 @@ h2{font-size:19px;margin:0 0 4px;line-height:1.3}
 
 /* ---------- tra cứu theo ngày ---------- */
 .datebar{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
-.datebar input[type=date]{flex:1 1 100%;font:inherit;font-size:16px;padding:11px 12px;
-  border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);min-height:48px}
-.datebar input[type=date]:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(30,45,90,.09)}
-.datebar .btn{flex:1 1 0;padding:11px 15px;min-height:48px}
-@media(min-width:760px){.datebar input[type=date]{flex:0 0 200px}.datebar .btn{flex:0 0 auto}}
+.dpwrap{position:relative;flex:1 1 100%;min-height:50px;display:block}
+.dpwrap input[type=date]{position:absolute;inset:0;width:100%;height:100%;opacity:0;
+  z-index:2;border:0;padding:0;margin:0;cursor:pointer;font-size:16px}
+.dpface{position:absolute;inset:0;display:flex;align-items:center;gap:9px;padding:11px 14px;
+  border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);
+  font-weight:700;font-size:15.5px;pointer-events:none}
+.dpface::before{content:"📅";font-size:16px}
+.dpface::after{content:"⌄";margin-left:auto;color:var(--muted);font-size:19px;line-height:1}
+.dpwrap input[type=date]:focus + .dpface{border-color:var(--navy);box-shadow:0 0 0 3px rgba(30,45,90,.09)}
+.datebar .btn{flex:1 1 0;padding:11px 15px;min-height:50px}
+.dinfo:empty{display:none;margin:0}
+@media(min-width:760px){.dpwrap{flex:0 0 280px}.datebar .btn{flex:0 0 auto}}
 .dinfo{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:700;font-size:15px;
   color:var(--navy);margin-bottom:10px}
 .dinfo .hol{background:var(--orange);color:#3a2600;border-radius:999px;padding:3px 11px;font-size:12.5px}
@@ -279,8 +286,6 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
 .nores{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:24px 18px;
   text-align:center;color:var(--muted);font-size:14px}
 
-footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:12.5px;background:#fff}
-footer .wrap{display:flex;flex-direction:column;gap:4px}
 
 /* ================= BẢNG → THẺ TRÊN ĐIỆN THOẠI ================= */
 @media(max-width:759px){
@@ -322,7 +327,6 @@ footer .wrap{display:flex;flex-direction:column;gap:4px}
   .tablewrap{border:1px solid var(--line);border-radius:10px;overflow-x:auto}
   .bd{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
   .ring{width:150px;height:150px} .ring div{width:118px;height:118px;font-size:38px}
-  footer .wrap{flex-direction:row;justify-content:space-between}
   main{padding:24px 0 60px}
 }
 @media print{.topbar,.bottomnav,.btn,.back,.legend{display:none}details.doc{border:none}details.doc>summary::after{display:none}}
@@ -378,7 +382,10 @@ footer .wrap{display:flex;flex-direction:column;gap:4px}
     <h2>Ưu đãi áp dụng theo ngày</h2>
     <p class="sub">Chọn ngày — trang lọc đúng những chương trình còn hiệu lực hôm đó.</p>
     <div class="datebar">
-      <input type="date" id="dPick" aria-label="Chọn ngày">
+      <span class="dpwrap">
+        <input type="date" id="dPick" aria-label="Chọn ngày">
+        <span class="dpface" id="dFace"></span>
+      </span>
       <button class="btn alt" type="button" id="dToday">Hôm nay</button>
       <button class="btn alt" type="button" id="dNext">Mai</button>
     </div>
@@ -459,11 +466,6 @@ footer .wrap{display:flex;flex-direction:column;gap:4px}
   </section>
 
 </main>
-
-<footer><div class="wrap">
-  <span>Tài liệu ôn tập nội bộ — Golden Lotus Healing World</span>
-  <span>Nguồn: <b>Tổng Hợp CTKM Q2 Q1 Q7.xlsx</b> · cập nhật 28/08/2026</span>
-</div></footer>
 
 <nav class="bottomnav" role="tablist" aria-label="Điều hướng">
   <button class="bn" role="tab" data-view="today" aria-selected="true"><i>📅</i>Hôm nay</button>
@@ -616,8 +618,9 @@ function renderDay(){
   const kh = knownHoliday(ds);
   if(kh && !$('#dHol').checked) $('#dHol').checked = true;
   const hol = $('#dHol').checked;
-  $('#dInfo').innerHTML = `<span>${DOW[dow]}, ${vn(ds)}</span>` +
-    (kh ? `<span class="hol">🎉 ${esc(kh.name)}</span>` : hol ? `<span class="hol">🎉 Ngày lễ (tự đánh dấu)</span>` : '');
+  $('#dFace').textContent = `${DOW[dow]}, ${vn(ds)}`;
+  $('#dInfo').innerHTML = kh ? `<span class="hol">🎉 ${esc(kh.name)}</span>`
+    : hol ? `<span class="hol">🎉 Ngày lễ (tự đánh dấu)</span>` : '';
 
   const yes=[], warn=[], no=[];
   OFFERS.filter(o => !dFilter || o.br===dFilter).forEach(o=>{
