@@ -1123,7 +1123,7 @@ const TOPICS = [
       [
        "Foot care 60' / Body care 60'",
        "Giảm 20%",
-       "10:00–23:00 (last order 22h)",
+       "10:00–23:00 (last order 21h30)",
        "T2–T6",
        "Không yêu cầu booking · Đến 30/10 · KHÔNG áp dụng lễ"
       ]
@@ -1154,7 +1154,7 @@ const TOPICS = [
        "Gội đầu ráy tai 60'",
        "Giảm 40%",
        "298K",
-       "10:00–23:00 (last order 22h)",
+       "10:00–23:00 (last order 21h30)",
        "T2–T6",
        "Booking trước 1 tiếng"
       ],
@@ -1162,12 +1162,21 @@ const TOPICS = [
        "Gội đầu ráy tai 90'",
        "Giảm 40%",
        "370K",
-       "10:00–23:00 (last order 22h)",
+       "10:00–23:00 (last order 21h)",
        "T2–T6",
        "Booking trước 1 tiếng"
       ]
      ]
     }
+   },
+   {
+    "h": "⏰ Last order theo thời lượng dịch vụ",
+    "bullets": [
+     "Dịch vụ **30 phút**: last order **22:00**.",
+     "Dịch vụ **60 phút**: last order **21:30**.",
+     "Dịch vụ **90 phút**: last order **21:00**.",
+     "Tất cả đều đóng cửa lúc **23:00** — last order lùi lại đúng bằng thời lượng dịch vụ."
+    ]
    },
    {
     "h": "Ghi nhớ điều kiện booking",
@@ -1221,7 +1230,7 @@ const TOPICS = [
      "50%"
     ],
     "a": 0,
-    "e": "Foot care / Body care 60' giảm 20%, áp dụng T2–T6, 10:00–23:00 (last order 22h)."
+    "e": "Foot care / Body care 60' giảm 20%, áp dụng T2–T6, 10:00–23:00 (last order 21h30)."
    },
    {
     "q": "Giá dịch vụ Ráy tai 30' sau khi giảm 40% là bao nhiêu?",
@@ -1288,6 +1297,17 @@ const TOPICS = [
     ],
     "a": 0,
     "e": "Không cần booking: Color/Style/Treatment (Hair) và cắt tóc + gội đầu 10 phút. Sơn gel, nhóm Gội đầu – Ráy tai và Combo Facial care đều cần booking trước 1 tiếng."
+   },
+   {
+    "q": "Last order của các dịch vụ care tại Quận 2 được tính như thế nào?",
+    "o": [
+     "Theo thời lượng: 30 phút → 22:00 · 60 phút → 21:30 · 90 phút → 21:00",
+     "Tất cả đều last order lúc 22:00",
+     "Tất cả đều last order lúc 21:00",
+     "Không có last order, nhận khách đến 23:00"
+    ],
+    "a": 0,
+    "e": "Cửa đóng lúc 23:00 nên last order lùi lại đúng bằng thời lượng: dịch vụ 30 phút nhận đến 22:00, 60 phút đến 21:30, 90 phút đến 21:00."
    }
   ]
  },
@@ -2116,7 +2136,7 @@ const TOPICS = [
     }
    },
    {
-    "h": "Hoạt động miễn phí — số ca mỗi ngày",
+    "h": "Lớp học & hoạt động miễn phí — tổng quan số ca",
     "table": {
      "head": [
       "Hoạt động",
@@ -2153,16 +2173,87 @@ const TOPICS = [
     }
    },
    {
-    "h": "Chi tiết ca",
-    "bullets": [
-     "**Gym (T2–CN, NGHỈ thứ 3 hằng tuần — 9 ca):** 10:00–11:00 · 11:00–12:00 · 13:00–14:00 · 14:00–15:00 · 15:00–16:00 · 16:00–17:00 · 17:30–18:30 · 18:30–19:30 · 19:30–20:30.",
-     "**Yoga T2–T6 (6 ca):** 11:00–11:30 · 11:40–12:10 · 14:30–15:00 · 16:00–16:30 · 18:40–19:10 · 20:10–20:40.",
-     "**Yoga T7–CN (4 ca):** 12:00–12:30 · 15:10–15:40 · 18:40–19:10 · 20:10–20:40.",
-     "**Dance T2–T6 (4 ca):** 15:10–15:40 · 18:00–18:30 · 19:30–20:00 · 20:50–21:20.",
-     "**Dance T7–CN (4 ca):** 12:40–13:10 · 14:00–14:30 · 18:00–18:30 · 19:30–20:00.",
-     "**Game T2–T6 (3 ca):** 10:30–11:00 · 16:30–17:00 · 17:30–18:00.",
-     "**Game T7–CN (3 ca):** 13:20–13:50 · 14:30–15:00 · 15:50–16:20."
-    ]
+    "h": "🏋️ GYM — chi tiết ca",
+    "table": {
+     "head": [
+      "Ngày",
+      "Số ca",
+      "Các ca trong ngày"
+     ],
+     "rows": [
+      [
+       "T2–CN (NGHỈ thứ 3 hằng tuần)",
+       "9 ca",
+       "10:00–11:00 · 11:00–12:00 · 13:00–14:00 · 14:00–15:00 · 15:00–16:00 · 16:00–17:00 · 17:30–18:30 · 18:30–19:30 · 19:30–20:30"
+      ]
+     ]
+    }
+   },
+   {
+    "h": "🧘 YOGA — chi tiết ca",
+    "table": {
+     "head": [
+      "Ngày",
+      "Số ca",
+      "Các ca trong ngày"
+     ],
+     "rows": [
+      [
+       "T2–T6",
+       "6 ca",
+       "11:00–11:30 · 11:40–12:10 · 14:30–15:00 · 16:00–16:30 · 18:40–19:10 · 20:10–20:40"
+      ],
+      [
+       "T7–CN",
+       "4 ca",
+       "12:00–12:30 · 15:10–15:40 · 18:40–19:10 · 20:10–20:40"
+      ]
+     ]
+    }
+   },
+   {
+    "h": "💃 DANCE — chi tiết ca",
+    "table": {
+     "head": [
+      "Ngày",
+      "Số ca",
+      "Các ca trong ngày"
+     ],
+     "rows": [
+      [
+       "T2–T6",
+       "4 ca",
+       "15:10–15:40 · 18:00–18:30 · 19:30–20:00 · 20:50–21:20"
+      ],
+      [
+       "T7–CN",
+       "4 ca",
+       "12:40–13:10 · 14:00–14:30 · 18:00–18:30 · 19:30–20:00"
+      ]
+     ]
+    }
+   },
+   {
+    "h": "🎮 GAME — chi tiết ca",
+    "table": {
+     "head": [
+      "Ngày",
+      "Số ca",
+      "Các ca trong ngày"
+     ],
+     "rows": [
+      [
+       "T2–T6",
+       "3 ca",
+       "10:30–11:00 · 16:30–17:00 · 17:30–18:00"
+      ],
+      [
+       "T7–CN",
+       "3 ca",
+       "13:20–13:50 · 14:30–15:00 · 15:50–16:20"
+      ]
+     ]
+    }
    },
    {
     "h": "Vé nghỉ dưỡng bao gồm / không bao gồm",
