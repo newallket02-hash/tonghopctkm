@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ôn tập &amp; Kiểm tra — Golden Lotus Healing World</title>
+<meta name="description" content="Tài liệu ôn tập nội bộ và ngân hàng câu hỏi CTKM Quận 1, Quận 2, Quận 7 — kỳ T7,T8 · Lễ 2/9 · T9,T10/2026.">
+<style>
+:root{
+  --navy:#1E2D5A; --navy-2:#2b3f78; --navy-soft:#eef1f8;
+  --orange:#F5A623; --orange-soft:#fff4e0;
+  --ink:#16203a; --muted:#5d6784; --line:#dfe4f0;
+  --bg:#f5f7fc; --card:#ffffff;
+  --ok:#137a4b; --ok-bg:#e7f6ee; --bad:#b3261e; --bad-bg:#fdecea;
+  --radius:14px; --shadow:0 1px 2px rgba(30,45,90,.06),0 8px 24px rgba(30,45,90,.06);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px;line-height:1.6}
+a{color:var(--navy)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+
+/* ---------- header ---------- */
+header{background:linear-gradient(135deg,var(--navy) 0%,#16234a 60%,#111a38 100%);color:#fff;padding:34px 0 26px}
+.brandline{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:#b9c4e2;font-weight:600}
+.brandline i{display:block;width:26px;height:3px;background:var(--orange);border-radius:2px;font-style:normal}
+h1{margin:12px 0 6px;font-size:30px;line-height:1.22;font-weight:700}
+header p{margin:0;color:#c6cfe8;max-width:62ch;font-size:15px}
+.meta{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);
+  color:#e8ecf8;border-radius:999px;padding:5px 12px;font-size:12.5px;font-weight:600}
+.chip.hot{background:var(--orange);border-color:var(--orange);color:#3a2600}
+
+/* ---------- tabs ---------- */
+nav.tabs{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(30,45,90,.05)}
+.tabs .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tabs .wrap::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:none;border:none;font:inherit;font-weight:600;font-size:14.5px;
+  color:var(--muted);padding:14px 14px 11px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
+.tab:hover{color:var(--navy)}
+.tab[aria-selected="true"]{color:var(--navy);border-bottom-color:var(--orange)}
+
+main{padding:26px 0 70px}
+.panel[hidden]{display:none}
+h2{font-size:21px;margin:0 0 4px}
+h3{font-size:16.5px;margin:24px 0 10px;color:var(--navy)}
+.sub{color:var(--muted);margin:0 0 18px;font-size:14.5px}
+
+/* ---------- cards ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px;box-shadow:var(--shadow);text-align:left;font:inherit;color:inherit;cursor:pointer;
+  display:flex;flex-direction:column;gap:6px;transition:.15s}
+.card:hover{border-color:var(--navy);transform:translateY(-2px)}
+.card .ic{font-size:22px}
+.card .nm{font-weight:700;font-size:15.5px;line-height:1.35}
+.card .ds{color:var(--muted);font-size:13.2px;line-height:1.5}
+.card .ft{margin-top:6px;display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;color:var(--muted);font-weight:600}
+.pill{background:var(--navy-soft);color:var(--navy);border-radius:999px;padding:2px 9px;font-size:11.5px;font-weight:700}
+.pill.q{background:var(--orange-soft);color:#8a5a00}
+
+/* ---------- review content ---------- */
+.doc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 22px;box-shadow:var(--shadow);margin-bottom:16px}
+.doc h3:first-child{margin-top:0}
+.doc ul{margin:0;padding-left:20px}
+.doc li{margin:5px 0}
+.doc strong{color:var(--navy)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:13.8px;min-width:520px}
+th{background:var(--navy);color:#fff;text-align:left;padding:9px 11px;font-weight:600;white-space:nowrap}
+td{padding:9px 11px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:#fafbfe}
+.back{background:none;border:none;font:inherit;font-weight:600;color:var(--navy);
+  cursor:pointer;padding:6px 0;margin-bottom:8px}
+.back:hover{color:var(--orange)}
+.warn{background:var(--orange-soft);border:1px solid #f3d49a;border-left:4px solid var(--orange);
+  border-radius:10px;padding:12px 14px;margin:14px 0;font-size:14px}
+.warn b{color:#8a5a00}
+
+/* ---------- quiz setup ---------- */
+.setup{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 22px;box-shadow:var(--shadow)}
+.topiclist{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;margin:12px 0 18px}
+.tchk{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:10px;
+  padding:10px 12px;cursor:pointer;font-size:14px;background:#fff}
+.tchk:hover{border-color:var(--navy)}
+.tchk input{width:17px;height:17px;accent-color:var(--navy);flex:0 0 auto}
+.tchk span{flex:1}
+.tchk small{color:var(--muted);font-weight:600}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+.btn{background:var(--navy);color:#fff;border:none;border-radius:10px;padding:11px 20px;
+  font:inherit;font-weight:700;cursor:pointer;transition:.15s}
+.btn:hover{background:var(--navy-2)}
+.btn.alt{background:#fff;color:var(--navy);border:1.5px solid var(--navy)}
+.btn.alt:hover{background:var(--navy-soft)}
+.btn.orange{background:var(--orange);color:#3a2600}
+.btn.orange:hover{background:#e59a1b}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+select{font:inherit;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+label.lb{font-size:14px;font-weight:600;color:var(--muted)}
+
+/* ---------- quiz run ---------- */
+.qbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.progress{height:7px;background:var(--navy-soft);border-radius:99px;overflow:hidden;margin-bottom:18px}
+.progress i{display:block;height:100%;background:var(--orange);border-radius:99px;transition:width .25s}
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 22px;box-shadow:var(--shadow)}
+.qtag{display:inline-block;background:var(--navy-soft);color:var(--navy);border-radius:999px;
+  padding:3px 10px;font-size:11.5px;font-weight:700;margin-bottom:10px}
+.qtext{font-size:17px;font-weight:600;line-height:1.5;margin-bottom:16px}
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{display:flex;gap:11px;align-items:flex-start;text-align:left;font:inherit;
+  background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:12px 14px;cursor:pointer;transition:.12s}
+.opt:hover:not(:disabled){border-color:var(--navy);background:var(--navy-soft)}
+.opt:disabled{cursor:default;color:var(--ink);opacity:1;-webkit-text-fill-color:var(--ink)}
+.opt b{flex:0 0 24px;height:24px;border-radius:6px;background:var(--navy-soft);color:var(--navy);
+  display:grid;place-items:center;font-size:13px}
+.opt.correct{border-color:var(--ok);background:var(--ok-bg)}
+.opt.correct b{background:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.opt.wrong b{background:var(--bad);color:#fff}
+.explain{margin-top:14px;border-left:4px solid var(--navy);background:var(--navy-soft);
+  border-radius:0 10px 10px 0;padding:11px 14px;font-size:14.2px}
+.explain b{color:var(--navy)}
+.explain.good{border-color:var(--ok);background:var(--ok-bg)}
+.explain.good b{color:var(--ok)}
+.explain.bad{border-color:var(--bad);background:var(--bad-bg)}
+.explain.bad b{color:var(--bad)}
+.navbtns{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+
+/* ---------- result ---------- */
+.score{text-align:center;padding:28px 20px}
+.big{font-size:56px;font-weight:800;line-height:1;color:var(--navy)}
+.big small{font-size:20px;color:var(--muted);font-weight:600}
+.verdict{font-size:18px;font-weight:700;margin-top:10px}
+.bd{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:22px 0 6px;text-align:left}
+.bd div{background:var(--navy-soft);border-radius:10px;padding:11px 13px;font-size:13.5px}
+.bd b{display:block;font-size:19px;color:var(--navy)}
+.wronglist{margin-top:22px}
+.wrongitem{border:1px solid var(--line);border-left:4px solid var(--bad);border-radius:0 10px 10px 0;
+  padding:12px 14px;margin-bottom:10px;background:#fff;font-size:14.2px}
+.wrongitem .q{font-weight:600;margin-bottom:6px}
+.wrongitem .a{color:var(--ok);font-weight:600}
+.wrongitem .b{color:var(--bad)}
+.wrongitem .e{color:var(--muted);margin-top:5px;font-size:13.5px}
+
+footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:13px;background:#fff}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:640px){
+  h1{font-size:24px} .doc,.setup,.qcard{padding:16px} .big{font-size:46px}
+  .qtext{font-size:16px}
+}
+@media print{nav.tabs,.btn,.back{display:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brandline"><i></i> Golden Lotus Healing World · Tài liệu nội bộ</div>
+    <h1>Ôn tập &amp; Kiểm tra chương trình khuyến mãi</h1>
+    <p>Tổng hợp CTKM Quận 1 · Quận 2 · Quận 7 — kỳ tháng 7,8 · Lễ 2/9 · tháng 9,10/2026, kèm nội quy, từ cấm và ngân hàng câu hỏi tự kiểm tra.</p>
+    <div class="meta">
+      <span class="chip hot" id="chipQ">— câu hỏi</span>
+      <span class="chip" id="chipT">— chủ đề</span>
+      <span class="chip">Nguồn: Tổng Hợp CTKM Q2 Q1 Q7.xlsx</span>
+      <span class="chip">Cập nhật: 27/08/2026</span>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" data-view="home" aria-selected="true">Tổng quan</button>
+    <button class="tab" role="tab" data-view="doc" aria-selected="false">Tài liệu ôn tập</button>
+    <button class="tab" role="tab" data-view="quiz" aria-selected="false">Làm bài kiểm tra</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- HOME -->
+  <section class="panel" id="v-home">
+    <h2>Chọn chủ đề để ôn</h2>
+    <p class="sub">Mỗi chủ đề gồm phần tài liệu tóm tắt và bộ câu hỏi riêng. Bấm vào thẻ để mở tài liệu.</p>
+    <div class="grid" id="homeGrid"></div>
+    <div class="warn" id="homeWarn">
+      <b>⚠️ Cần xác nhận trước khi ra đề chính thức:</b> giá Combo HSSV Golden Kitchen và mức bill tối thiểu của Game vòng quay may mắn đang lệch nhau giữa các sheet trong file gốc. Các câu hỏi về hai con số này đã được loại khỏi đề.
+    </div>
+  </section>
+
+  <!-- DOC -->
+  <section class="panel" id="v-doc" hidden>
+    <div id="docIndex">
+      <h2>Tài liệu ôn tập</h2>
+      <p class="sub">11 chủ đề, biên soạn từ 12 sheet của file tổng hợp CTKM.</p>
+      <div class="grid" id="docGrid"></div>
+    </div>
+    <div id="docDetail" hidden></div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="panel" id="v-quiz" hidden>
+    <div id="quizSetup">
+      <h2>Thiết lập bài kiểm tra</h2>
+      <p class="sub">Chọn chủ đề và số câu. Thứ tự câu hỏi được đảo ngẫu nhiên mỗi lần làm.</p>
+      <div class="setup">
+        <div class="row">
+          <button class="btn alt" id="selAll" type="button">Chọn tất cả</button>
+          <button class="btn alt" id="selNone" type="button">Bỏ chọn tất cả</button>
+        </div>
+        <div class="topiclist" id="topicList"></div>
+        <div class="row">
+          <label class="lb" for="numQ">Số câu:</label>
+          <select id="numQ">
+            <option value="10">10 câu</option>
+            <option value="20" selected>20 câu</option>
+            <option value="30">30 câu</option>
+            <option value="50">50 câu</option>
+            <option value="0">Tất cả câu đã chọn</option>
+          </select>
+          <label class="lb" for="mode">Chế độ:</label>
+          <select id="mode">
+            <option value="instant" selected>Hiện đáp án ngay sau mỗi câu</option>
+            <option value="end">Chỉ chấm điểm ở cuối bài</option>
+          </select>
+        </div>
+        <div class="row">
+          <button class="btn orange" id="startBtn" type="button">Bắt đầu làm bài</button>
+          <span class="lb" id="poolInfo"></span>
+        </div>
+      </div>
+    </div>
+
+    <div id="quizRun" hidden>
+      <div class="qbar">
+        <strong id="qCount"></strong>
+        <span class="lb" id="qScore"></span>
+      </div>
+      <div class="progress"><i id="qProg" style="width:0%"></i></div>
+      <div class="qcard" id="qCard"></div>
+      <div class="navbtns">
+        <button class="btn alt" id="quitBtn" type="button">Thoát</button>
+        <button class="btn" id="nextBtn" type="button" disabled>Câu tiếp theo</button>
+      </div>
+    </div>
+
+    <div id="quizResult" hidden></div>
+  </section>
+
+</main>
+
+<footer><div class="wrap">
+  <span>Tài liệu ôn tập nội bộ — Golden Lotus Healing World</span>
+  <span>Biên soạn từ file <b>Tổng Hợp CTKM Q2 Q1 Q7.xlsx</b> · 27/08/2026</span>
+</div></footer>
+
+<script src="data.js"></script>
+<script>
+const DATA = TOPICS;
+
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const el = (t, c, h) => { const e = document.createElement(t); if(c) e.className = c; if(h!==undefined) e.innerHTML = h; return e; };
+const esc = s => String(s).replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+const md = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+const shuffle = a => { const r = a.slice(); for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];} return r; };
+const totalQ = DATA.reduce((n,t)=>n+t.questions.length,0);
+
+$('#chipQ').textContent = totalQ + ' câu hỏi';
+$('#chipT').textContent = DATA.length + ' chủ đề';
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => show(b.dataset.view)));
+function show(v){
+  document.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-selected', b.dataset.view===v));
+  ['home','doc','quiz'].forEach(k => $('#v-'+k).hidden = (k!==v));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ---------- topic cards ---------- */
+function topicCard(t){
+  const c = el('button','card');
+  c.innerHTML = `<span class="ic">${t.icon}</span>
+    <span class="nm">${esc(t.name)}</span>
+    <span class="ds">${esc(t.summary)}</span>
+    <span class="ft"><span class="pill">${esc(t.tag)}</span><span class="pill q">${t.questions.length} câu</span></span>`;
+  c.addEventListener('click', () => openDoc(t.id));
+  return c;
+}
+DATA.forEach(t => { $('#homeGrid').appendChild(topicCard(t)); $('#docGrid').appendChild(topicCard(t)); });
+
+/* ---------- doc detail ---------- */
+function openDoc(id){
+  const t = DATA.find(x => x.id === id);
+  const d = $('#docDetail');
+  let h = `<button class="back" type="button" id="backBtn">← Tất cả chủ đề</button>
+    <h2>${t.icon} ${esc(t.name)}</h2><p class="sub">${esc(t.summary)}</p>`;
+  t.review.forEach(s => {
+    h += `<div class="doc"><h3>${esc(s.h)}</h3>`;
+    if(s.bullets) h += '<ul>' + s.bullets.map(b => `<li>${md(b)}</li>`).join('') + '</ul>';
+    if(s.table){
+      h += '<div class="tablewrap"><table><thead><tr>' + s.table.head.map(x=>`<th>${esc(x)}</th>`).join('') + '</tr></thead><tbody>';
+      h += s.table.rows.map(r => '<tr>' + r.map(x=>`<td>${md(x)}</td>`).join('') + '</tr>').join('');
+      h += '</tbody></table></div>';
+    }
+    h += '</div>';
+  });
+  h += `<button class="btn orange" type="button" id="quizThis">Kiểm tra riêng chủ đề này (${t.questions.length} câu)</button>`;
+  d.innerHTML = h;
+  d.hidden = false; $('#docIndex').hidden = true;
+  show('doc');
+  $('#backBtn').addEventListener('click', () => { d.hidden = true; $('#docIndex').hidden = false; window.scrollTo({top:0}); });
+  $('#quizThis').addEventListener('click', () => {
+    document.querySelectorAll('#topicList input').forEach(i => i.checked = (i.value === id));
+    updatePool(); show('quiz'); start();
+  });
+}
+
+/* ---------- quiz setup ---------- */
+DATA.forEach(t => {
+  const l = el('label','tchk');
+  l.innerHTML = `<input type="checkbox" value="${t.id}" checked><span>${t.icon} ${esc(t.name)}</span><small>${t.questions.length}</small>`;
+  l.querySelector('input').addEventListener('change', updatePool);
+  $('#topicList').appendChild(l);
+});
+$('#selAll').addEventListener('click', () => { document.querySelectorAll('#topicList input').forEach(i=>i.checked=true); updatePool(); });
+$('#selNone').addEventListener('click', () => { document.querySelectorAll('#topicList input').forEach(i=>i.checked=false); updatePool(); });
+function chosen(){ return [...document.querySelectorAll('#topicList input:checked')].map(i=>i.value); }
+function pool(){ const ids = chosen(); const out = [];
+  DATA.filter(t=>ids.includes(t.id)).forEach(t => t.questions.forEach((q,i) => out.push({...q, topic:t.name, tag:t.tag, key:t.id+'-'+i})));
+  return out; }
+function updatePool(){
+  const n = pool().length;
+  $('#poolInfo').textContent = n ? `Có ${n} câu trong các chủ đề đã chọn` : 'Chưa chọn chủ đề nào';
+  $('#startBtn').disabled = n === 0;
+}
+updatePool();
+
+/* ---------- quiz run ---------- */
+let Q = [], idx = 0, correct = 0, answers = [], mode = 'instant';
+$('#startBtn').addEventListener('click', start);
+function start(){
+  const n = parseInt($('#numQ').value, 10);
+  mode = $('#mode').value;
+  const p = shuffle(pool()).map(q => {
+    const right = q.o[q.a], o = shuffle(q.o);
+    return {...q, o, a: o.indexOf(right)};
+  });
+  Q = n > 0 ? p.slice(0, n) : p;
+  if(!Q.length) return;
+  idx = 0; correct = 0; answers = [];
+  $('#quizSetup').hidden = true; $('#quizResult').hidden = true; $('#quizRun').hidden = false;
+  render();
+}
+function render(){
+  const q = Q[idx];
+  $('#qCount').textContent = `Câu ${idx+1} / ${Q.length}`;
+  $('#qScore').textContent = mode === 'instant' ? `Đúng: ${correct}` : '';
+  $('#qProg').style.width = (idx / Q.length * 100) + '%';
+  const c = $('#qCard');
+  c.innerHTML = `<span class="qtag">${esc(q.tag)} · ${esc(q.topic)}</span>
+    <div class="qtext">${esc(q.q)}</div><div class="opts"></div>`;
+  const box = c.querySelector('.opts');
+  q.o.forEach((o, i) => {
+    const b = el('button','opt', `<b>${'ABCD'[i]}</b><span>${esc(o)}</span>`);
+    b.addEventListener('click', () => pick(i));
+    box.appendChild(b);
+  });
+  $('#nextBtn').disabled = true;
+  $('#nextBtn').textContent = idx === Q.length - 1 ? 'Xem kết quả' : 'Câu tiếp theo';
+}
+function pick(i){
+  const q = Q[idx], ok = i === q.a;
+  if(ok) correct++;
+  answers.push({q, picked:i, ok});
+  const opts = [...$('#qCard').querySelectorAll('.opt')];
+  opts.forEach(o => o.disabled = true);
+  if(mode === 'instant'){
+    opts[q.a].classList.add('correct');
+    if(!ok) opts[i].classList.add('wrong');
+    const ex = el('div', 'explain ' + (ok ? 'good' : 'bad'),
+      `<b>${ok ? '✓ Chính xác.' : '✗ Chưa đúng.'}</b> ${esc(q.e)}`);
+    $('#qCard').appendChild(ex);
+    $('#qScore').textContent = `Đúng: ${correct}`;
+  } else {
+    opts[i].style.borderColor = 'var(--navy)';
+    opts[i].style.background = 'var(--navy-soft)';
+  }
+  $('#nextBtn').disabled = false;
+}
+$('#nextBtn').addEventListener('click', () => { idx++; idx < Q.length ? render() : finish(); });
+$('#quitBtn').addEventListener('click', () => {
+  $('#quizRun').hidden = true; $('#quizSetup').hidden = false; window.scrollTo({top:0});
+});
+function finish(){
+  $('#quizRun').hidden = true;
+  const pct = Math.round(correct / Q.length * 100);
+  const v = pct >= 90 ? ['Xuất sắc — nắm chắc tài liệu.', 'var(--ok)']
+          : pct >= 70 ? ['Đạt — cần ôn lại vài chỗ.', 'var(--navy)']
+          : ['Chưa đạt — nên đọc lại tài liệu trước khi thi.', 'var(--bad)'];
+  const wrongs = answers.filter(a => !a.ok);
+  const byTopic = {};
+  answers.forEach(a => { const t = a.q.topic; byTopic[t] = byTopic[t] || [0,0]; byTopic[t][1]++; if(a.ok) byTopic[t][0]++; });
+  let h = `<div class="doc score">
+      <div class="big">${pct}<small>%</small></div>
+      <div class="verdict" style="color:${v[1]}">${v[0]}</div>
+      <div class="lb" style="margin-top:6px">Đúng ${correct} / ${Q.length} câu</div>
+      <div class="bd">` +
+    Object.entries(byTopic).map(([t, s]) =>
+      `<div><b>${s[0]}/${s[1]}</b>${esc(t)}</div>`).join('') +
+    `</div></div>`;
+  if(wrongs.length){
+    h += `<div class="wronglist"><h3>Các câu trả lời sai (${wrongs.length})</h3>` +
+      wrongs.map(a => `<div class="wrongitem">
+        <div class="q">${esc(a.q.q)}</div>
+        <div class="b">Bạn chọn: ${esc(a.q.o[a.picked])}</div>
+        <div class="a">Đáp án đúng: ${esc(a.q.o[a.q.a])}</div>
+        <div class="e">${esc(a.q.e)}</div></div>`).join('') + '</div>';
+  }
+  h += `<div class="row" style="margin-top:20px">
+      <button class="btn orange" type="button" id="againBtn">Làm lại bộ đề khác</button>
+      <button class="btn alt" type="button" id="docBtn">Về tài liệu ôn tập</button></div>`;
+  const r = $('#quizResult'); r.innerHTML = h; r.hidden = false;
+  window.scrollTo({top:0,behavior:'smooth'});
+  $('#againBtn').addEventListener('click', () => { r.hidden = true; $('#quizSetup').hidden = false; window.scrollTo({top:0}); });
+  $('#docBtn').addEventListener('click', () => { r.hidden = true; $('#quizSetup').hidden = false; $('#docDetail').hidden = true; $('#docIndex').hidden = false; show('doc'); });
+}
+</script>
+</body>
+</html>
