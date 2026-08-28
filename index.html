@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ôn tập &amp; Kiểm tra — Golden Lotus Healing World</title>
+<title>Tổng hợp CTKM Golden Lotus</title>
 <meta name="description" content="Tài liệu ôn tập nội bộ và ngân hàng câu hỏi CTKM Quận 1, Quận 2, Quận 7 — kỳ T7,T8 · Lễ 2/9 · T9,T10/2026.">
 <meta name="theme-color" content="#1E2D5A">
 <link rel="manifest" href="manifest.webmanifest">
@@ -11,7 +11,7 @@
 <link rel="icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Ôn tập GLH">
+<meta name="apple-mobile-web-app-title" content="CTKM Golden Lotus">
 <meta name="mobile-web-app-capable" content="yes">
 <style>
 :root{
@@ -333,8 +333,7 @@ footer .wrap{display:flex;flex-direction:column;gap:4px}
 <header>
   <div class="wrap">
     <div class="brandline"><i></i> Golden Lotus Healing World</div>
-    <h1>Ôn tập &amp; Kiểm tra CTKM</h1>
-    <p>Tổng hợp CTKM Quận 1 · Quận 2 · Quận 7 — kỳ tháng 7,8 · Lễ 2/9 · tháng 9,10/2026, kèm nội quy, từ cấm và ngân hàng câu hỏi tự kiểm tra.</p>
+    <h1>Tổng hợp CTKM Golden Lotus</h1>
     <div class="meta">
       <span class="chip hot" id="chipQ">— câu hỏi</span>
       <span class="chip" id="chipT">— chủ đề</span>
@@ -595,6 +594,7 @@ function evalOffer(o, ds, dow, hol){
   if(hol && o.holiday===false)            return {st:'n', why:'KHÔNG áp dụng ngày lễ'};
   if(hol && o.holiday===null)             return {st:'w', why:'Nguồn không ghi rõ có áp dụng lễ hay không'};
   if(hol && o.holiday===true)             return {st:'y', why:'✓ Có áp dụng ngày lễ'};
+  if(o.annual) return {st:'y', why:'✓ Áp dụng xuyên suốt — không giới hạn thời gian'};
   return {st:'y', why: o.to ? '✓ Còn hiệu lực đến '+vn(o.to) : '✓ Đang áp dụng'};
 }
 let dFilter = null;

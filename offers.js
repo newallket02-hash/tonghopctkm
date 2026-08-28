@@ -60,7 +60,7 @@ const OFFERS = [
     time:'12:00–17:00', days:'T2-T6', from:'2026-09-03', to:'2026-10-30',
     holiday:false, cond:'Booking trước qua hotline' },
   { br:'Q2', topic:'q2-nghiduong-78', name:'Combo Nữ — Nghỉ dưỡng + Honey skin care', price:'290k',
-    time:'12:00–17:00', days:'T2-T6', from:null, to:null, holiday:null, ok:false,
+    time:'12:00–17:00', days:'T2-T6', from:null, to:'2026-10-30', holiday:false,
     cond:'Booking trước qua hotline' },
   { br:'Q2', topic:'q2-nghiduong-910', name:'Combo Nam & Nữ — Nghỉ dưỡng + Skin care', price:'235k',
     time:'Sau 20:00', days:'T2-CN', from:'2026-08-29', to:'2026-11-01',
@@ -70,11 +70,11 @@ const OFFERS = [
     holiday:true, cond:'Booking trước qua hotline' },
 
   { br:'Q2', topic:'q2-nghiduong-78', name:'Happy Hour Sáng — Quận 2', price:'210k',
-    time:'09:00–11:00', days:'T2-T6', from:null, to:null, holiday:false, ok:false,
-    cond:'Khách cao trên 1m2' },
+    time:'09:00–11:00', days:'T2-T6', from:null, to:null, holiday:false, annual:true,
+    cond:'Khách cao trên 1m2 · chương trình xuyên suốt' },
   { br:'Q2', topic:'q2-nghiduong-78', name:'Happy Hour Tối — Quận 2', price:'170k',
-    time:'20:00–24:00', days:'T2-CN', from:null, to:null, holiday:null, ok:false,
-    cond:'Khách cao trên 1m2' },
+    time:'20:00–24:00', days:'T2-CN', from:null, to:null, holiday:null, annual:true,
+    cond:'Khách cao trên 1m2 · chương trình xuyên suốt' },
 
   /* ================= QUẬN 2 — GOLDEN KITCHEN / AQUA ================= */
   { br:'Q2', topic:'golden-kitchen', name:'Combo HSSV Golden Kitchen', price:'⚠️ giá chưa chốt',
@@ -87,7 +87,7 @@ const OFFERS = [
     time:'10:30–21:30', days:'T2-CN', from:'2026-08-20', to:'2026-12-31',
     holiday:null, cond:'Khách Healing World · chỉ 1 phần nước hoặc kem tuyết' },
   { br:'Q2', topic:'golden-kitchen', name:'Game vòng quay may mắn', price:'Bill từ 200k',
-    time:'—', days:'T2-CN', from:null, to:null, holiday:null, ok:false,
+    time:'—', days:'T2-CN', from:null, to:'2026-12-31', holiday:null,
     cond:'Voucher tối đa 200k/1 bill · có hiệu lực sau 1 ngày · HSD 01 tháng' },
 
   /* ================= QUẬN 2 — CARE ================= */
@@ -135,7 +135,7 @@ const OFFERS = [
     time:'Cả ngày', days:'T2-T6', from:null, to:'2026-12-31',
     holiday:null, cond:'5 review/ngày · voucher nghỉ dưỡng dùng sau 19:00, HSD 1 tháng' },
   { br:'Q2', topic:'nail-hair', name:'Beauty Passport — thẻ tích luỹ Nail & Hair', price:'Tích luỹ 10%',
-    time:'Cả ngày', days:'T2-CN', from:null, to:null, holiday:null, ok:false,
+    time:'Cả ngày', days:'T2-CN', from:null, to:'2026-12-31', holiday:null,
     cond:'Hoá đơn từ 200.000đ · thẻ có hiệu lực 06 tháng' },
 
   /* ================= QUẬN 1 ================= */
@@ -181,11 +181,11 @@ const OFFERS = [
     time:'Sau 19:00', days:'T2-CN', from:null, to:null, holiday:false, ok:false,
     cond:'Phải có 1 người đi kèm từ 18 tuổi · CCCD của cả hai' },
   { br:'Q7', topic:'quan-7', name:'Happy Hour Sáng — Quận 7', price:'190k',
-    time:'08:00–11:00', days:'T2-T6', from:null, to:null, holiday:false, ok:false,
-    cond:'Khách trên 1.2m · KHÔNG áp dụng T7, CN' },
+    time:'08:00–11:00', days:'T2-T6', from:null, to:null, holiday:false, annual:true,
+    cond:'Khách trên 1.2m · KHÔNG áp dụng T7, CN · chương trình xuyên suốt' },
   { br:'Q7', topic:'quan-7', name:'Happy Hour Tối — Quận 7', price:'150k',
-    time:'19:00–24:00', days:'T2-CN', from:null, to:null, holiday:null, ok:false,
-    cond:'Khách trên 1.2m' },
+    time:'19:00–24:00', days:'T2-CN', from:null, to:null, holiday:null, annual:true,
+    cond:'Khách trên 1.2m · chương trình xuyên suốt' },
   { br:'Q7', topic:'quan-7', name:"Facial Care 60'", price:'230k',
     time:'10:00–22:00', days:'T2-T6', from:'2026-07-01', to:'2026-08-31',
     holiday:false, cond:'Tất cả khách · Booking trước ít nhất 1 tiếng', period:'Kỳ T7,T8' },

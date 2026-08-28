@@ -1,7 +1,7 @@
 {
-  "name": "Ôn tập & Kiểm tra CTKM — Golden Lotus Healing World",
-  "short_name": "Ôn tập GLH",
-  "description": "Tài liệu ôn tập nội bộ và ngân hàng câu hỏi CTKM Quận 1, Quận 2, Quận 7.",
+  "name": "Tổng hợp CTKM Golden Lotus",
+  "short_name": "CTKM Golden Lotus",
+  "description": "Tổng hợp chương trình khuyến mãi Golden Lotus Healing World — Quận 1, Quận 2, Quận 7.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -10,8 +10,21 @@
   "theme_color": "#1E2D5A",
   "lang": "vi",
   "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }
