@@ -2102,15 +2102,15 @@ const TOPICS = [
      "rows": [
       [
        "Lầu 1",
-       "Public Bathhouse"
+       "Public Bathhouse · Snack bar"
       ],
       [
        "Lầu 2",
-       "Các phòng nhiệt nóng/lạnh chuyên đề · Board Game · Khu thư giãn (Relax zone)"
+       "Các phòng nhiệt nóng/lạnh chuyên đề · Board Game · Khu thư giãn (Relax zone) · Kid zone"
       ],
       [
        "Lầu 3",
-       "Carnival Game · Music Box (Karaoke) · Dance · Yoga · Lớp học miễn phí · Workshop (đồ handmade) · Mini Game tương tác · Chiếu phim / TV giải trí · Cafe cá (Fish Cafe) · Khu check-in / chụp hình · Sự kiện theo chủ đề (Party)"
+       "Carnival Game · Music Box (Karaoke) · Dance · Yoga · Lớp học miễn phí · Gym · Workshop (đồ handmade) · Mini Game tương tác (motion game) · Phòng thuốc bắc · Chiếu phim / TV giải trí · Cafe cá (Fish Cafe) · Khu check-in / chụp hình · Sự kiện theo chủ đề (Party)"
       ]
      ]
     }
@@ -2182,7 +2182,7 @@ const TOPICS = [
      "Tầng trệt"
     ],
     "a": 0,
-    "e": "Lầu 1: Public Bathhouse."
+    "e": "Lầu 1: Public Bathhouse và Snack bar."
    },
    {
     "q": "Khu Board Game và Relax zone nằm ở tầng nào?",
@@ -2193,7 +2193,7 @@ const TOPICS = [
      "Lầu 2 và 3"
     ],
     "a": 0,
-    "e": "Lầu 2: các phòng nhiệt chuyên đề, Board Game, Khu thư giãn (Relax zone)."
+    "e": "Lầu 2: các phòng nhiệt chuyên đề, Board Game, Khu thư giãn (Relax zone) và Kid zone."
    },
    {
     "q": "Khu vực nào KHÔNG nằm ở Lầu 3?",
@@ -2293,6 +2293,28 @@ const TOPICS = [
     ],
     "a": 0,
     "e": "Peeling skin và honey skin care nằm trong nhóm KHÔNG bao gồm, cùng với ăn uống, Body/Foot/Facial care, Nail, Hair và tiền mua xu chơi game."
+   },
+   {
+    "q": "Snack bar và Kid zone lần lượt nằm ở tầng nào tại Quận 2?",
+    "o": [
+     "Snack bar ở Lầu 1 · Kid zone ở Lầu 2",
+     "Cả hai đều ở Lầu 1",
+     "Snack bar ở Lầu 2 · Kid zone ở Lầu 3",
+     "Cả hai đều ở Lầu 3"
+    ],
+    "a": 0,
+    "e": "Lầu 1 có Public Bathhouse và Snack bar; Lầu 2 có phòng nhiệt chuyên đề, Board Game, Relax zone và Kid zone."
+   },
+   {
+    "q": "Gym và phòng thuốc bắc nằm ở tầng nào?",
+    "o": [
+     "Lầu 3",
+     "Lầu 1",
+     "Lầu 2",
+     "Gym ở Lầu 2, phòng thuốc bắc ở Lầu 3"
+    ],
+    "a": 0,
+    "e": "Cả Gym lẫn phòng thuốc bắc đều ở Lầu 3, cùng khu với Carnival Game, Music Box, Dance/Yoga, Workshop, Mini Game (motion game), Cafe cá và khu check-in."
    }
   ]
  },
