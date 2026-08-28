@@ -2167,8 +2167,8 @@ const TOPICS = [
    {
     "h": "Vé nghỉ dưỡng bao gồm / không bao gồm",
     "bullets": [
-     "**CÓ bao gồm:** tắm · các phòng nhiệt nóng/lạnh · gym · yoga · dance · game · xem phim · hồ ngâm chân · board game · relax zone.",
-     "**KHÔNG bao gồm:** ăn uống (Golden Kitchen, Aqua Garden Cafe) · Body/Foot/Facial care · Nail · Hair."
+     "**CÓ bao gồm:** tắm · các phòng nhiệt nóng/lạnh · gym · yoga · dance · khu game · xem phim · hồ ngâm chân · board game · relax zone.",
+     "**KHÔNG bao gồm:** ăn uống (Golden Kitchen, Aqua Garden Cafe) · Body/Foot/Facial care · Nail · Hair · **peeling skin** · **honey skin care** · **mua xu chơi game**."
     ]
    }
   ],
@@ -2242,13 +2242,13 @@ const TOPICS = [
    {
     "q": "Dịch vụ nào KHÔNG nằm trong giá vé nghỉ dưỡng?",
     "o": [
-     "Body care, Nail, Hair và ăn uống",
-     "Gym và Yoga",
-     "Xem phim",
-     "Các phòng nhiệt nóng/lạnh"
+     "Ăn uống, Body/Foot/Facial care, Nail, Hair, peeling skin, honey skin care và mua xu chơi game",
+     "Gym, Yoga và Dance",
+     "Xem phim và board game",
+     "Các phòng nhiệt nóng/lạnh và hồ ngâm chân"
     ],
     "a": 0,
-    "e": "Vé nghỉ dưỡng gồm tắm, phòng nhiệt, gym/yoga/dance/game, xem phim, hồ ngâm chân — không gồm ăn uống, care, nail, hair."
+    "e": "Vé nghỉ dưỡng gồm tắm, phòng nhiệt, gym/yoga/dance, khu game, xem phim, hồ ngâm chân, board game, relax zone. KHÔNG gồm: ăn uống, Body/Foot/Facial care, Nail, Hair, peeling skin, honey skin care và tiền mua xu chơi game."
    },
    {
     "q": "Lớp Dance miễn phí vào T7–CN có ca đầu tiên lúc mấy giờ?",
@@ -2271,6 +2271,28 @@ const TOPICS = [
     ],
     "a": 0,
     "e": "Gym chạy T2–CN với 9 ca/ngày, riêng thứ 3 hằng tuần nghỉ."
+   },
+   {
+    "q": "Khách vào khu game bằng vé nghỉ dưỡng thì có phải trả thêm tiền gì không?",
+    "o": [
+     "Có — vào khu game thì miễn phí nhưng phải mua xu để chơi",
+     "Không — vé nghỉ dưỡng đã bao gồm cả xu chơi game",
+     "Có — phải mua vé vào khu game riêng",
+     "Không, nhưng chỉ được chơi tối đa 3 ca mỗi ngày"
+    ],
+    "a": 0,
+    "e": "Khu game nằm trong vé nghỉ dưỡng, nhưng tiền mua xu để chơi game thì KHÔNG bao gồm — khách phải trả thêm."
+   },
+   {
+    "q": "Peeling skin và honey skin care có nằm trong giá vé nghỉ dưỡng không?",
+    "o": [
+     "Không — cả hai đều là dịch vụ tính phí riêng",
+     "Có — cả hai đều miễn phí kèm vé",
+     "Chỉ peeling skin được miễn phí",
+     "Chỉ honey skin care được miễn phí"
+    ],
+    "a": 0,
+    "e": "Peeling skin và honey skin care nằm trong nhóm KHÔNG bao gồm, cùng với ăn uống, Body/Foot/Facial care, Nail, Hair và tiền mua xu chơi game."
    }
   ]
  },
