@@ -1,0 +1,201 @@
+/* ==========================================================================
+   DANH SÁCH ƯU ĐÃI CÓ MỐC THỜI GIAN — dùng cho tab "Tra cứu theo ngày"
+   --------------------------------------------------------------------------
+   days   : 'T2-T6' | 'T7-CN' | 'T2-CN'
+   from/to: 'YYYY-MM-DD' — null = không giới hạn đầu/cuối
+   holiday: true  = ÁP DỤNG ngày lễ
+            false = KHÔNG áp dụng ngày lễ
+            null  = nguồn không ghi → hiện cảnh báo
+   only   : 'holiday' = chỉ áp dụng trong dịp lễ (ưu đãi Lễ 2/9)
+   ok     : false = thời hạn CHƯA XÁC NHẬN (không đoán, tách nhóm riêng)
+   ========================================================================== */
+
+/* Ngày công ty tính là LỄ / TẾT.
+   Từ 29/08/2026 → 31/12/2026 chỉ có duy nhất dịp Quốc khánh 2/9.
+   Có thêm ngày nào (20/10, Noel, Tết…) thì thêm một dòng vào đây là xong. */
+const HOLIDAYS = [
+  { from: '2026-08-29', to: '2026-09-02', name: 'Lễ Quốc khánh 2/9' }
+];
+
+const OFFERS = [
+  /* ================= QUẬN 2 — NGHỈ DƯỠNG ================= */
+  { br:'Q2', topic:'q2-nghiduong-78', name:'Ưu đãi khách hàng nữ', price:'150k',
+    time:'09:00–12:00 & 16:00–21:00', days:'T2-T6', from:'2026-07-01', to:'2026-08-31',
+    holiday:false, cond:'Chỉ khách nữ cao trên 1m2 · Like&share FB HOẶC Follow TikTok', period:'Kỳ T7,T8' },
+  { br:'Q2', topic:'q2-nghiduong-910', name:'Ưu đãi khách hàng nữ', price:'150k',
+    time:'09:00–12:00 & 16:00–21:00', days:'T2-T6', from:'2026-09-03', to:'2026-10-30',
+    holiday:false, cond:'Chỉ khách nữ cao trên 1m2 · Like&share FB HOẶC Follow TikTok', period:'Kỳ T9,T10' },
+
+  { br:'Q2', topic:'q2-nghiduong-910', name:'Ưu đãi tối', price:'139k',
+    time:'21:00–24:00', days:'T2-CN', from:'2026-08-29', to:'2026-11-01',
+    holiday:true, cond:'Khách trên 1m2 · Follow TikTok HOẶC Like/Share Fanpage' },
+
+  { br:'Q2', topic:'q2-nghiduong-78', name:'Ưu đãi cuối tuần', price:'210k',
+    time:'09:00–10:30 & 16:00–20:00', days:'T7-CN', from:'2026-07-01', to:'2026-08-31',
+    holiday:false, cond:'Khách trên 1m2 · Follow TikTok HOẶC Like/Share Fanpage', period:'Kỳ T7,T8' },
+  { br:'Q2', topic:'q2-nghiduong-910', name:'Ưu đãi cuối tuần', price:'210k',
+    time:'09:00–10:30 & 16:00–20:00', days:'T7-CN', from:'2026-09-05', to:'2026-11-01',
+    holiday:false, cond:'Khách trên 1m2 · Follow TikTok HOẶC Like/Share Fanpage', period:'Kỳ T9,T10' },
+
+  { br:'Q2', topic:'q2-nghiduong-78', name:'Ưu đãi khách U60+ (+1 trứng nướng)', price:'125k',
+    time:'09:00–24:00', days:'T2-T6', from:'2026-05-04', to:'2026-12-31',
+    holiday:false, cond:'Khách Việt từ 60 tuổi (sinh 1966 trở về trước) · Mang CCCD' },
+
+  { br:'Q2', topic:'q2-nghiduong-78', name:'HSSV ca sáng (+1 trứng nướng)', price:'125k',
+    time:'09:00–11:00', days:'T2-T6', from:'2026-07-01', to:'2026-08-31',
+    holiday:false, cond:'BẮT BUỘC nhóm từ 2 HSSV trở lên · trên 1m2', period:'Kỳ T7,T8' },
+  { br:'Q2', topic:'q2-nghiduong-910', name:'HSSV ca sáng (+1 trứng nướng)', price:'125k',
+    time:'09:00–11:00', days:'T2-T6', from:'2026-09-03', to:'2026-10-30',
+    holiday:false, cond:'BẮT BUỘC nhóm từ 2 HSSV trở lên · trên 1m2', period:'Kỳ T9,T10' },
+  { br:'Q2', topic:'q2-nghiduong-78', name:'HSSV ca chiều/tối (+1 trứng nướng)', price:'125k',
+    time:'12:00–24:00', days:'T2-T6', from:'2026-04-01', to:'2026-12-31',
+    holiday:false, cond:'1 người vẫn được áp dụng · trên 1m2' },
+
+  { br:'Q2', topic:'q2-nghiduong-910', name:'ƯU ĐÃI LỄ 2/9 — Quận 2', price:'210k',
+    time:'09:00–10:30 & 18:00–20:00', days:'T2-CN', from:'2026-08-29', to:'2026-09-02',
+    only:'holiday', holiday:true, cond:'Tất cả khách cao trên 1m2 · Like&share FB HOẶC review Google HOẶC follow TikTok' },
+
+  /* ---- Combo nghỉ dưỡng + chăm sóc da ---- */
+  { br:'Q2', topic:'q2-nghiduong-910', name:'Combo Nam — Nghỉ dưỡng + Skin care', price:'290k',
+    time:'12:00–17:00', days:'T2-T6', from:'2026-09-03', to:'2026-10-30',
+    holiday:false, cond:'Booking trước qua hotline' },
+  { br:'Q2', topic:'q2-nghiduong-78', name:'Combo Nữ — Nghỉ dưỡng + Honey skin care', price:'290k',
+    time:'12:00–17:00', days:'T2-T6', from:null, to:null, holiday:null, ok:false,
+    cond:'Booking trước qua hotline' },
+  { br:'Q2', topic:'q2-nghiduong-910', name:'Combo Nam & Nữ — Nghỉ dưỡng + Skin care', price:'235k',
+    time:'Sau 20:00', days:'T2-CN', from:'2026-08-29', to:'2026-11-01',
+    holiday:true, cond:'Booking trước qua hotline' },
+  { br:'Q2', topic:'q2-nghiduong-910', name:'Combo Nữ — Nghỉ dưỡng + Honey skin care', price:'455k',
+    time:'09:00–22:00', days:'T7-CN', from:'2026-08-29', to:'2026-11-01',
+    holiday:true, cond:'Booking trước qua hotline' },
+
+  { br:'Q2', topic:'q2-nghiduong-78', name:'Happy Hour Sáng — Quận 2', price:'210k',
+    time:'09:00–11:00', days:'T2-T6', from:null, to:null, holiday:false, ok:false,
+    cond:'Khách cao trên 1m2' },
+  { br:'Q2', topic:'q2-nghiduong-78', name:'Happy Hour Tối — Quận 2', price:'170k',
+    time:'20:00–24:00', days:'T2-CN', from:null, to:null, holiday:null, ok:false,
+    cond:'Khách cao trên 1m2' },
+
+  /* ================= QUẬN 2 — GOLDEN KITCHEN / AQUA ================= */
+  { br:'Q2', topic:'golden-kitchen', name:'Combo HSSV Golden Kitchen', price:'⚠️ giá chưa chốt',
+    time:'10:00–22:00', days:'T2-T6', from:'2026-04-01', to:'2026-12-31',
+    holiday:false, cond:'Phải mua vé nghỉ dưỡng cùng ngày · mỗi thẻ HS/SV cho 01 khách' },
+  { br:'Q2', topic:'golden-kitchen', name:'Đãi tiệc sinh nhật — tặng bánh Pizza', price:'Miễn phí bánh',
+    time:'10:00–22:00', days:'T2-CN', from:'2026-08-11', to:'2026-12-31',
+    holiday:true, cond:'Bàn từ 5 người trở lên · đặt trước 1 ngày' },
+  { br:'Q2', topic:'golden-kitchen', name:'Aqua Garden Cafe — giá nước ưu đãi', price:'50k (30k nếu review Google)',
+    time:'10:30–21:30', days:'T2-CN', from:'2026-08-20', to:'2026-12-31',
+    holiday:null, cond:'Khách Healing World · chỉ 1 phần nước hoặc kem tuyết' },
+  { br:'Q2', topic:'golden-kitchen', name:'Game vòng quay may mắn', price:'Bill từ 200k',
+    time:'—', days:'T2-CN', from:null, to:null, holiday:null, ok:false,
+    cond:'Voucher tối đa 200k/1 bill · có hiệu lực sau 1 ngày · HSD 01 tháng' },
+
+  /* ================= QUẬN 2 — CARE ================= */
+  { br:'Q2', topic:'care-q2', name:"Combo Facial care 60' + Nghỉ dưỡng", price:'420k',
+    time:'09:00–23:00', days:'T2-T6', from:null, to:'2026-10-30',
+    holiday:false, cond:'Booking trước ít nhất 1 giờ' },
+  { br:'Q2', topic:'care-q2', name:"Combo Facial care 60' + Nghỉ dưỡng", price:'420k',
+    time:'16:00–23:00', days:'T7-CN', from:null, to:'2026-11-01',
+    holiday:true, cond:'Booking trước ít nhất 1 giờ' },
+  { br:'Q2', topic:'care-q2', name:"Foot care 60' / Body care 60'", price:'Giảm 20%',
+    time:'10:00–23:00 (last order 21h30)', days:'T2-T6', from:null, to:'2026-10-30',
+    holiday:false, cond:'Không yêu cầu booking' },
+  { br:'Q2', topic:'care-q2', name:"Ráy tai 30' (giảm 40%)", price:'170k',
+    time:'10:00–23:00 (last order 22h)', days:'T2-T6', from:'2026-07-02', to:'2026-09-30',
+    holiday:false, cond:'Booking trước 1 tiếng' },
+  { br:'Q2', topic:'care-q2', name:"Gội đầu ráy tai 60' (giảm 40%)", price:'298k',
+    time:'10:00–23:00 (last order 21h30)', days:'T2-T6', from:'2026-07-02', to:'2026-09-30',
+    holiday:false, cond:'Booking trước 1 tiếng' },
+  { br:'Q2', topic:'care-q2', name:"Gội đầu ráy tai 90' (giảm 40%)", price:'370k',
+    time:'10:00–23:00 (last order 21h)', days:'T2-T6', from:'2026-07-02', to:'2026-09-30',
+    holiday:false, cond:'Booking trước 1 tiếng' },
+
+  /* ================= QUẬN 2 — NAIL / HAIR ================= */
+  { br:'Q2', topic:'nail-hair', name:'Hair — Color, Style, Treatment', price:'Giảm 30%',
+    time:'10:00–23:00 (last order 22h)', days:'T2-CN', from:null, to:'2026-12-31',
+    holiday:true, cond:'Không cần booking trước' },
+  { br:'Q2', topic:'nail-hair', name:'Cắt tóc Nam + gội đầu 10 phút', price:'70k',
+    time:'10:00–12:00 & 19:00–23:00', days:'T2-CN', from:null, to:'2026-12-31',
+    holiday:true, cond:'Không cần booking' },
+  { br:'Q2', topic:'nail-hair', name:'Cắt tóc Nữ + gội đầu 10 phút', price:'150k',
+    time:'10:00–12:00 & 19:00–23:00', days:'T2-CN', from:null, to:'2026-12-31',
+    holiday:true, cond:'Không cần booking' },
+  { br:'Q2', topic:'nail-hair', name:'Keratin / Collagen Treatment 3 step', price:'Giảm 50%',
+    time:'10:00–23:00 (last order 22h)', days:'T2-T6', from:null, to:'2026-12-31',
+    holiday:true, cond:'Booking trước 1 ngày' },
+  { br:'Q2', topic:'nail-hair', name:'Nail — Sơn gel', price:'Giảm 30%',
+    time:'10:00–23:00', days:'T2-CN', from:null, to:'2026-12-31',
+    holiday:false, cond:'Booking trước 1 tiếng' },
+  { br:'Q2', topic:'nail-hair', name:'Nail — Art Design (tay/chân)', price:'Giảm 50%',
+    time:'10:00–23:00', days:'T2-T6', from:null, to:'2026-12-31', holiday:false, cond:'—' },
+  { br:'Q2', topic:'nail-hair', name:'Nail — Sơn gel cho HSSV', price:'Giảm 50%',
+    time:'10:00–23:00', days:'T2-T6', from:null, to:'2026-12-31',
+    holiday:false, cond:'Thẻ HS/SV hợp lệ + Review Google Maps' },
+  { br:'Q2', topic:'nail-hair', name:'Golden Nail — quà review Google Maps', price:'Miễn phí tháo gel / +1 màu sơn',
+    time:'Cả ngày', days:'T2-T6', from:null, to:'2026-12-31',
+    holiday:null, cond:'5 review/ngày · voucher nghỉ dưỡng dùng sau 19:00, HSD 1 tháng' },
+  { br:'Q2', topic:'nail-hair', name:'Beauty Passport — thẻ tích luỹ Nail & Hair', price:'Tích luỹ 10%',
+    time:'Cả ngày', days:'T2-CN', from:null, to:null, holiday:null, ok:false,
+    cond:'Hoá đơn từ 200.000đ · thẻ có hiệu lực 06 tháng' },
+
+  /* ================= QUẬN 1 ================= */
+  { br:'Q1', topic:'quan-1', name:'Happy Hour — Bathhouse Nam', price:'176k',
+    time:'09:00–12:00', days:'T2-T6', from:null, to:null,
+    holiday:false, annual:true, cond:'Khách cao trên 1.2m · chương trình thường niên' },
+  { br:'Q1', topic:'quan-1', name:'Happy Hour — Skin Care Nam', price:'232k',
+    time:'09:00–12:00', days:'T2-T6', from:null, to:null,
+    holiday:false, annual:true, cond:'Khách cao trên 1.2m · chương trình thường niên' },
+  { br:'Q1', topic:'quan-1', name:"Facial care 60'", price:'230k',
+    time:'09:30–19:00', days:'T2-T6', from:'2026-07-01', to:'2026-08-31',
+    holiday:false, cond:'Tất cả khách hàng · Booking trước 1h', period:'Kỳ T7,T8' },
+  { br:'Q1', topic:'quan-1', name:"Facial care 60'", price:'263k',
+    time:'09:30–19:00', days:'T2-T6', from:'2026-09-03', to:'2026-10-30',
+    holiday:false, cond:'Tất cả khách hàng · Booking trước 1h', period:'Kỳ T9,T10' },
+  { br:'Q1', topic:'quan-1', name:"Body care 60' (no oil)", price:'298k',
+    time:'09:30–16:00', days:'T2-T6', from:null, to:'2026-10-30',
+    holiday:false, cond:'CHỈ khách người Việt · Booking trước 1h' },
+  { br:'Q1', topic:'quan-1', name:"Foot care 60'", price:'242k',
+    time:'09:30–16:00', days:'T2-T6', from:null, to:'2026-10-30',
+    holiday:false, cond:'CHỈ khách người Việt · Booking trước 1h' },
+  { br:'Q1', topic:'quan-1', name:'Nail — Sơn gel & Design', price:'Giảm 20%',
+    time:'10:00–16:00', days:'T2-T6', from:null, to:'2026-12-31',
+    holiday:false, cond:'Sơn gel tay/chân (cắt da + sơn) và Design' },
+  { br:'Q1', topic:'quan-1', name:'Nail — quà review Google Maps', price:'Miễn phí tháo gel / +1 màu sơn',
+    time:'Cả ngày', days:'T2-CN', from:null, to:'2026-12-31',
+    holiday:true, cond:'Review Google Maps' },
+
+  /* ================= QUẬN 7 ================= */
+  { br:'Q7', topic:'quan-7', name:'ƯU ĐÃI LỄ 2/9 — Quận 7', price:'210k',
+    time:'08:00–11:00 & 16:00–19:00', days:'T2-CN', from:'2026-08-29', to:'2026-09-02',
+    only:'holiday', holiday:true, cond:'Tất cả khách cao trên 1m2 · Like&share FB HOẶC review Google HOẶC follow TikTok' },
+  { br:'Q7', topic:'quan-7', name:'Vé HSSV (+1 trứng nướng)', price:'90k',
+    time:'08:00–11:00 & 12:00–24:00', days:'T2-T6', from:null, to:'2026-10-30',
+    holiday:false, cond:'Trên 1.2m · đồng phục trường hoặc thẻ SV · Like&share FB hoặc review Google' },
+  { br:'Q7', topic:'quan-7', name:'Ưu đãi tối', price:'130k',
+    time:'21:00–24:00', days:'T2-CN', from:null, to:'2026-12-31',
+    holiday:true, cond:'Tất cả khách trên 1.2m' },
+  { br:'Q7', topic:'quan-7', name:'Miễn phí cho BẠN GÁI đi cùng bạn trai', price:'Vé bạn trai 150k',
+    time:'Sau 19:00', days:'T2-CN', from:null, to:null, holiday:false, ok:false,
+    cond:'Cặp đôi 15–35 tuổi · áo đôi cùng màu, in hình/chữ giống nhau · Mang CCCD' },
+  { br:'Q7', topic:'quan-7', name:'Miễn phí cho 1 NGƯỜI LỚN từ 60 tuổi', price:'Vé người đi kèm 150k',
+    time:'Sau 19:00', days:'T2-CN', from:null, to:null, holiday:false, ok:false,
+    cond:'Phải có 1 người đi kèm từ 18 tuổi · CCCD của cả hai' },
+  { br:'Q7', topic:'quan-7', name:'Happy Hour Sáng — Quận 7', price:'190k',
+    time:'08:00–11:00', days:'T2-T6', from:null, to:null, holiday:false, ok:false,
+    cond:'Khách trên 1.2m · KHÔNG áp dụng T7, CN' },
+  { br:'Q7', topic:'quan-7', name:'Happy Hour Tối — Quận 7', price:'150k',
+    time:'19:00–24:00', days:'T2-CN', from:null, to:null, holiday:null, ok:false,
+    cond:'Khách trên 1.2m' },
+  { br:'Q7', topic:'quan-7', name:"Facial Care 60'", price:'230k',
+    time:'10:00–22:00', days:'T2-T6', from:'2026-07-01', to:'2026-08-31',
+    holiday:false, cond:'Tất cả khách · Booking trước ít nhất 1 tiếng', period:'Kỳ T7,T8' },
+  { br:'Q7', topic:'quan-7', name:"Facial Care 60'", price:'263k',
+    time:'10:00–22:00', days:'T2-T6', from:'2026-09-03', to:'2026-10-30',
+    holiday:false, cond:'Tất cả khách · Booking trước ít nhất 1 tiếng', period:'Kỳ T9,T10' },
+  { br:'Q7', topic:'quan-7', name:"Foot Care 60' (giảm 20%)", price:'252k',
+    time:'Sau 19:00', days:'T2-T6', from:null, to:null, holiday:false, ok:false,
+    cond:'Booking trước qua hotline' },
+  { br:'Q7', topic:'quan-7', name:'Body Care no oil (giảm 20%)', price:'316k',
+    time:'Sau 19:00', days:'T2-T6', from:null, to:null, holiday:false, ok:false,
+    cond:'Booking trước qua hotline' }
+];

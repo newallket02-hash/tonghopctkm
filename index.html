@@ -119,6 +119,45 @@ h2{font-size:19px;margin:0 0 4px;line-height:1.3}
 .lg[aria-pressed="true"]{background:var(--bc,var(--navy));color:#fff}
 .lg small{font-weight:600;opacity:.75;margin-left:4px}
 
+/* ---------- tra cứu theo ngày ---------- */
+.datebar{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.datebar input[type=date]{flex:1 1 100%;font:inherit;font-size:16px;padding:11px 12px;
+  border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);min-height:48px}
+.datebar input[type=date]:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(30,45,90,.09)}
+.datebar .btn{flex:1 1 0;padding:11px 15px;min-height:48px}
+@media(min-width:760px){.datebar input[type=date]{flex:0 0 200px}.datebar .btn{flex:0 0 auto}}
+.dinfo{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:700;font-size:15px;
+  color:var(--navy);margin-bottom:10px}
+.dinfo .hol{background:var(--orange);color:#3a2600;border-radius:999px;padding:3px 11px;font-size:12.5px}
+.hswitch{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);
+  border-radius:12px;padding:11px 13px;margin-bottom:12px;cursor:pointer;font-size:14px;min-height:48px}
+.hswitch input{width:20px;height:20px;accent-color:var(--orange);flex:0 0 auto}
+.hswitch small{display:block;color:var(--muted);font-size:12.5px;font-weight:400;line-height:1.4}
+.gh{display:flex;align-items:center;gap:8px;margin:16px 0 9px;font-size:15px;font-weight:700}
+.gh .n{background:var(--navy-soft);color:var(--navy);border-radius:999px;padding:1px 9px;font-size:12.5px}
+.ofr{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--bc,var(--line));
+  border-radius:12px;padding:12px 14px;margin-bottom:9px;box-shadow:var(--shadow);
+  width:100%;display:block;text-align:left;color:inherit;cursor:pointer}
+.ofr:active{transform:scale(.995)}
+.ofr .r1{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.ofr .nm{font-weight:700;font-size:15px;line-height:1.35}
+.ofr .pr{font-weight:800;font-size:15.5px;color:var(--bc,var(--navy));white-space:nowrap}
+.ofr .mt{color:var(--muted);font-size:13.2px;margin-top:4px;line-height:1.5}
+.ofr .cd{color:var(--muted);font-size:12.8px;margin-top:4px;line-height:1.5}
+.ofr .why{display:inline-block;margin-top:7px;border-radius:999px;padding:2px 10px;
+  font-size:11.5px;font-weight:700}
+.ofr.no{opacity:.72;border-left-color:#c9cfdd}
+.ofr.no .pr{color:var(--muted)}
+.why.y{background:var(--ok-bg);color:var(--ok)}
+.why.n{background:#f0f2f8;color:var(--muted)}
+.why.w{background:var(--orange-soft);color:#8a5a00}
+details.grp{margin-top:6px}
+details.grp>summary{list-style:none;cursor:pointer;font-weight:700;font-size:14.5px;color:var(--muted);
+  padding:10px 0}
+details.grp>summary::-webkit-details-marker{display:none}
+details.grp>summary::after{content:" ⌄"}
+details.grp[open]>summary::after{content:" ⌃"}
+
 /* ---------- tài liệu ---------- */
 .dochead{border-left:5px solid var(--bc,var(--navy));background:var(--bcs,var(--navy-soft));
   border-radius:0 12px 12px 0;padding:13px 15px;margin-bottom:14px}
@@ -308,7 +347,7 @@ footer .wrap{display:flex;flex-direction:column;gap:4px}
 <div class="topbar">
   <div class="wrap">
     <div class="tabgroup" role="tablist">
-      <button class="tab" role="tab" data-view="home" aria-selected="true">Tổng quan</button>
+      <button class="tab" role="tab" data-view="today" aria-selected="true">Hôm nay</button>
       <button class="tab" role="tab" data-view="doc" aria-selected="false">Tài liệu ôn tập</button>
       <button class="tab" role="tab" data-view="quiz" aria-selected="false">Làm bài kiểm tra</button>
     </div>
@@ -335,15 +374,23 @@ footer .wrap{display:flex;flex-direction:column;gap:4px}
     <div id="sList"></div>
   </section>
 
-  <!-- TỔNG QUAN -->
-  <section class="panel" id="v-home">
-    <h2>Chọn chủ đề để ôn</h2>
-    <p class="sub">Chạm vào thẻ để mở tài liệu. Màu viền cho biết chi nhánh.</p>
-    <div class="grid" id="homeGrid"></div>
-    <div class="warn" id="homeWarn">
-      <b>⚠️ Còn 1 con số cần chốt:</b> giá Combo HSSV Golden Kitchen đang lệch giữa 3 sheet nguồn (190/290 · 130/230 · 115/190) nên chưa đưa vào đề.<br>
-      <b>✔ Đã chốt:</b> mức bill tối thiểu Game vòng quay may mắn = <b>200k</b>.
+  <!-- HÔM NAY / TRA CỨU THEO NGÀY -->
+  <section class="panel" id="v-today">
+    <h2>Ưu đãi áp dụng theo ngày</h2>
+    <p class="sub">Chọn ngày — trang lọc đúng những chương trình còn hiệu lực hôm đó.</p>
+    <div class="datebar">
+      <input type="date" id="dPick" aria-label="Chọn ngày">
+      <button class="btn alt" type="button" id="dToday">Hôm nay</button>
+      <button class="btn alt" type="button" id="dNext">Mai</button>
     </div>
+    <div class="dinfo" id="dInfo"></div>
+    <label class="hswitch" id="dHolWrap">
+      <input type="checkbox" id="dHol">
+      <span>Ngày này là <b>lễ / tết</b>
+        <small>Bật nếu công ty tính ngày này là lễ (20/10, Noel…) — trang chỉ tự nhận dịp 2/9.</small></span>
+    </label>
+    <div class="legend" id="dLegend"></div>
+    <div id="dList"></div>
   </section>
 
   <!-- TÀI LIỆU -->
@@ -353,6 +400,10 @@ footer .wrap{display:flex;flex-direction:column;gap:4px}
       <p class="sub">11 chủ đề · cập nhật 28/08/2026. Chạm vào màu để lọc theo chi nhánh.</p>
       <div class="legend" id="legend"></div>
       <div class="grid" id="docGrid"></div>
+      <div class="warn">
+        <b>⚠️ Còn 1 con số cần chốt:</b> giá Combo HSSV Golden Kitchen đang lệch giữa 3 sheet nguồn (190/290 · 130/230 · 115/190) nên chưa đưa vào đề.<br>
+        <b>✔ Đã chốt:</b> mức bill tối thiểu Game vòng quay may mắn = <b>200k</b>.
+      </div>
     </div>
     <div id="docDetail" hidden></div>
   </section>
@@ -416,13 +467,14 @@ footer .wrap{display:flex;flex-direction:column;gap:4px}
 </div></footer>
 
 <nav class="bottomnav" role="tablist" aria-label="Điều hướng">
-  <button class="bn" role="tab" data-view="home" aria-selected="true"><i>🏠</i>Tổng quan</button>
+  <button class="bn" role="tab" data-view="today" aria-selected="true"><i>📅</i>Hôm nay</button>
   <button class="bn" role="tab" data-view="doc" aria-selected="false"><i>📖</i>Tài liệu</button>
   <button class="bn" role="tab" data-view="quiz" aria-selected="false"><i>📝</i>Kiểm tra</button>
   <button class="bn" id="bnSearch"><i>🔍</i>Tìm</button>
 </nav>
 
 <script src="data.js"></script>
+<script src="offers.js"></script>
 <script>
 const DATA = TOPICS;
 const $ = s => document.querySelector(s);
@@ -440,11 +492,11 @@ const BR = {'Q1':'b-q1','Q2':'b-q2','Q7':'b-q7','Chung':'b-chung','Tổng hợp'
 const bcls = tag => BR[tag] || 'b-chung';
 
 /* ---------- điều hướng ---------- */
-let curView='home', lastView='home';
+let curView='today', lastView='today';
 function show(v){
   const changed = v!==curView;
   document.querySelectorAll('.tab,.bn[data-view]').forEach(b=>b.setAttribute('aria-selected', b.dataset.view===v));
-  ['home','doc','quiz','search'].forEach(k=>$('#v-'+k).hidden = (k!==v));
+  ['today','doc','quiz','search'].forEach(k=>$('#v-'+k).hidden = (k!==v));
   if(v!=='search') lastView=v;
   curView=v;
   if(changed) window.scrollTo({top:0,behavior:'smooth'});
@@ -463,7 +515,7 @@ function topicCard(t){
   c.addEventListener('click',()=>openDoc(t.id));
   return c;
 }
-DATA.forEach(t=>{ $('#homeGrid').appendChild(topicCard(t)); $('#docGrid').appendChild(topicCard(t)); });
+DATA.forEach(t=>{ $('#docGrid').appendChild(topicCard(t)); });
 
 /* ---------- bộ lọc theo chi nhánh ---------- */
 const TAGS=[...new Set(DATA.map(t=>t.tag))];
@@ -522,6 +574,92 @@ function openDoc(id, terms){
     updatePool(); show('quiz'); start();
   });
 }
+
+/* ================= TRA CỨU THEO NGÀY ================= */
+const DOW = ['Chủ nhật','Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy'];
+const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const vn  = s => s ? s.split('-').reverse().join('/') : '';
+const dayLabel = d => d==='T2-T6' ? 'T2–T6' : d==='T7-CN' ? 'T7–CN' : 'T2–CN';
+function knownHoliday(ds){ return HOLIDAYS.find(h => ds >= h.from && ds <= h.to) || null; }
+function daysOK(days, dow){
+  if(days==='T2-T6') return dow>=1 && dow<=5;
+  if(days==='T7-CN') return dow===0 || dow===6;
+  return true;
+}
+function evalOffer(o, ds, dow, hol){
+  if(o.ok===false)                       return {st:'w', why:'Chưa xác nhận thời hạn — hỏi lại quản lý'};
+  if(o.from && ds < o.from)               return {st:'n', why:'Chưa bắt đầu · từ '+vn(o.from)};
+  if(o.to   && ds > o.to)                 return {st:'n', why:'Đã hết hạn · đến '+vn(o.to)};
+  if(o.only==='holiday' && !hol)          return {st:'n', why:'Chỉ áp dụng trong dịp lễ'};
+  if(!daysOK(o.days,dow))                 return {st:'n', why:'Chỉ áp dụng '+dayLabel(o.days)};
+  if(hol && o.holiday===false)            return {st:'n', why:'KHÔNG áp dụng ngày lễ'};
+  if(hol && o.holiday===null)             return {st:'w', why:'Nguồn không ghi rõ có áp dụng lễ hay không'};
+  if(hol && o.holiday===true)             return {st:'y', why:'✓ Có áp dụng ngày lễ'};
+  return {st:'y', why: o.to ? '✓ Còn hiệu lực đến '+vn(o.to) : '✓ Đang áp dụng'};
+}
+let dFilter = null;
+function offerCard(o, r){
+  const b = el('button','ofr '+bcls(o.br)+(r.st==='n'?' no':''));
+  b.type='button';
+  const meta = [dayLabel(o.days), o.time].filter(x=>x && x!=='—').join(' · ');
+  b.innerHTML = `<div class="r1"><span class="nm">${esc(o.name)}</span><span class="pr">${esc(o.price)}</span></div>
+    <div class="mt"><span class="badge tp ${bcls(o.br)}">${esc(o.br)}</span> ${esc(meta)}${o.period?' · '+esc(o.period):''}</div>
+    ${o.cond&&o.cond!=='—'?`<div class="cd">${esc(o.cond)}</div>`:''}
+    <span class="why ${r.st}">${esc(r.why)}</span>`;
+  b.addEventListener('click',()=>openDoc(o.topic));
+  return b;
+}
+function renderDay(){
+  const ds = $('#dPick').value;
+  if(!ds) return;
+  const d = new Date(ds+'T00:00:00'), dow = d.getDay();
+  const kh = knownHoliday(ds);
+  if(kh && !$('#dHol').checked) $('#dHol').checked = true;
+  const hol = $('#dHol').checked;
+  $('#dInfo').innerHTML = `<span>${DOW[dow]}, ${vn(ds)}</span>` +
+    (kh ? `<span class="hol">🎉 ${esc(kh.name)}</span>` : hol ? `<span class="hol">🎉 Ngày lễ (tự đánh dấu)</span>` : '');
+
+  const yes=[], warn=[], no=[];
+  OFFERS.filter(o => !dFilter || o.br===dFilter).forEach(o=>{
+    const r = evalOffer(o, ds, dow, hol);
+    (r.st==='y'?yes:r.st==='w'?warn:no).push([o,r]);
+  });
+  const L = $('#dList'); L.innerHTML='';
+  const head = (icon,txt,n) => el('div','gh',`${icon} ${txt} <span class="n">${n}</span>`);
+
+  if(yes.length){ L.appendChild(head('✅','Đang áp dụng',yes.length)); yes.forEach(([o,r])=>L.appendChild(offerCard(o,r))); }
+  else L.appendChild(el('div','nores','Không có ưu đãi nào áp dụng vào ngày này.'));
+
+  if(warn.length){ L.appendChild(head('⚠️','Cần kiểm tra lại',warn.length)); warn.forEach(([o,r])=>L.appendChild(offerCard(o,r))); }
+
+  if(no.length){
+    const dt = el('details','grp');
+    dt.innerHTML = `<summary>❌ Không áp dụng ngày này (${no.length})</summary>`;
+    const box = el('div'); no.forEach(([o,r])=>box.appendChild(offerCard(o,r)));
+    dt.appendChild(box); L.appendChild(dt);
+  }
+}
+(function initDay(){
+  const t = new Date();
+  $('#dPick').value = iso(t);
+  $('#dToday').addEventListener('click',()=>{ $('#dHol').checked=false; $('#dPick').value=iso(new Date()); renderDay(); });
+  $('#dNext').addEventListener('click',()=>{ const n=new Date($('#dPick').value+'T00:00:00'); n.setDate(n.getDate()+1);
+    $('#dHol').checked=false; $('#dPick').value=iso(n); renderDay(); });
+  $('#dPick').addEventListener('change',()=>{ $('#dHol').checked=false; renderDay(); });
+  $('#dHol').addEventListener('change',renderDay);
+  const BRS = [...new Set(OFFERS.map(o=>o.br))];
+  const mk = (tag,label,n) => {
+    const b = el('button','lg '+(tag?bcls(tag):''), `${esc(label)}<small>${n}</small>`);
+    b.type='button'; b.setAttribute('aria-pressed', tag===dFilter);
+    b.addEventListener('click',()=>{ dFilter=tag;
+      document.querySelectorAll('#dLegend .lg').forEach(x=>x.setAttribute('aria-pressed', x===b));
+      renderDay(); });
+    return b;
+  };
+  $('#dLegend').appendChild(mk(null,'Tất cả',OFFERS.length));
+  BRS.forEach(t2=>$('#dLegend').appendChild(mk(t2,t2,OFFERS.filter(o=>o.br===t2).length)));
+  renderDay();
+})();
 
 /* ================= TÌM KIẾM ================= */
 function normMap(s){
