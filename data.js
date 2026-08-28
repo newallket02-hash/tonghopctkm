@@ -114,11 +114,61 @@ const TOPICS = [
     }
    },
    {
-    "h": "Happy Hour Quận 2",
+    "h": "Happy Hour Quận 2 (menu 06/2026 · thường niên)",
+    "table": {
+     "head": [
+      "Hạng mục",
+      "Sáng T2–T6",
+      "Tối T2–CN"
+     ],
+     "rows": [
+      [
+       "**Nghỉ dưỡng** — Người lớn",
+       "**210k** (09:00–11:00)",
+       "**170k** (20:00–24:00)"
+      ],
+      [
+       "**Nghỉ dưỡng** — Trẻ em",
+       "140k",
+       "140k"
+      ],
+      [
+       "**Bathhouse** — Người lớn",
+       "**190k** (09:00–11:00)",
+       "— (không có ca tối)"
+      ],
+      [
+       "**Bathhouse** — Trẻ em",
+       "95k",
+       "—"
+      ],
+      [
+       "**Skin Care** — Nữ",
+       "**280k** (09:00–11:00)",
+       "**280k** (18:00–24:00)"
+      ],
+      [
+       "**Skin Care** — Nam",
+       "235k",
+       "235k"
+      ],
+      [
+       "**Skin Care** — Trẻ em",
+       "155k",
+       "155k"
+      ]
+     ]
+    }
+   },
+   {
+    "h": "Ghi nhớ Happy Hour Quận 2",
     "bullets": [
-     "Happy Hour Sáng: **210k**, 09:00–11:00, T2–T6 — KHÔNG áp dụng ngày lễ.",
-     "Happy Hour Tối: **170k**, 20:00–24:00, T2–CN.",
-     "Điều kiện: khách cao trên 1m2."
+     "Ca sáng của cả 3 nhóm đều **KHÔNG áp dụng ngày lễ** (menu ghi rõ \"Not included holiday\").",
+     "Ca tối **Nghỉ dưỡng bắt đầu 20:00**, còn **Skin Care bắt đầu 18:00** — hai mốc khác nhau, dễ nhầm.",
+     "Bathhouse **chỉ có Happy Hour buổi sáng**, không có ca tối.",
+     "Trẻ em tính theo chiều cao **0,8m – 1,2m**; dưới 0,8m **miễn phí**, phải có người lớn đi kèm.",
+     "Giá Bathhouse thường: **240k** người lớn · **120k** trẻ em.",
+     "**Giá trên menu CHƯA bao gồm VAT.**"
     ]
    }
   ],
@@ -276,6 +326,39 @@ const TOPICS = [
     ],
     "a": 0,
     "e": "Cả ưu đãi khách hàng nữ 150k lẫn ưu đãi cuối tuần 210k đều KHÔNG áp dụng vào các ngày lễ."
+   },
+   {
+    "q": "Quận 2 có mấy nhóm Happy Hour và nhóm nào KHÔNG có ca tối?",
+    "o": [
+     "3 nhóm (Nghỉ dưỡng · Bathhouse · Skin Care) — Bathhouse chỉ có ca sáng",
+     "2 nhóm (Nghỉ dưỡng · Skin Care) — cả hai đều có ca tối",
+     "3 nhóm — Skin Care chỉ có ca sáng",
+     "3 nhóm — cả ba đều có đủ sáng và tối"
+    ],
+    "a": 0,
+    "e": "Happy Hour Q2 gồm Nghỉ dưỡng, Bathhouse và Skin Care. Riêng Bathhouse chỉ có Happy Hour buổi sáng (09:00–11:00), không có ca tối."
+   },
+   {
+    "q": "Ca tối Happy Hour Nghỉ dưỡng và Skin Care tại Quận 2 bắt đầu lúc mấy giờ?",
+    "o": [
+     "Nghỉ dưỡng 20:00 · Skin Care 18:00",
+     "Cả hai đều 20:00",
+     "Nghỉ dưỡng 18:00 · Skin Care 20:00",
+     "Cả hai đều 19:00"
+    ],
+    "a": 0,
+    "e": "Hai mốc khác nhau và rất dễ nhầm: Happy Hour Nghỉ dưỡng ca tối 20:00–24:00, còn Skin Care ca tối 18:00–24:00."
+   },
+   {
+    "q": "Giá Happy Hour Bathhouse tại Quận 2 cho người lớn và trẻ em là bao nhiêu?",
+    "o": [
+     "190k và 95k",
+     "210k và 140k",
+     "175k và 85k",
+     "240k và 120k"
+    ],
+    "a": 0,
+    "e": "Happy Hour Bathhouse Q2 (T2–T6, 09:00–11:00): người lớn 190k, trẻ em 95k. Giá Bathhouse thường là 240k / 120k."
    }
   ]
  },
@@ -1562,11 +1645,127 @@ const TOPICS = [
     }
    },
    {
-    "h": "Happy Hour Quận 7",
+    "h": "Happy Hour Quận 7 (menu 06/2026 · thường niên)",
+    "table": {
+     "head": [
+      "Hạng mục",
+      "Sáng T2–T6",
+      "Tối T2–CN"
+     ],
+     "rows": [
+      [
+       "**Nghỉ dưỡng** — Người lớn",
+       "**190k** (08:00–11:00)",
+       "**150k** (19:00–24:00)"
+      ],
+      [
+       "**Nghỉ dưỡng** — Trẻ em",
+       "115k",
+       "115k"
+      ],
+      [
+       "**Bathhouse** — Người lớn",
+       "**175k** (07:00–11:00)",
+       "— (không có ca tối)"
+      ],
+      [
+       "**Bathhouse** — Trẻ em",
+       "85k",
+       "—"
+      ],
+      [
+       "**Skin Care** — Nữ",
+       "**280k** (07:00–11:00)",
+       "**280k** (18:00–24:00)"
+      ],
+      [
+       "**Skin Care** — Nam",
+       "235k",
+       "235k"
+      ],
+      [
+       "**Skin Care** — Trẻ em",
+       "155k",
+       "155k"
+      ]
+     ]
+    }
+   },
+   {
+    "h": "Bảng giá menu Quận 7 (chưa gồm VAT)",
+    "table": {
+     "head": [
+      "Dịch vụ",
+      "Thời lượng",
+      "Giá"
+     ],
+     "rows": [
+      [
+       "Golden Lotus Relaxation (Nghỉ dưỡng)",
+       "—",
+       "250k"
+      ],
+      [
+       "Nghỉ dưỡng — Trẻ em (0,8–1,2m)",
+       "—",
+       "150k"
+      ],
+      [
+       "Baby (dưới 0,8m)",
+       "—",
+       "Miễn phí"
+      ],
+      [
+       "Bathhouse",
+       "—",
+       "220k"
+      ],
+      [
+       "Bathhouse — Trẻ em",
+       "—",
+       "110k"
+      ],
+      [
+       "Skin Care (Nam) — Peeling Skin",
+       "30 phút",
+       "290k"
+      ],
+      [
+       "Skin Care (Nữ) — Peeling Skin",
+       "45 phút",
+       "350k"
+      ],
+      [
+       "Skin Care — Trẻ em",
+       "—",
+       "195k"
+      ],
+      [
+       "Honey Skin Care (Nữ) — Body Scrub + Wrap + Heat Therapy 20 phút",
+       "50 phút",
+       "450k"
+      ],
+      [
+       "Phụ thu đồ đồng phục",
+       "—",
+       "20k"
+      ],
+      [
+       "Phụ thu khăn",
+       "—",
+       "5k"
+      ]
+     ]
+    }
+   },
+   {
+    "h": "Ghi nhớ Happy Hour Quận 7",
     "bullets": [
-     "Happy Hour Sáng: **190k**, 08:00–11:00, T2–T6 — **không áp dụng T7, CN & lễ**.",
-     "Happy Hour Tối: **150k**, 19:00–24:00, T2–CN.",
-     "Điều kiện: khách trên 1.2m."
+     "Ca sáng cả 3 nhóm **KHÔNG áp dụng ngày lễ**.",
+     "Quận 7 mở Happy Hour **sớm hơn Quận 2**: Bathhouse & Skin Care từ **07:00**, Nghỉ dưỡng từ **08:00** (Q2 đều từ 09:00).",
+     "Ca tối: **Nghỉ dưỡng 19:00–24:00** · **Skin Care 18:00–24:00**.",
+     "Honey Skin Care (Nữ) gồm: scrub (bắp / hạt sen / sữa muối) + wrap (chọn 1: cà phê / nghệ / dừa mật ong) + xông nhiệt 20 phút miễn phí.",
+     "**Giá trên menu CHƯA bao gồm VAT.**"
     ]
    },
    {
@@ -1748,6 +1947,72 @@ const TOPICS = [
     ],
     "a": 0,
     "e": "Cả vé HSSV 90k lẫn Facial Care 60' tại Q7 đều chạy đến 30/10 và KHÔNG áp dụng ngày lễ."
+   },
+   {
+    "q": "Happy Hour tại Quận 7 mở sớm hơn Quận 2 như thế nào?",
+    "o": [
+     "Q7: Bathhouse & Skin Care từ 07:00, Nghỉ dưỡng từ 08:00 · Q2 đều từ 09:00",
+     "Hai chi nhánh mở cùng giờ",
+     "Q7 mở muộn hơn Q2 một tiếng",
+     "Q7: tất cả từ 08:00 · Q2: tất cả từ 10:00"
+    ],
+    "a": 0,
+    "e": "Q7 mở Happy Hour sớm hơn: Bathhouse và Skin Care từ 07:00, Nghỉ dưỡng từ 08:00. Quận 2 cả ba nhóm đều bắt đầu 09:00."
+   },
+   {
+    "q": "Giá Happy Hour Nghỉ dưỡng tại Quận 7 cho trẻ em là bao nhiêu?",
+    "o": [
+     "115k cho cả ca sáng lẫn ca tối",
+     "140k cho cả hai ca",
+     "115k ca sáng và 85k ca tối",
+     "Trẻ em không được áp dụng Happy Hour"
+    ],
+    "a": 0,
+    "e": "Trẻ em Q7 là 115k ở cả ca sáng (08:00–11:00) lẫn ca tối (19:00–24:00). Người lớn thì khác nhau: 190k sáng và 150k tối."
+   },
+   {
+    "q": "Giá menu Skin Care (Peeling Skin) tại Quận 7 cho Nam và Nữ là bao nhiêu?",
+    "o": [
+     "Nam 290k / 30 phút · Nữ 350k / 45 phút",
+     "Nam 235k / 30 phút · Nữ 280k / 45 phút",
+     "Nam 350k / 45 phút · Nữ 290k / 30 phút",
+     "Cả hai đều 290k / 30 phút"
+    ],
+    "a": 0,
+    "e": "Giá menu: Skin Care Nam 290k (30 phút), Nữ 350k (45 phút), Trẻ em 195k. Còn 235k/280k là giá Happy Hour, không phải giá menu."
+   },
+   {
+    "q": "Trẻ em được tính theo tiêu chí nào và khi nào thì miễn phí?",
+    "o": [
+     "Theo chiều cao: 0,8m–1,2m tính giá trẻ em · dưới 0,8m miễn phí",
+     "Theo tuổi: dưới 12 tuổi tính giá trẻ em · dưới 3 tuổi miễn phí",
+     "Theo chiều cao: dưới 1,2m đều miễn phí",
+     "Theo tuổi: dưới 6 tuổi miễn phí"
+    ],
+    "a": 0,
+    "e": "Trẻ em tính theo chiều cao 0,8m–1,2m; dưới 0,8m (Baby) miễn phí. Mọi trường hợp đều phải có người lớn đi kèm."
+   },
+   {
+    "q": "Giá trên menu của Golden Lotus đã bao gồm VAT chưa?",
+    "o": [
+     "Chưa — menu ghi rõ giá chưa bao gồm VAT",
+     "Rồi — đã gồm VAT",
+     "Chỉ giá Happy Hour mới chưa gồm VAT",
+     "Chỉ giá Skin Care mới chưa gồm VAT"
+    ],
+    "a": 0,
+    "e": "Cuối menu ghi rõ: \"Giá trên menu chưa bao gồm VAT / The above price does not include VAT\". Cần lưu ý khi báo giá cho khách."
+   },
+   {
+    "q": "Dịch vụ Honey Skin Care (Nữ) tại Quận 7 gồm những gì và giá bao nhiêu?",
+    "o": [
+     "450k / 50 phút — body scrub + wrap (chọn 1) + xông nhiệt 20 phút miễn phí",
+     "350k / 45 phút — chỉ có body scrub",
+     "450k / 50 phút — chỉ có wrap, không kèm xông nhiệt",
+     "290k / 30 phút — scrub + wrap"
+    ],
+    "a": 0,
+    "e": "Honey Skin Care (Lady Only): 450k, 50 phút, gồm body scrub (bắp / hạt sen / sữa muối), wrap chọn 1 trong 3 (cà phê / nghệ / dừa mật ong) và xông nhiệt 20 phút miễn phí."
    }
   ]
  },
