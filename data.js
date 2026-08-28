@@ -22,7 +22,7 @@ const TOPICS = [
        "150k",
        "09:00–12:00 & 16:00–21:00",
        "T2–T6",
-       "Chỉ khách nữ cao trên 1m2 · Like&share FB HOẶC Follow TikTok"
+       "Chỉ khách nữ cao trên 1m2 · Like&share FB HOẶC Follow TikTok · KHÔNG áp dụng ngày lễ"
       ],
       [
        "Ưu đãi tối",
@@ -36,7 +36,7 @@ const TOPICS = [
        "210k",
        "09:00–10:30 & 16:00–20:00",
        "T7–CN",
-       "Khách trên 1m2 · Follow TikTok HOẶC Like/Share Fanpage"
+       "Khách trên 1m2 · Follow TikTok HOẶC Like/Share Fanpage · KHÔNG áp dụng ngày lễ"
       ],
       [
        "Khách U60+ (+1 trứng nướng)",
@@ -57,7 +57,7 @@ const TOPICS = [
        "125k",
        "12:00–24:00",
        "T2–T6",
-       "Áp dụng 01/04 ~ 31/12/2026 · KHÔNG áp dụng ngày lễ"
+       "Áp dụng 01/04 ~ 31/12/2026 · **1 người vẫn được áp dụng** · KHÔNG áp dụng ngày lễ"
       ]
      ]
     }
@@ -68,7 +68,7 @@ const TOPICS = [
      "Follow TikTok Golden Lotus **HOẶC** Like + Share Facebook (chỉ cần một trong hai).",
      "Học sinh: mang theo thẻ học sinh **hoặc** mặc đồng phục trường + CCCD nếu dưới 18 tuổi.",
      "Sinh viên: bắt buộc có thẻ sinh viên cứng/thẻ online, có đầy đủ thông tin và ảnh.",
-     "Bắt buộc đi nhóm từ 2 HSSV trở lên."
+     "Đi nhóm từ **2 HSSV trở lên** chỉ bắt buộc với **ca sáng 09:00–11:00**. Ca chiều/tối **12:00–24:00: 1 người vẫn được áp dụng**."
     ]
    },
    {
@@ -179,15 +179,15 @@ const TOPICS = [
     "e": "Từ kỳ T7,T8/2026 là 'HOẶC' — chỉ cần một trong hai. Lưu ý kỳ T5,T6 trước đó ghi 'VÀ'."
    },
    {
-    "q": "Một sinh viên đi MỘT MÌNH, cao 1m6, có thẻ sinh viên online đầy đủ thông tin. Có được mua vé HSSV 125k không?",
+    "q": "Một sinh viên đi MỘT MÌNH, có thẻ sinh viên hợp lệ, đến lúc 19:00. Có được mua vé HSSV 125k không?",
     "o": [
-     "Không — ưu đãi HSSV bắt buộc nhóm từ 2 HSSV trở lên",
-     "Có — thẻ online là đủ",
-     "Có, nhưng phải trả thêm 20k",
-     "Chỉ được nếu đi ca tối"
+     "Được — ca chiều/tối 12:00–24:00 áp dụng cho cả khách đi một mình",
+     "Không — ưu đãi HSSV luôn bắt buộc nhóm từ 2 HSSV trở lên",
+     "Được, nhưng phải trả thêm 20k vì đi một mình",
+     "Chỉ được nếu mua kèm combo tại Golden Kitchen"
     ],
     "a": 0,
-    "e": "Ưu đãi HSSV ghi rõ: ÁP DỤNG NHÓM TỪ 2 HSSV TRỞ LÊN."
+    "e": "Điều kiện nhóm từ 2 HSSV trở lên CHỈ áp dụng cho ca sáng 09:00–11:00. Ca chiều/tối 12:00–24:00 thì 1 người vẫn được áp dụng."
    },
    {
     "q": "Học sinh 16 tuổi mặc đồng phục trường đến check-in, không mang thẻ học sinh. Cần thêm giấy tờ gì?",
@@ -254,6 +254,28 @@ const TOPICS = [
     ],
     "a": 0,
     "e": "Happy Hour Tối Q2: 170k, 20:00–24:00, T2–CN. (150k/19:00–24:00 là Quận 7; 139k/21:00–24:00 là ưu đãi tối Q2.)"
+   },
+   {
+    "q": "Ca HSSV nào bắt buộc phải đi nhóm từ 2 người trở lên?",
+    "o": [
+     "Ca sáng 09:00–11:00",
+     "Ca chiều/tối 12:00–24:00",
+     "Cả hai ca",
+     "Không ca nào bắt buộc"
+    ],
+    "a": 0,
+    "e": "Chỉ ca sáng 09:00–11:00 yêu cầu nhóm từ 2 HSSV trở lên; ca chiều/tối 12:00–24:00 áp dụng cho cả khách đi một mình."
+   },
+   {
+    "q": "Ưu đãi khách hàng nữ 150k và ưu đãi cuối tuần 210k có áp dụng vào ngày lễ không?",
+    "o": [
+     "Cả hai đều KHÔNG áp dụng ngày lễ",
+     "Cả hai đều áp dụng bình thường vào ngày lễ",
+     "Chỉ ưu đãi khách hàng nữ áp dụng ngày lễ",
+     "Chỉ ưu đãi cuối tuần áp dụng ngày lễ"
+    ],
+    "a": 0,
+    "e": "Cả ưu đãi khách hàng nữ 150k lẫn ưu đãi cuối tuần 210k đều KHÔNG áp dụng vào các ngày lễ."
    }
   ]
  },
@@ -345,16 +367,17 @@ const TOPICS = [
        "455k",
        "09:00–22:00",
        "T7–CN",
-       "—"
+       "29/8–01/11 · ÁP DỤNG lễ 29/8–02/09"
       ]
      ]
     }
    },
    {
-    "h": "Ghi nhớ nhanh: 2 ưu đãi ÁP DỤNG trong dịp lễ 29/8–02/09",
+    "h": "Ghi nhớ nhanh: 3 ưu đãi ÁP DỤNG trong dịp lễ 29/8–02/09",
     "bullets": [
-     "**Ưu đãi tối 139k** (21:00–24:00).",
-     "**Combo Nam & Nữ 235k** (sau 20:00).",
+     "**Ưu đãi tối 139k** (21:00–24:00, T2–CN).",
+     "**Combo Nam & Nữ 235k** (sau 20:00, T2–CN).",
+     "**Combo Nữ — Nghỉ dưỡng + Honey skin care 455k** (09:00–22:00, T7–CN).",
      "Tất cả những gói còn lại đều KHÔNG áp dụng trong 5 ngày lễ."
     ]
    }
@@ -405,15 +428,15 @@ const TOPICS = [
     "e": "29/08 ~ 02/09/2026, tổng 5 ngày (T7 ~ T4)."
    },
    {
-    "q": "Trong 5 ngày lễ 29/8 ~ 02/09, ưu đãi nào VẪN được áp dụng?",
+    "q": "Trong 5 ngày lễ 29/8 ~ 02/09, những ưu đãi nào VẪN được áp dụng?",
     "o": [
-     "Ưu đãi tối 139k và Combo Nam & Nữ 235k",
-     "Ưu đãi HSSV 125k",
-     "Ưu đãi khách hàng nữ 150k",
-     "Happy Hour Sáng 210k"
+     "Ưu đãi tối 139k, Combo Nam & Nữ 235k và Combo Nữ (ND + Honey skin care) 455k",
+     "Chỉ ưu đãi tối 139k và Combo Nam & Nữ 235k",
+     "Ưu đãi khách hàng nữ 150k và ưu đãi cuối tuần 210k",
+     "Toàn bộ ưu đãi đều áp dụng bình thường"
     ],
     "a": 0,
-    "e": "Chỉ ưu đãi tối 139k (29/08–01/11, áp dụng lễ tết) và combo Nam & Nữ 235k (áp dụng lễ 29/8–02/09) là còn hiệu lực."
+    "e": "Có 3 ưu đãi áp dụng trong dịp lễ: ưu đãi tối 139k (21:00–24:00), Combo Nam & Nữ 235k (sau 20:00) và Combo Nữ 455k (T7–CN, 09:00–22:00). Tất cả gói còn lại đều không áp dụng."
    },
    {
     "q": "Ưu đãi khách hàng nữ kỳ T9,T10 áp dụng trong thời gian nào?",
@@ -458,6 +481,17 @@ const TOPICS = [
     ],
     "a": 0,
     "e": "Ca HSSV chiều/tối 125k áp dụng 01/04 ~ 31/12/2026; chỉ ca sáng mới bị giới hạn theo kỳ."
+   },
+   {
+    "q": "Combo Nữ (Nghỉ dưỡng + Honey skin care) 455k áp dụng trong thời gian nào và có áp dụng lễ không?",
+    "o": [
+     "29/8 – 01/11, ÁP DỤNG lễ 29/8–02/09",
+     "03/09 – 30/10, KHÔNG áp dụng lễ",
+     "05/09 – 01/11, KHÔNG áp dụng lễ",
+     "Chỉ áp dụng trong 5 ngày lễ"
+    ],
+    "a": 0,
+    "e": "Combo Nữ 455k (T7–CN, 09:00–22:00) chạy từ 29/8 đến 01/11 và CÓ áp dụng trong dịp lễ 29/8–02/09."
    }
   ]
  },
@@ -511,18 +545,18 @@ const TOPICS = [
     ]
    },
    {
-    "h": "⚠️ Giá combo — cần xác nhận trước khi thi",
+    "h": "⚠️ Giá combo HSSV — cần xác nhận trước khi thi",
     "bullets": [
      "Sheet CTKM T7,T8: Combo 1,2 = 190k · Combo 3,4 = 290k",
      "Sheet CTKM T9,T10: Combo 1,2 = 130k · Combo 3,4 = 230k",
      "Sheet KITCHEN-NAIL-HAIR (hoạt động đang diễn ra): Combo 1,2 = 115k · Combo 3,4 = 190k",
-     "Ba nguồn đang lệch nhau — đề thi KHÔNG hỏi giá combo cho đến khi được chốt."
+     "Ba nguồn đang lệch nhau — đề thi KHÔNG hỏi giá combo cho đến khi được chốt. (Mức bill vòng quay đã chốt = 200k.)"
     ]
    },
    {
     "h": "Game vòng quay may mắn",
     "bullets": [
-     "Điều kiện bill: từ **300k** (theo sheet CTKM T7–T10) — sheet hoạt động đang diễn ra ghi 200k, cần xác nhận.",
+     "Điều kiện bill: từ **200k** — Ms Thanh xác nhận **giữ nguyên điều kiện 200k**, chỉ thay đổi vòng xoay.",
      "Voucher tối đa dùng cho một lần: **200k / 1 bill**.",
      "**Không giới hạn** số bill sử dụng voucher trong ngày.",
      "Voucher **có hiệu lực sau 1 ngày** phát hành.",
@@ -740,6 +774,17 @@ const TOPICS = [
     ],
     "a": 0,
     "e": "Giảm giá chỉ áp dụng cho 1 phần nước hoặc kem tuyết, không áp dụng cho tổng bill."
+   },
+   {
+    "q": "Bill tối thiểu để khách được tham gia Game vòng quay may mắn là bao nhiêu?",
+    "o": [
+     "200k",
+     "300k",
+     "100k",
+     "500k"
+    ],
+    "a": 0,
+    "e": "Điều kiện bill là từ 200k — đã được Ms Thanh xác nhận giữ nguyên, chỉ thay đổi vòng xoay."
    }
   ]
  },
@@ -751,7 +796,7 @@ const TOPICS = [
   "summary": "Dịch vụ tóc, sơn gel, chương trình review Google Maps của Golden Nail và thẻ tích lũy Beauty Passport.",
   "review": [
    {
-    "h": "Hair — Quận 2",
+    "h": "Hair — Quận 2 (đến 31/12/2026 · ÁP DỤNG lễ)",
     "table": {
      "head": [
       "Dịch vụ",
@@ -793,7 +838,7 @@ const TOPICS = [
     }
    },
    {
-    "h": "Nail / Sơn gel — Quận 2",
+    "h": "Nail / Sơn gel — Quận 2 (đến 31/12/2026 · KHÔNG áp dụng lễ)",
     "table": {
      "head": [
       "Dịch vụ",
@@ -1029,6 +1074,17 @@ const TOPICS = [
     ],
     "a": 0,
     "e": "Điểm tích lũy không áp dụng cho dịch vụ khác ngoài Nail & Hair, và không quy đổi tiền mặt."
+   },
+   {
+    "q": "Về ngày lễ, chương trình Hair và chương trình Nail/Sơn gel tại Quận 2 khác nhau thế nào?",
+    "o": [
+     "Hair ÁP DỤNG lễ · Nail/Sơn gel KHÔNG áp dụng lễ (cả hai đến 31/12/2026)",
+     "Cả hai đều ÁP DỤNG lễ, đến 31/12/2026",
+     "Cả hai đều KHÔNG áp dụng lễ, đến 31/12/2026",
+     "Hair KHÔNG áp dụng lễ · Nail/Sơn gel thì áp dụng"
+    ],
+    "a": 0,
+    "e": "Hai chương trình cùng chạy đến 31/12/2026: Hair ÁP DỤNG các ngày lễ, còn Nail / Sơn gel thì KHÔNG áp dụng lễ."
    }
   ]
  },
@@ -1055,27 +1111,27 @@ const TOPICS = [
        "420k",
        "09:00–23:00",
        "T2–T6",
-       "Booking trước ít nhất 1 giờ"
+       "Booking trước ít nhất 1 giờ · Đến 30/10 · KHÔNG áp dụng lễ"
       ],
       [
        "Combo Facial care 60' + Nghỉ dưỡng",
        "420k",
        "16:00–23:00",
        "T7–CN",
-       "Booking trước ít nhất 1 giờ"
+       "Booking trước ít nhất 1 giờ · Đến 01/11 · ÁP DỤNG lễ"
       ],
       [
        "Foot care 60' / Body care 60'",
        "Giảm 20%",
        "10:00–23:00 (last order 22h)",
        "T2–T6",
-       "—"
+       "Không yêu cầu booking · Đến 30/10 · KHÔNG áp dụng lễ"
       ]
      ]
     }
    },
    {
-    "h": "Gội đầu – Ráy tai (từ 02/07/2026)",
+    "h": "Gội đầu – Ráy tai (02/07 ~ 30/09/2026 · KHÔNG áp dụng lễ)",
     "table": {
      "head": [
       "Dịch vụ",
@@ -1116,10 +1172,9 @@ const TOPICS = [
    {
     "h": "Ghi nhớ điều kiện booking",
     "bullets": [
-     "Booking trước **ít nhất 1 giờ**: Combo Facial care 60' + Nghỉ dưỡng.",
-     "Booking trước **1 tiếng**: nhóm Gội đầu – Ráy tai.",
+     "Booking trước **1 tiếng** (= ít nhất 1 giờ): Combo Facial care 60' + Nghỉ dưỡng · nhóm Gội đầu – Ráy tai · **Sơn gel**.",
      "Booking trước **1 ngày**: Keratin / Collagen Treatment 3 step (Hair).",
-     "**Không cần booking**: Color, Style, Treatment (Hair) và sơn gel (theo bảng KM T5,T6)."
+     "**Không cần booking**: Color, Style, Treatment (Hair) và **cắt tóc + gội đầu 10 phút**."
     ]
    }
   ],
@@ -1211,6 +1266,28 @@ const TOPICS = [
     ],
     "a": 0,
     "e": "Dịch vụ mở 10:00–23:00 nhưng chỉ nhận order đến 22:00."
+   },
+   {
+    "q": "Hai khung Combo Facial care 60' + Nghỉ dưỡng (420k) tại Q2 khác nhau ở điểm nào ngoài giờ áp dụng?",
+    "o": [
+     "Khung T2–T6 đến 30/10 KHÔNG áp dụng lễ · khung T7–CN đến 01/11 ÁP DỤNG lễ",
+     "Khung T2–T6 áp dụng lễ · khung T7–CN thì không",
+     "Cả hai đều đến 30/10 và không áp dụng lễ",
+     "Cả hai đều đến 01/11 và áp dụng lễ"
+    ],
+    "a": 0,
+    "e": "Combo 420k khung 09:00–23:00 (T2–T6) chạy đến 30/10 và KHÔNG áp dụng lễ; khung 16:00–23:00 (T7–CN) chạy đến 01/11 và ÁP DỤNG lễ."
+   },
+   {
+    "q": "Dịch vụ nào sau đây KHÔNG cần booking trước?",
+    "o": [
+     "Cắt tóc + gội đầu 10 phút (Hair)",
+     "Sơn gel",
+     "Nhóm Gội đầu – Ráy tai",
+     "Combo Facial care 60' + Nghỉ dưỡng"
+    ],
+    "a": 0,
+    "e": "Không cần booking: Color/Style/Treatment (Hair) và cắt tóc + gội đầu 10 phút. Sơn gel, nhóm Gội đầu – Ráy tai và Combo Facial care đều cần booking trước 1 tiếng."
    }
   ]
  },
@@ -1250,7 +1327,7 @@ const TOPICS = [
     }
    },
    {
-    "h": "Body / Foot / Facial care Quận 1",
+    "h": "Body / Foot / Facial care Quận 1 (áp dụng đến 30/10 · KHÔNG áp dụng lễ)",
     "table": {
      "head": [
       "Dịch vụ",
@@ -1279,7 +1356,7 @@ const TOPICS = [
        "242k",
        "242k",
        "09:30–16:00, T2–T6",
-       "Booking trước 1h"
+       "Chỉ khách người Việt · Booking trước 1h"
       ]
      ]
     }
@@ -1287,7 +1364,7 @@ const TOPICS = [
    {
     "h": "Nail Quận 1",
     "bullets": [
-     "Sơn gel tay hoặc chân (cắt da + sơn) và Design (tay/chân): **giảm 20%**, 10:00–16:00, T2–T6.",
+     "Sơn gel tay hoặc chân (cắt da + sơn) và Design (tay/chân): **giảm 20%**, 10:00–16:00, T2–T6 — đến **31/12/2026**, **KHÔNG áp dụng lễ, tết**.",
      "Review Google Maps: **miễn phí tháo gel** hoặc tặng dịch vụ **'thêm 1 màu sơn' (1 ngón)**.",
      "Chương trình review áp dụng T2–CN, đến 31.12.2026, **ÁP DỤNG các ngày lễ, tết**."
     ]
@@ -1339,15 +1416,15 @@ const TOPICS = [
     "e": "Facial care 60' Q1: T7,T8 = 230k → T9,T10 = 263k."
    },
    {
-    "q": "Dịch vụ nào tại Quận 1 chỉ dành cho khách người Việt?",
+    "q": "Những dịch vụ nào tại Quận 1 chỉ dành cho khách người Việt?",
     "o": [
-     "Body care 60' (no oil)",
-     "Facial care 60'",
-     "Foot care 60'",
-     "Bathhouse Nam"
+     "Body care 60' (no oil) và Foot care 60'",
+     "Chỉ Body care 60' (no oil)",
+     "Chỉ Facial care 60'",
+     "Tất cả dịch vụ care đều không giới hạn quốc tịch"
     ],
     "a": 0,
-    "e": "Body care 60' (no oil) ghi rõ: dành cho tất cả khách người Việt, booking trước 1h."
+    "e": "Cả Body care 60' (no oil) và Foot care 60' đều ghi rõ: chỉ khách người Việt, booking trước 1h. Facial care 60' áp dụng cho tất cả khách hàng."
    },
    {
     "q": "Giá Foot care 60' và Body care 60' (no oil) tại Quận 1 lần lượt là?",
@@ -1392,6 +1469,17 @@ const TOPICS = [
     ],
     "a": 0,
     "e": "Chương trình review Q1 áp dụng T2–CN, đến 31.12.2026, ÁP DỤNG các ngày lễ, tết."
+   },
+   {
+    "q": "Tại Nail Quận 1, ưu đãi sơn gel 20% và chương trình review Google Maps khác nhau thế nào về ngày lễ?",
+    "o": [
+     "Sơn gel 20% KHÔNG áp dụng lễ tết · chương trình review thì ÁP DỤNG lễ tết",
+     "Cả hai đều KHÔNG áp dụng lễ tết",
+     "Cả hai đều ÁP DỤNG lễ tết",
+     "Sơn gel 20% ÁP DỤNG lễ tết · chương trình review thì không"
+    ],
+    "a": 0,
+    "e": "Hai chương trình cùng chạy đến 31/12/2026 nhưng khác nhau: sơn gel/Design giảm 20% KHÔNG áp dụng lễ, tết; còn chương trình review Google Maps thì ÁP DỤNG lễ, tết."
    }
   ]
  },
@@ -1427,7 +1515,7 @@ const TOPICS = [
        "90k",
        "08:00–11:00 & 12:00–24:00",
        "T2–T6",
-       "Trên 1.2m · Mặc đồng phục trường hoặc xuất trình thẻ SV · Like & share FB hoặc review Google"
+       "Trên 1.2m · Mặc đồng phục trường hoặc xuất trình thẻ SV · Like & share FB hoặc review Google · Áp dụng đến 30/10 · KHÔNG áp dụng lễ"
       ],
       [
        "Miễn phí cho BẠN GÁI đi cùng bạn trai",
@@ -1448,7 +1536,7 @@ const TOPICS = [
        "130k",
        "21:00–24:00",
        "T2–CN",
-       "Tất cả khách trên 1.2m"
+       "Tất cả khách trên 1.2m · Áp dụng đến 31/12 · ÁP DỤNG lễ"
       ]
      ]
     }
@@ -1477,7 +1565,7 @@ const TOPICS = [
        "230k",
        "263k",
        "10:00–22:00, T2–T6",
-       "Tất cả khách · Booking trước ít nhất 1 tiếng"
+       "Tất cả khách · Booking trước ít nhất 1 tiếng · Áp dụng đến 30/10 · KHÔNG áp dụng lễ"
       ],
       [
        "Foot Care 60' (giảm 20%)",
@@ -1618,6 +1706,28 @@ const TOPICS = [
     ],
     "a": 0,
     "e": "Cùng giá 210k nhưng khung giờ khác nhau: Q7 sớm hơn (08:00–11:00 & 16:00–19:00)."
+   },
+   {
+    "q": "Ưu đãi tối 130k tại Quận 7 áp dụng đến khi nào và có áp dụng ngày lễ không?",
+    "o": [
+     "Đến 31/12, ÁP DỤNG lễ",
+     "Đến 30/10, KHÔNG áp dụng lễ",
+     "Đến 31/12, KHÔNG áp dụng lễ",
+     "Đến 01/11, ÁP DỤNG lễ"
+    ],
+    "a": 0,
+    "e": "Ưu đãi tối 130k (21:00–24:00, T2–CN) tại Q7 chạy đến 31/12 và ÁP DỤNG cả ngày lễ — khác với hai ưu đãi \"miễn phí\" của Q7 vốn không áp dụng lễ, tết."
+   },
+   {
+    "q": "Vé HSSV 90k và Facial Care 60' tại Quận 7 áp dụng đến ngày nào?",
+    "o": [
+     "Đến 30/10, KHÔNG áp dụng lễ",
+     "Đến 31/12, ÁP DỤNG lễ",
+     "Đến 01/11, KHÔNG áp dụng lễ",
+     "Đến 30/9, ÁP DỤNG lễ"
+    ],
+    "a": 0,
+    "e": "Cả vé HSSV 90k lẫn Facial Care 60' tại Q7 đều chạy đến 30/10 và KHÔNG áp dụng ngày lễ."
    }
   ]
  },
