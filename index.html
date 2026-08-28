@@ -148,9 +148,6 @@ tbody tr:nth-child(even){background:#fafbfe}
 .warn{background:var(--orange-soft);border:1px solid #f3d49a;border-left:4px solid var(--orange);
   border-radius:10px;padding:12px 14px;margin:14px 0;font-size:13.8px}
 .warn b{color:#8a5a00}
-.tip{background:#eef6ff;border:1px solid #cfe1f8;border-left:4px solid #2A4FA8;border-radius:10px;
-  padding:12px 14px;margin:14px 0;font-size:13.5px;color:#1c3766}
-.tip b{color:#1b3f8f}
 
 /* ---------- kiểm tra ---------- */
 .setup{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
@@ -346,9 +343,6 @@ footer .wrap{display:flex;flex-direction:column;gap:4px}
     <div class="warn" id="homeWarn">
       <b>⚠️ Còn 1 con số cần chốt:</b> giá Combo HSSV Golden Kitchen đang lệch giữa 3 sheet nguồn (190/290 · 130/230 · 115/190) nên chưa đưa vào đề.<br>
       <b>✔ Đã chốt:</b> mức bill tối thiểu Game vòng quay may mắn = <b>200k</b>.
-    </div>
-    <div class="tip" id="pwaTip" hidden>
-      <b>📲 Dùng như app trên điện thoại:</b> <span id="pwaHow"></span>
     </div>
   </section>
 
@@ -750,15 +744,6 @@ function finish(){
 if('serviceWorker' in navigator){
   window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 }
-(function(){
-  const standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-  if(standalone || !isMobile()) return;
-  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
-  $('#pwaHow').textContent = ios
-    ? 'Bấm nút Chia sẻ ⬆️ ở thanh dưới Safari → "Thêm vào MH chính".'
-    : 'Bấm menu ⋮ của trình duyệt → "Thêm vào màn hình chính" / "Cài ứng dụng".';
-  $('#pwaTip').hidden = false;
-})();
 </script>
 </body>
 </html>
