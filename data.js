@@ -2110,7 +2110,7 @@ const TOPICS = [
       ],
       [
        "Lầu 3",
-       "Carnival Game · Music Box (Karaoke) · Dance · Yoga · Lớp học miễn phí · Gym · Workshop (đồ handmade) · Mini Game tương tác (motion game) · Phòng thuốc bắc · Chiếu phim / TV giải trí · Cafe cá (Fish Cafe) · Khu check-in / chụp hình · Sự kiện theo chủ đề (Party)"
+       "Carnival Game · Music Box (Karaoke) · Dance · Yoga · Lớp học miễn phí · Gym · Mini Game tương tác (motion game) · Phòng thuốc bắc · Chiếu phim / TV giải trí · Cafe cá (Fish Cafe) · Khu check-in / chụp hình · Sự kiện theo chủ đề (Party)"
       ]
      ]
     }
@@ -2314,7 +2314,7 @@ const TOPICS = [
      "Gym ở Lầu 2, phòng thuốc bắc ở Lầu 3"
     ],
     "a": 0,
-    "e": "Cả Gym lẫn phòng thuốc bắc đều ở Lầu 3, cùng khu với Carnival Game, Music Box, Dance/Yoga, Workshop, Mini Game (motion game), Cafe cá và khu check-in."
+    "e": "Cả Gym lẫn phòng thuốc bắc đều ở Lầu 3, cùng khu với Carnival Game, Music Box, Dance/Yoga, Mini Game (motion game), Cafe cá và khu check-in."
    }
   ]
  },
