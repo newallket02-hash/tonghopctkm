@@ -163,7 +163,7 @@ const TOPICS = [
    {
     "h": "Ghi nhớ Happy Hour Quận 2",
     "bullets": [
-     "Ca sáng của cả 3 nhóm đều **KHÔNG áp dụng ngày lễ** (menu ghi rõ \"Not included holiday\").",
+     "Ca sáng của cả 3 nhóm **KHÔNG áp dụng ngày lễ**; ca tối thì **CÓ áp dụng ngày lễ** (ghi chú \"Not included holiday\" trên menu chỉ nằm ở cột ca sáng).",
      "Ca tối **Nghỉ dưỡng bắt đầu 20:00**, còn **Skin Care bắt đầu 18:00** — hai mốc khác nhau, dễ nhầm.",
      "Bathhouse **chỉ có Happy Hour buổi sáng**, không có ca tối.",
      "Trẻ em tính theo chiều cao **0,8m – 1,2m**; dưới 0,8m **miễn phí**, phải có người lớn đi kèm.",
@@ -359,6 +359,17 @@ const TOPICS = [
     ],
     "a": 0,
     "e": "Happy Hour Bathhouse Q2 (T2–T6, 09:00–11:00): người lớn 190k, trẻ em 95k. Giá Bathhouse thường là 240k / 120k."
+   },
+   {
+    "q": "Happy Hour ca sáng và ca tối khác nhau thế nào về ngày lễ?",
+    "o": [
+     "Ca sáng KHÔNG áp dụng ngày lễ · ca tối CÓ áp dụng",
+     "Cả hai ca đều không áp dụng ngày lễ",
+     "Cả hai ca đều áp dụng ngày lễ",
+     "Ca sáng có áp dụng · ca tối thì không"
+    ],
+    "a": 0,
+    "e": "Menu ghi \"Not included holiday\" ngay dưới cột ca sáng — nên ca sáng của cả 3 nhóm (Nghỉ dưỡng, Bathhouse, Skin Care) không áp dụng ngày lễ, còn ca tối vẫn áp dụng bình thường. Bathhouse chỉ có ca sáng nên không áp dụng lễ."
    }
   ]
  },
@@ -1761,7 +1772,7 @@ const TOPICS = [
    {
     "h": "Ghi nhớ Happy Hour Quận 7",
     "bullets": [
-     "Ca sáng cả 3 nhóm **KHÔNG áp dụng ngày lễ**.",
+     "Ca sáng của cả 3 nhóm **KHÔNG áp dụng ngày lễ**; ca tối thì **CÓ áp dụng ngày lễ** (ghi chú \"Not included holiday\" trên menu chỉ nằm ở cột ca sáng).",
      "Quận 7 mở Happy Hour **sớm hơn Quận 2**: Bathhouse & Skin Care từ **07:00**, Nghỉ dưỡng từ **08:00** (Q2 đều từ 09:00).",
      "Ca tối: **Nghỉ dưỡng 19:00–24:00** · **Skin Care 18:00–24:00**.",
      "Honey Skin Care (Nữ) gồm: scrub (bắp / hạt sen / sữa muối) + wrap (chọn 1: cà phê / nghệ / dừa mật ong) + xông nhiệt 20 phút miễn phí.",
