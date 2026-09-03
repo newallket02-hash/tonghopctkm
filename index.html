@@ -171,6 +171,10 @@ h2{font-size:19px;margin:0 0 4px;line-height:1.3}
 .ofr .r1{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
 .ofr .nm{font-weight:700;font-size:15px;line-height:1.35}
 .ofr .pr{font-weight:800;font-size:15.5px;color:var(--bc,var(--navy));white-space:nowrap}
+.ofr .bs{margin-top:3px;font-size:12.6px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ofr .bs s{color:#8b93a8}
+.ofr .sv{background:var(--ok-bg);color:var(--ok);border-radius:999px;padding:1px 8px;font-size:11.3px;font-weight:700}
+.ofr.no .sv{background:var(--surface);color:var(--muted)}
 .ofr .mt{color:var(--muted);font-size:13.2px;margin-top:4px;line-height:1.5}
 .ofr .cd{color:var(--muted);font-size:12.8px;margin-top:4px;line-height:1.5}
 .ofr .why{display:inline-block;margin-top:7px;border-radius:999px;padding:2px 10px;
@@ -709,12 +713,26 @@ function evalOffer(o, ds, dow, hol){
   if(o.annual) return {st:'y', why:'✓ Áp dụng xuyên suốt — không giới hạn thời gian'};
   return {st:'y', why: o.to ? '✓ Còn hiệu lực đến '+vn(o.to) : '✓ Đang áp dụng'};
 }
+/* giá thường để so sánh — chỉ hiện khi nguồn có ghi giá niêm yết */
+const nums = t => (String(t).match(/\d+(?:[.,]\d+)?k/gi) || []).map(x=>parseFloat(x.replace(/k/i,'').replace(',','.')));
+function baseHTML(o){
+  if(!o.base) return '';
+  const P = nums(o.price), B = nums(o.base);
+  let save = '';
+  if(P.length && B.length && B[0] > P[0]){
+    const pct = Math.round((1 - P[0]/B[0])*100);
+    const multi = P.length > 1 || B.length > 1;
+    save = `<span class="sv">${multi?'NL ':''}tiết kiệm ${pct}%</span>`;
+  }
+  return `<div class="bs">Giá thường <s>${esc(o.base)}</s>${save}</div>`;
+}
 let dFilter = null;
 function offerCard(o, r){
   const b = el('button','ofr '+bcls(o.br)+(r.st==='n'?' no':''));
   b.type='button';
   const meta = [dayLabel(o.days), o.time].filter(x=>x && x!=='—').join(' · ');
   b.innerHTML = `<div class="r1"><span class="nm">${esc(o.name)}</span><span class="pr">${esc(o.price)}</span></div>
+    ${baseHTML(o)}
     <div class="mt"><span class="badge tp ${bcls(o.br)}">${esc(o.br)}</span> ${esc(meta)}${o.period?' · '+esc(o.period):''}</div>
     ${o.cond&&o.cond!=='—'?`<div class="cd">${esc(o.cond)}</div>`:''}
     <span class="why ${r.st}">${esc(r.why)}</span>`;
