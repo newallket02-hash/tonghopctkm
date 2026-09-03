@@ -63,6 +63,67 @@ const TOPICS = [
     }
    },
    {
+    "h": "Bảng giá menu Quận 2 (giá thường · chưa gồm VAT)",
+    "table": {
+     "head": [
+      "Dịch vụ",
+      "Giá thường"
+     ],
+     "rows": [
+      [
+       "Nghỉ dưỡng Healing World — Người lớn",
+       "**270k**"
+      ],
+      [
+       "Nghỉ dưỡng — Trẻ em (0,8–1,2m)",
+       "170k"
+      ],
+      [
+       "Baby (dưới 0,8m)",
+       "Miễn phí"
+      ],
+      [
+       "Bathhouse — Người lớn",
+       "**240k**"
+      ],
+      [
+       "Bathhouse — Trẻ em",
+       "120k"
+      ],
+      [
+       "Skin Care (Nữ) — Peeling 45'",
+       "**350k**"
+      ],
+      [
+       "Skin Care (Nam) — Peeling 30'",
+       "290k"
+      ],
+      [
+       "Skin Care — Trẻ em (dưới 1,2m)",
+       "195k"
+      ],
+      [
+       "Honey Skin Care (Nữ) 50'",
+       "450k"
+      ],
+      [
+       "Phụ thu đồng phục / khăn",
+       "20k / 5k"
+      ],
+      [
+       "Phụ thu phòng VIP (/người)",
+       "100k"
+      ]
+     ]
+    },
+    "note2": [
+     {
+      "k": "DÙNG ĐỂ SO SÁNH",
+      "t": "Đây là giá niêm yết trên menu. Mọi ưu đãi nghỉ dưỡng / bathhouse / skin care ở tab Hôm nay đều đối chiếu với bảng này. Nhóm Body / Foot / Facial care KHÔNG có giá cố định để so sánh vì giá thay đổi theo gói khách chọn."
+     }
+    ]
+   },
+   {
     "h": "Giấy tờ & mạng xã hội của HSSV",
     "bullets": [
      "Follow TikTok Golden Lotus **HOẶC** Like + Share Facebook (chỉ cần một trong hai).",
@@ -167,7 +228,6 @@ const TOPICS = [
      "Ca tối **Nghỉ dưỡng bắt đầu 20:00**, còn **Skin Care bắt đầu 18:00** — hai mốc khác nhau, dễ nhầm.",
      "Bathhouse **chỉ có Happy Hour buổi sáng**, không có ca tối.",
      "Trẻ em tính theo chiều cao **0,8m – 1,2m**; dưới 0,8m **miễn phí**, phải có người lớn đi kèm.",
-     "Giá Bathhouse thường: **240k** người lớn · **120k** trẻ em.",
      "**Giá trên menu CHƯA bao gồm VAT.**"
     ]
    }
