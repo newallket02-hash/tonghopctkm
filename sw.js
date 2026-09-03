@@ -1,7 +1,7 @@
 /* Service worker — network-first cho nội dung, cache chỉ dùng khi offline.
    Nhờ vậy mỗi lần deploy bản mới là nhân viên thấy ngay, không cần xoá cache. */
 const CACHE = 'glh-ontap-v4';
-const SHELL = ['./', './index.html', './data.js', './offers.js', './manifest.webmanifest',
+const SHELL = ['./', './index.html', './data.js', './offers.js', './branches.js', './manifest.webmanifest',
                './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
