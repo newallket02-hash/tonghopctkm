@@ -85,7 +85,7 @@ header p{margin:0;color:var(--muted);max-width:62ch;font-size:13.5px;display:non
 .searchbox input{width:100%;font:inherit;font-size:16px;padding:11px 38px 11px 34px;
   border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink)}
 .searchbox input:focus{outline:none;background:#fff;border-color:var(--navy);box-shadow:0 0 0 3px rgba(30,45,90,.09)}
-.dsearch{width:100%;margin:0 0 12px}
+.dsearch{width:100%;margin:2px 0 14px}
 .dsearch input{font-size:16px}
 .searchbox input::-webkit-search-cancel-button,.searchbox input::-webkit-search-decoration{-webkit-appearance:none;display:none}
 .sclear{position:absolute;right:8px;border:none;background:var(--navy-soft);color:var(--navy);
@@ -436,12 +436,6 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
 
   <!-- HÔM NAY / TRA CỨU THEO NGÀY -->
   <section class="panel" id="v-today">
-    <div class="searchbox dsearch">
-      <span class="si">🔍</span>
-      <input type="search" id="dQ" placeholder="Tìm trong ngày đang chọn: HSSV, tối, combo…"
-             autocomplete="off" autocapitalize="none" spellcheck="false">
-      <button class="sclear" type="button" id="dQClear" hidden aria-label="Xoá">✕</button>
-    </div>
     <div class="datebar">
       <span class="dpwrap">
         <input type="date" id="dPick" aria-label="Chọn ngày">
@@ -457,6 +451,12 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
         <small>Bật nếu công ty tính ngày này là lễ (20/10, Noel…) — trang chỉ tự nhận dịp 2/9.</small></span>
     </label>
     <div class="legend" id="dLegend"></div>
+    <div class="searchbox dsearch">
+      <span class="si">🔍</span>
+      <input type="search" id="dQ" placeholder="Tìm trong ngày đang chọn: HSSV, tối, combo…"
+             autocomplete="off" autocapitalize="none" spellcheck="false">
+      <button class="sclear" type="button" id="dQClear" hidden aria-label="Xoá">✕</button>
+    </div>
     <div id="dList"></div>
   </section>
 
