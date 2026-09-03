@@ -29,7 +29,7 @@ const BRANCHES = [
         ['Skin Care Trẻ em (dưới 1,2m)','—','195k'],
         ['Honey Skin Care (Nữ)','50 phút','**450k**']]},
       note:'Honey Skin Care = Body Scrub (bắp / hạt sen / sữa muối) + Wrap (chọn 1: cà phê / nghệ / dừa mật ong) + xông nhiệt 20 phút miễn phí.',
-      warn:'Khách BẮT BUỘC mua vé Bathhouse trước khi sử dụng dịch vụ chà da — phải ngâm mình cho da mềm ra thì mới chà được. KHÔNG bán chà da riêng lẻ.' },
+      warn:'Chà da bắt buộc phải ngâm cho da mềm ra trước. Khách ĐÃ có vé Nghỉ dưỡng thì ngâm luôn ở khu tắm trong vé — KHÔNG cần mua thêm vé Bathhouse. Khách CHỈ dùng chà da, không mua vé nghỉ dưỡng thì BẮT BUỘC mua vé Bathhouse riêng.' },
 
     { h:'💆 Body & Foot care',
       table:{head:['Dịch vụ','Thời lượng','Giá thường'],rows:[
@@ -130,7 +130,7 @@ const BRANCHES = [
         ['Skin Care Trẻ em','—','195k'],
         ['Honey Skin Care (Nữ)','50 phút','**450k**']]},
       note:'Honey Skin Care = scrub (bắp / hạt sen / sữa muối) + wrap (cà phê / nghệ / dừa mật ong) + xông nhiệt 20 phút miễn phí.',
-      warn:'Khách BẮT BUỘC mua vé Bathhouse trước khi sử dụng dịch vụ chà da — phải ngâm mình cho da mềm ra thì mới chà được. KHÔNG bán chà da riêng lẻ.' },
+      warn:'Chà da bắt buộc phải ngâm cho da mềm ra trước. Khách ĐÃ có vé Nghỉ dưỡng thì ngâm luôn ở khu tắm trong vé — KHÔNG cần mua thêm vé Bathhouse. Khách CHỈ dùng chà da, không mua vé nghỉ dưỡng thì BẮT BUỘC mua vé Bathhouse riêng.' },
 
     { h:'💆 Body · Foot · Facial care',
       table:{head:['Dịch vụ','Kỳ T7,T8','Kỳ T9,T10','Giờ'],rows:[
@@ -166,7 +166,7 @@ const BRANCHES = [
     { h:'🏊 Bathhouse & ✨ Skin Care',
       bullets:['**Happy Hour Bathhouse Nam — 176k**, 09:00–12:00, T2–T6, khách trên 1,2m, KHÔNG áp dụng lễ tết.',
         '**Happy Hour Skin Care Nam — 232k**, 09:00–12:00, T2–T6, khách trên 1,2m, KHÔNG áp dụng lễ tết.'],
-      note:'Khách BẮT BUỘC mua vé Bathhouse trước khi sử dụng dịch vụ chà da — phải ngâm mình cho da mềm ra thì mới chà được. KHÔNG bán chà da riêng lẻ.',
+      note:'Chà da bắt buộc phải ngâm cho da mềm ra trước. Khách ĐÃ có vé Nghỉ dưỡng thì ngâm luôn ở khu tắm trong vé — KHÔNG cần mua thêm vé Bathhouse. Khách CHỈ dùng chà da, không mua vé nghỉ dưỡng thì BẮT BUỘC mua vé Bathhouse riêng.',
       warn:'Giá NIÊM YẾT (giá thường) của Bathhouse và Skin Care Quận 1 chưa có trong tài liệu — cần bảng giá menu Quận 1 để bổ sung.' },
 
     { h:'💆 Body & Foot care',

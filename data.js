@@ -123,7 +123,7 @@ const TOPICS = [
      },
      {
       "k": "BẮT BUỘC",
-      "t": "Khách BẮT BUỘC mua vé Bathhouse trước khi sử dụng dịch vụ chà da (Skin Care / Peeling) — phải ngâm mình cho da mềm ra thì mới chà được. Không bán chà da riêng lẻ."
+      "t": "Chà da (Skin Care / Peeling) bắt buộc phải ngâm cho da mềm ra trước. Khách ĐÃ có vé Nghỉ dưỡng: ngâm luôn ở khu tắm trong vé — KHÔNG cần mua thêm vé Bathhouse. Khách CHỈ dùng chà da, không mua vé nghỉ dưỡng: BẮT BUỘC mua vé Bathhouse riêng."
      }
     ]
    },
@@ -237,7 +237,7 @@ const TOPICS = [
     "note2": [
      {
       "k": "BẮT BUỘC",
-      "t": "Khách BẮT BUỘC mua vé Bathhouse trước khi sử dụng dịch vụ chà da (Skin Care / Peeling) — phải ngâm mình cho da mềm ra thì mới chà được. Không bán chà da riêng lẻ."
+      "t": "Chà da (Skin Care / Peeling) bắt buộc phải ngâm cho da mềm ra trước. Khách ĐÃ có vé Nghỉ dưỡng: ngâm luôn ở khu tắm trong vé — KHÔNG cần mua thêm vé Bathhouse. Khách CHỈ dùng chà da, không mua vé nghỉ dưỡng: BẮT BUỘC mua vé Bathhouse riêng."
      }
     ]
    }
@@ -1548,7 +1548,7 @@ const TOPICS = [
     "note2": [
      {
       "k": "BẮT BUỘC",
-      "t": "Khách BẮT BUỘC mua vé Bathhouse trước khi sử dụng dịch vụ chà da (Skin Care / Peeling) — phải ngâm mình cho da mềm ra thì mới chà được. Không bán chà da riêng lẻ."
+      "t": "Chà da (Skin Care / Peeling) bắt buộc phải ngâm cho da mềm ra trước. Khách ĐÃ có vé Nghỉ dưỡng: ngâm luôn ở khu tắm trong vé — KHÔNG cần mua thêm vé Bathhouse. Khách CHỈ dùng chà da, không mua vé nghỉ dưỡng: BẮT BUỘC mua vé Bathhouse riêng."
      }
     ]
    },
@@ -1883,7 +1883,7 @@ const TOPICS = [
     "note2": [
      {
       "k": "BẮT BUỘC",
-      "t": "Khách BẮT BUỘC mua vé Bathhouse trước khi sử dụng dịch vụ chà da (Skin Care / Peeling) — phải ngâm mình cho da mềm ra thì mới chà được. Không bán chà da riêng lẻ."
+      "t": "Chà da (Skin Care / Peeling) bắt buộc phải ngâm cho da mềm ra trước. Khách ĐÃ có vé Nghỉ dưỡng: ngâm luôn ở khu tắm trong vé — KHÔNG cần mua thêm vé Bathhouse. Khách CHỈ dùng chà da, không mua vé nghỉ dưỡng: BẮT BUỘC mua vé Bathhouse riêng."
      }
     ]
    },
@@ -1899,7 +1899,7 @@ const TOPICS = [
     "note2": [
      {
       "k": "BẮT BUỘC",
-      "t": "Khách BẮT BUỘC mua vé Bathhouse trước khi sử dụng dịch vụ chà da (Skin Care / Peeling) — phải ngâm mình cho da mềm ra thì mới chà được. Không bán chà da riêng lẻ."
+      "t": "Chà da (Skin Care / Peeling) bắt buộc phải ngâm cho da mềm ra trước. Khách ĐÃ có vé Nghỉ dưỡng: ngâm luôn ở khu tắm trong vé — KHÔNG cần mua thêm vé Bathhouse. Khách CHỈ dùng chà da, không mua vé nghỉ dưỡng: BẮT BUỘC mua vé Bathhouse riêng."
      }
     ]
    },
@@ -3057,15 +3057,15 @@ const TOPICS = [
     "e": "Cả hai chi nhánh đều tăng từ 230k (T7,T8) lên 263k (T9,T10)."
    },
    {
-    "q": "Khách chỉ muốn dùng dịch vụ chà da (Skin Care / Peeling), không dùng gì khác. Lễ tân xử lý thế nào?",
+    "q": "Khách CHỈ muốn dùng dịch vụ chà da (Skin Care / Peeling), không mua vé nghỉ dưỡng. Lễ tân xử lý thế nào?",
     "o": [
-     "Bắt buộc bán kèm vé Bathhouse — khách phải ngâm cho da mềm mới chà được",
+     "Bán kèm vé Bathhouse — khách phải ngâm cho da mềm mới chà được",
      "Bán riêng dịch vụ chà da, không cần vé nào khác",
-     "Bắt buộc bán vé nghỉ dưỡng trọn ngày",
+     "Bắt buộc bán vé Nghỉ dưỡng 270k",
      "Từ chối phục vụ"
     ],
     "a": 0,
-    "e": "Chà da không bán riêng lẻ. Khách BẮT BUỘC mua vé Bathhouse để ngâm mình cho da mềm ra trước, sau đó mới sử dụng dịch vụ chà da."
+    "e": "Chà da phải ngâm cho da mềm trước. Khách chỉ dùng chà da thì BẮT BUỘC mua vé Bathhouse riêng. Ngược lại, khách ĐÃ mua vé Nghỉ dưỡng thì ngâm luôn ở khu tắm trong vé — KHÔNG cần mua thêm vé Bathhouse."
    }
   ]
  },
