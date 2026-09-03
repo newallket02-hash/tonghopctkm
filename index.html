@@ -85,6 +85,9 @@ header p{margin:0;color:var(--muted);max-width:62ch;font-size:13.5px;display:non
 .searchbox input{width:100%;font:inherit;font-size:16px;padding:11px 38px 11px 34px;
   border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink)}
 .searchbox input:focus{outline:none;background:#fff;border-color:var(--navy);box-shadow:0 0 0 3px rgba(30,45,90,.09)}
+.catrow{margin-top:8px}
+.lg.cat{background:var(--surface);color:var(--muted);font-size:12.8px;padding:7px 13px}
+.lg.cat[aria-pressed="true"]{background:var(--navy);color:#fff}
 .dsearch{width:100%;margin:2px 0 14px}
 .dsearch input{font-size:16px}
 .searchbox input::-webkit-search-cancel-button,.searchbox input::-webkit-search-decoration{-webkit-appearance:none;display:none}
@@ -451,6 +454,7 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
         <small>Bật nếu công ty tính ngày này là lễ (20/10, Noel…) — trang chỉ tự nhận dịp 2/9.</small></span>
     </label>
     <div class="legend" id="dLegend"></div>
+    <div class="legend catrow" id="dCat"></div>
     <div class="searchbox dsearch">
       <span class="si">🔍</span>
       <input type="search" id="dQ" placeholder="Tìm trong ngày đang chọn: HSSV, tối, combo…"
@@ -731,7 +735,15 @@ function baseHTML(o){
   }
   return `<div class="bs">Giá thường <s>${esc(o.base)}</s>${save}</div>`;
 }
-let dFilter = null;
+let dFilter = null, dCat = null;
+const CATS = [
+  ['nd',      '🛁 Nghỉ dưỡng'],
+  ['skin',    '✨ Skin Care'],
+  ['care',    '💆 Body · Foot · Facial'],
+  ['kitchen', '🍜 Golden Kitchen'],
+  ['nail',    '💅 Nail & Hair']
+];
+const CATLABEL = Object.fromEntries(CATS);
 function offerCard(o, r){
   const b = el('button','ofr '+bcls(o.br)+(r.st==='n'?' no':''));
   b.type='button';
@@ -764,7 +776,7 @@ function renderDay(){
   };
 
   const yes=[], warn=[], no=[];
-  OFFERS.filter(o => (!dFilter || o.br===dFilter) && matchQ(o)).forEach(o=>{
+  OFFERS.filter(o => (!dFilter || o.br===dFilter) && (!dCat || o.cat===dCat) && matchQ(o)).forEach(o=>{
     const r = evalOffer(o, ds, dow, hol);
     (r.st==='y'?yes:r.st==='w'?warn:no).push([o,r]);
   });
@@ -772,9 +784,12 @@ function renderDay(){
   const head = (icon,txt,n) => el('div','gh',`${icon} ${txt} <span class="n">${n}</span>`);
 
   if(yes.length){ L.appendChild(head('✅','Đang áp dụng',yes.length)); yes.forEach(([o,r])=>L.appendChild(offerCard(o,r))); }
-  else L.appendChild(el('div','nores', qterms.length
-        ? `Không tìm thấy ưu đãi nào khớp “${esc(qraw)}” trong ngày ${vn(ds)}.`
-        : 'Không có ưu đãi nào áp dụng vào ngày này.'));
+  else {
+    const scope = dCat ? ` ở nhóm ${esc(CATLABEL[dCat])}` : '';
+    L.appendChild(el('div','nores', qterms.length
+        ? `Không tìm thấy ưu đãi nào khớp “${esc(qraw)}”${scope} trong ngày ${vn(ds)}.`
+        : `Không có ưu đãi nào${scope} áp dụng vào ngày ${vn(ds)}.`));
+  }
 
   if(warn.length){ L.appendChild(head('⚠️','Cần kiểm tra lại',warn.length)); warn.forEach(([o,r])=>L.appendChild(offerCard(o,r))); }
 
@@ -796,16 +811,34 @@ function renderDay(){
   $('#dQ').addEventListener('input', ()=>{ $('#dQClear').hidden = !$('#dQ').value; renderDay(); });
   $('#dQClear').addEventListener('click', ()=>{ $('#dQ').value=''; $('#dQClear').hidden=true; renderDay(); $('#dQ').focus(); });
   const BRS = [...new Set(OFFERS.map(o=>o.br))];
+  const inBranch = o => !dFilter || o.br===dFilter;
+
+  function renderCats(){
+    const box = $('#dCat'); box.innerHTML='';
+    const avail = CATS.filter(([c]) => OFFERS.some(o => inBranch(o) && o.cat===c));
+    if(dCat && !avail.some(([c])=>c===dCat)) dCat = null;   // nhóm không có ở chi nhánh này
+    if(avail.length < 2) return;                            // 1 nhóm thì không cần lọc
+    const chip = (c,label,n) => {
+      const b = el('button','lg cat', `${esc(label)}<small>${n}</small>`);
+      b.type='button'; b.setAttribute('aria-pressed', c===dCat);
+      b.addEventListener('click',()=>{ dCat = (dCat===c ? null : c); renderCats(); renderDay(); });
+      return b;
+    };
+    box.appendChild(chip(null,'Tất cả nhóm', OFFERS.filter(inBranch).length));
+    avail.forEach(([c,label]) => box.appendChild(chip(c,label, OFFERS.filter(o=>inBranch(o)&&o.cat===c).length)));
+  }
+
   const mk = (tag,label,n) => {
     const b = el('button','lg '+(tag?bcls(tag):''), `${esc(label)}<small>${n}</small>`);
     b.type='button'; b.setAttribute('aria-pressed', tag===dFilter);
     b.addEventListener('click',()=>{ dFilter=tag;
       document.querySelectorAll('#dLegend .lg').forEach(x=>x.setAttribute('aria-pressed', x===b));
-      renderDay(); });
+      renderCats(); renderDay(); });
     return b;
   };
   $('#dLegend').appendChild(mk(null,'Tất cả',OFFERS.length));
   BRS.forEach(t2=>$('#dLegend').appendChild(mk(t2,t2,OFFERS.filter(o=>o.br===t2).length)));
+  renderCats();
   renderDay();
 })();
 
