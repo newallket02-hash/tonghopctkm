@@ -106,7 +106,8 @@ const BRANCHES = [
         ['Lầu 3','Carnival Game · Music Box (karaoke) · Dance · Yoga · Gym · Mini game tương tác · Phòng thuốc bắc · Chiếu phim · Cafe cá · Khu check-in chụp hình · Sự kiện theo chủ đề']]} },
 
     { h:'➕ Phụ thu',
-      table:{head:['Khoản','Giá'],rows:[['Đồng phục','20k'],['Khăn','5k'],['Phòng VIP','100k / người']]} }
+      table:{head:['Khoản','Giá'],rows:[['Đồng phục','20k'],['Khăn','5k'],['Phòng VIP','**100k / phòng**']]},
+      warn:'Phòng VIP tính **100k / phòng**, KHÔNG phải theo đầu người. Menu in "100,000 Person / người" là in sai — nếu khách thắc mắc thì giải thích và thu đúng 100k cho cả phòng.' }
   ]
 },
 
