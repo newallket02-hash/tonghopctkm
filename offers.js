@@ -82,7 +82,10 @@ const OFFERS = [
     time:'18:00–24:00', days:'T2-CN', from:null, to:null, holiday:true, annual:true, cond:'Giá menu CHƯA gồm VAT · trẻ em 0,8–1,2m · dưới 0,8m miễn phí · chương trình thường niên' },
 
   /* ================= QUẬN 2 — GOLDEN KITCHEN / AQUA ================= */
-  { br:'Q2', topic:'golden-kitchen', name:'Combo HSSV Golden Kitchen', price:'⚠️ giá chưa chốt',
+  { br:'Q2', topic:'golden-kitchen', name:'Combo HSSV Golden Kitchen 1 & 2 (01 người)', price:'130k',
+    time:'10:00–22:00', days:'T2-T6', from:'2026-04-01', to:'2026-12-31',
+    holiday:false, cond:'Phải mua vé nghỉ dưỡng cùng ngày · mỗi thẻ HS/SV cho 01 khách' },
+  { br:'Q2', topic:'golden-kitchen', name:'Combo HSSV Golden Kitchen 3 & 4 (02 người)', price:'230k',
     time:'10:00–22:00', days:'T2-T6', from:'2026-04-01', to:'2026-12-31',
     holiday:false, cond:'Phải mua vé nghỉ dưỡng cùng ngày · mỗi thẻ HS/SV cho 01 khách' },
   { br:'Q2', topic:'golden-kitchen', name:'Đãi tiệc sinh nhật — tặng bánh Pizza', price:'Miễn phí bánh',
@@ -93,7 +96,7 @@ const OFFERS = [
     holiday:null, cond:'Khách Healing World · chỉ 1 phần nước hoặc kem tuyết' },
   { br:'Q2', topic:'golden-kitchen', name:'Game vòng quay may mắn', price:'Bill từ 200k',
     time:'—', days:'T2-CN', from:null, to:'2026-12-31', holiday:null,
-    cond:'Voucher tối đa 200k/1 bill · có hiệu lực sau 1 ngày · HSD 01 tháng' },
+    cond:'Quay khi bill từ 200k · DÙNG voucher: lần sau đến bill từ 300k · tối đa 200k/1 bill · hiệu lực sau 1 ngày · HSD 01 tháng' },
 
   /* ================= QUẬN 2 — CARE ================= */
   { br:'Q2', topic:'care-q2', name:"Combo Facial care 60' + Nghỉ dưỡng", price:'420k',

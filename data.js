@@ -602,31 +602,42 @@ const TOPICS = [
      "head": [
       "Combo",
       "Số người",
+      "Giá",
       "Món"
      ],
      "rows": [
       [
        "Combo 1",
        "01 người",
+       "**130k**",
        "Miến xào hải sản, Gà rán HQ"
       ],
       [
        "Combo 2",
        "01 người",
+       "**130k**",
        "Mỳ Ý hải sản, Bánh gạo cay"
       ],
       [
        "Combo 3",
        "02 người",
+       "**230k**",
        "Pad Thái, Pizza phô mai, Gà rán HQ, Bắp phủ phô mai"
       ],
       [
        "Combo 4",
        "02 người",
+       "**230k**",
        "Mì đen, Cơm cuộn, Bánh gạo cay, Mỳ Ý đút lò (lasagna)"
       ]
      ]
-    }
+    },
+    "note2": [
+     {
+      "k": "ĐÃ CHỐT",
+      "t": "Combo 1 & 2 = 130k · Combo 3 & 4 = 230k. Các mức 190k/290k (sheet T7,T8) và 115k/190k (sheet KITCHEN-NAIL-HAIR) là số cũ — KHÔNG dùng nữa."
+     }
+    ]
    },
    {
     "h": "Điều kiện áp dụng combo HSSV",
@@ -639,18 +650,10 @@ const TOPICS = [
     ]
    },
    {
-    "h": "⚠️ Giá combo HSSV — cần xác nhận trước khi thi",
-    "bullets": [
-     "Sheet CTKM T7,T8: Combo 1,2 = 190k · Combo 3,4 = 290k",
-     "Sheet CTKM T9,T10: Combo 1,2 = 130k · Combo 3,4 = 230k",
-     "Sheet KITCHEN-NAIL-HAIR (hoạt động đang diễn ra): Combo 1,2 = 115k · Combo 3,4 = 190k",
-     "Ba nguồn đang lệch nhau — đề thi KHÔNG hỏi giá combo cho đến khi được chốt. (Mức bill vòng quay đã chốt = 200k.)"
-    ]
-   },
-   {
     "h": "Game vòng quay may mắn",
     "bullets": [
-     "Điều kiện bill: từ **200k** — Ms Thanh xác nhận **giữ nguyên điều kiện 200k**, chỉ thay đổi vòng xoay.",
+     "Điều kiện **được quay**: bill từ **200k** trở lên.",
+     "Điều kiện **dùng voucher**: lần sau đến ăn, bill phải từ **300k** trở lên mới được sử dụng voucher.",
      "Voucher tối đa dùng cho một lần: **200k / 1 bill**.",
      "**Không giới hạn** số bill sử dụng voucher trong ngày.",
      "Voucher **có hiệu lực sau 1 ngày** phát hành.",
@@ -768,7 +771,7 @@ const TOPICS = [
      "Không giới hạn"
     ],
     "a": 0,
-    "e": "Voucher tối đa sử dụng cho một lần là 200k/1 bill."
+    "e": "Voucher tối đa sử dụng cho một lần là 200k/1 bill. Lưu ý: bill lần sau phải từ 300k mới được áp dụng voucher."
    },
    {
     "q": "Voucher vòng quay may mắn có hiệu lực khi nào và hạn sử dụng bao lâu?",
@@ -878,7 +881,40 @@ const TOPICS = [
      "500k"
     ],
     "a": 0,
-    "e": "Điều kiện bill là từ 200k — đã được Ms Thanh xác nhận giữ nguyên, chỉ thay đổi vòng xoay."
+    "e": "Bill từ 200k trở lên thì khách ĐƯỢC QUAY. Lưu ý phân biệt: để SỬ DỤNG voucher ở lần đến sau, bill phải từ 300k trở lên."
+   },
+   {
+    "q": "Giá Combo HSSV 1 và 2 (01 người) tại Golden Kitchen là bao nhiêu?",
+    "o": [
+     "130k",
+     "190k",
+     "115k",
+     "230k"
+    ],
+    "a": 0,
+    "e": "Đã chốt: Combo 1 & 2 (01 người) = 130k. Các mức 190k và 115k là số cũ trên các sheet trước, không còn dùng."
+   },
+   {
+    "q": "Giá Combo HSSV 3 và 4 (02 người) tại Golden Kitchen là bao nhiêu?",
+    "o": [
+     "230k",
+     "290k",
+     "190k",
+     "130k"
+    ],
+    "a": 0,
+    "e": "Đã chốt: Combo 3 & 4 (02 người) = 230k."
+   },
+   {
+    "q": "Khách quay được voucher từ Game vòng quay may mắn. Lần sau đến ăn, bill tối thiểu bao nhiêu mới được dùng voucher?",
+    "o": [
+     "300k",
+     "200k",
+     "150k",
+     "Không yêu cầu bill tối thiểu"
+    ],
+    "a": 0,
+    "e": "Bill từ 200k là điều kiện ĐƯỢC QUAY. Còn để SỬ DỤNG voucher ở lần sau, bill phải từ 300k trở lên."
    }
   ]
  },
