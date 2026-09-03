@@ -217,6 +217,22 @@ tbody tr:nth-child(even){background:#fafbfe}
 .warn{background:var(--orange-soft);border:1px solid #f3d49a;border-left:4px solid var(--orange);
   border-radius:10px;padding:12px 14px;margin:14px 0;font-size:13.8px}
 .warn b{color:#8a5a00}
+.knote{background:#fff7ea;border:1px solid #f3d49a;border-left:4px solid var(--orange);
+  border-radius:10px;padding:11px 13px;margin:10px 0;font-size:13.7px;line-height:1.55}
+.knote b{display:inline-block;color:#8a5a00;font-size:11.5px;letter-spacing:.4px;margin-bottom:6px;
+  background:#fff;border:1px solid #f0cd8f;border-radius:6px;padding:2px 8px}
+.knote span{display:block}
+.shots{display:flex;gap:12px;overflow-x:auto;margin:12px 0 2px;padding-bottom:6px;-webkit-overflow-scrolling:touch}
+.shots figure{margin:0;flex:0 0 168px}
+.shots img{width:100%;border:1px solid var(--line);border-radius:10px;display:block;background:#f4f6fb}
+.shots figcaption{font-size:11.8px;color:#5b6478;margin-top:6px;line-height:1.35}
+.shots img{cursor:zoom-in}
+.lbox{position:fixed;inset:0;background:rgba(8,13,28,.94);z-index:120;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;padding:18px}
+.lbox img{max-width:100%;max-height:84vh;border-radius:10px;background:#fff}
+.lbox p{color:#dfe5f2;font-size:13px;text-align:center;margin:0;max-width:520px}
+.lbox small{color:#93a0bb;font-size:11.5px}
+@media(min-width:760px){ .shots figure{flex:0 0 200px} }
 
 /* ---------- kiểm tra ---------- */
 .setup{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
@@ -380,7 +396,7 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
       <span class="chip hot" id="chipQ">— câu hỏi</span>
       <span class="chip" id="chipT">— chủ đề</span>
       <span class="chip hide-m">Nguồn: Tổng Hợp CTKM Q2 Q1 Q7.xlsx</span>
-      <span class="chip">Cập nhật 28/08/2026</span>
+      <span class="chip">Cập nhật 02/09/2026</span>
       <button class="chip user" id="btnOut" type="button" hidden>👤 <span id="uName"></span> · Thoát</button>
     </div>
   </div>
@@ -620,6 +636,24 @@ function tableHTML(tb){
   return h + '</tbody></table></div>';
 }
 
+function noteHTML(list){
+  return list.map(n=>`<div class="knote"><b>${esc(n.k)}</b><span>${md(n.t)}</span></div>`).join('');
+}
+document.addEventListener('click', ev=>{
+  const im = ev.target.closest('.shots img');
+  if(!im) return;
+  const box = document.createElement('div');
+  box.className='lbox';
+  box.innerHTML = `<img src="${im.getAttribute('src')}" alt=""><p>${esc(im.alt)}<br><small>Chạm để đóng</small></p>`;
+  box.addEventListener('click',()=>box.remove());
+  document.body.appendChild(box);
+});
+function imgsHTML(list){
+  return '<div class="shots">' + list.map(g=>
+    `<figure><img src="${esc(g.src)}" alt="${esc(g.cap)}" loading="lazy"><figcaption>${esc(g.cap)}</figcaption></figure>`
+  ).join('') + '</div>';
+}
+
 /* ---------- mở tài liệu ---------- */
 function openDoc(id, terms){
   const t = DATA.find(x=>x.id===id);
@@ -635,8 +669,11 @@ function openDoc(id, terms){
   t.review.forEach((s,i)=>{
     const open = openAll || i===0 ? ' open' : '';
     h += `<details class="doc"${open}><summary>${esc(s.h)}</summary><div class="docbody">`;
+    if(s.note)    h += noteHTML(s.note);
     if(s.bullets) h += '<ul>' + s.bullets.map(b=>`<li>${md(b)}</li>`).join('') + '</ul>';
     if(s.table)   h += tableHTML(s.table);
+    if(s.note2)   h += noteHTML(s.note2);
+    if(s.imgs)    h += imgsHTML(s.imgs);
     h += '</div></details>';
   });
   h += `<button class="btn orange wide" type="button" id="quizThis" style="margin-top:14px">
@@ -759,6 +796,8 @@ DATA.forEach(t=>{
   IDX.push({tid:t.id,kind:'d',sec:'Giới thiệu',text:t.name+' — '+t.summary});
   t.review.forEach(s=>{
     (s.bullets||[]).forEach(b=>IDX.push({tid:t.id,kind:'d',sec:s.h,text:strip(b)}));
+    [].concat(s.note||[],s.note2||[]).forEach(n=>IDX.push({tid:t.id,kind:'d',sec:s.h,text:n.k+': '+strip(n.t)}));
+    (s.imgs||[]).forEach(g=>IDX.push({tid:t.id,kind:'d',sec:s.h,text:strip(g.cap)}));
     if(s.table){
       const head=s.table.head;
       s.table.rows.forEach(r=>IDX.push({tid:t.id,kind:'d',sec:s.h,

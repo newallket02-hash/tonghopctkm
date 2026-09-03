@@ -177,7 +177,7 @@ const OFFERS = [
     time:'08:00–11:00 & 12:00–24:00', days:'T2-T6', from:null, to:'2026-10-30',
     holiday:false, cond:'Trên 1.2m · đồng phục trường hoặc thẻ SV · Like&share FB hoặc review Google' },
   { br:'Q7', topic:'quan-7', name:'Ưu đãi tối', price:'130k',
-    time:'21:00–24:00', days:'T2-CN', from:null, to:'2026-12-31',
+    time:'21:00–24:00', days:'T2-CN', from:null, to:'2026-10-31',
     holiday:true, cond:'Tất cả khách trên 1.2m' },
   { br:'Q7', topic:'quan-7', name:'Miễn phí cho BẠN GÁI đi cùng bạn trai', price:'Vé bạn trai 150k',
     time:'Sau 19:00', days:'T2-CN', from:null, to:null, holiday:false, annual:true,
@@ -203,9 +203,15 @@ const OFFERS = [
     time:'10:00–22:00', days:'T2-T6', from:'2026-09-03', to:'2026-10-30',
     holiday:false, cond:'Tất cả khách · Booking trước ít nhất 1 tiếng', period:'Kỳ T9,T10' },
   { br:'Q7', topic:'quan-7', name:"Foot Care 60' (giảm 20%)", price:'252k',
-    time:'Sau 19:00', days:'T2-T6', from:null, to:null, holiday:false, annual:true,
-    cond:'Booking trước qua hotline · chương trình thường niên' },
+    time:'Sau 19:00', days:'T2-T6', from:null, to:'2026-08-31', holiday:false,
+    cond:'Booking trước qua hotline · chương trình thường niên', period:'Kỳ T7,T8' },
+  { br:'Q7', topic:'quan-7', name:"Foot Care 60' (giảm 20%)", price:'266k',
+    time:'Sau 19:00', days:'T2-T6', from:'2026-09-03', to:null, holiday:false, annual:true,
+    cond:'Booking trước qua hotline · chương trình thường niên', period:'Kỳ T9,T10' },
   { br:'Q7', topic:'quan-7', name:'Body Care no oil (giảm 20%)', price:'316k',
-    time:'Sau 19:00', days:'T2-T6', from:null, to:null, holiday:false, annual:true,
-    cond:'Booking trước qua hotline · chương trình thường niên' }
+    time:'Sau 19:00', days:'T2-T6', from:null, to:'2026-08-31', holiday:false,
+    cond:'Booking trước qua hotline · chương trình thường niên', period:'Kỳ T7,T8' },
+  { br:'Q7', topic:'quan-7', name:'Body Care no oil (giảm 20%)', price:'330k',
+    time:'Sau 19:00', days:'T2-T6', from:'2026-09-03', to:null, holiday:false, annual:true,
+    cond:'Booking trước qua hotline · chương trình thường niên', period:'Kỳ T9,T10' }
 ];

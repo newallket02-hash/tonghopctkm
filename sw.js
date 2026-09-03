@@ -1,6 +1,6 @@
 /* Service worker: cho phép tra cứu offline sau lần mở đầu tiên */
-const CACHE = 'glh-ontap-v1';
-const SHELL = ['./', './index.html', './data.js', './manifest.webmanifest',
+const CACHE = 'glh-ontap-v3';
+const SHELL = ['./', './index.html', './data.js', './offers.js', './manifest.webmanifest',
                './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', e => {

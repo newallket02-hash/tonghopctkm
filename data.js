@@ -1549,7 +1549,7 @@ const TOPICS = [
      "230k và 263k"
     ],
     "a": 0,
-    "e": "Foot care 60' = 242k; Body care 60' (no oil) = 298k. (252k/316k là của Quận 7.)"
+    "e": "Foot care 60' = 242k; Body care 60' (no oil) = 298k. (252k/316k là giá kỳ T7,T8 của Quận 7 — kỳ T9,T10 là 266k/330k.)"
    },
    {
     "q": "Ưu đãi sơn gel tại Nail Quận 1 là bao nhiêu và trong khung giờ nào?",
@@ -1650,7 +1650,7 @@ const TOPICS = [
        "130k",
        "21:00–24:00",
        "T2–CN",
-       "Tất cả khách trên 1.2m · Áp dụng đến 31/12 · ÁP DỤNG lễ"
+       "Tất cả khách trên 1.2m · Áp dụng đến 31/10 · ÁP DỤNG lễ"
       ]
      ]
     }
@@ -1800,14 +1800,14 @@ const TOPICS = [
       [
        "Foot Care 60' (giảm 20%)",
        "252k",
-       "252k",
+       "266k",
        "Sau 19:00, T2–T6",
        "Booking trước qua hotline · KHÔNG áp dụng lễ, tết"
       ],
       [
        "Body Care no oil (giảm 20%)",
        "316k",
-       "316k",
+       "330k",
        "Sau 19:00, T2–T6",
        "Booking trước qua hotline · KHÔNG áp dụng lễ, tết"
       ]
@@ -1916,15 +1916,15 @@ const TOPICS = [
     "e": "Happy Hour Tối Q7: 150k, 19:00–24:00, T2–CN."
    },
    {
-    "q": "Giá Foot Care 60' và Body Care no oil (đã giảm 20%) tại Quận 7?",
+    "q": "Giá Foot Care 60' và Body Care no oil (đã giảm 20%) tại Quận 7 trong kỳ T9,T10?",
     "o": [
+     "266k và 330k",
      "252k và 316k",
      "242k và 298k",
-     "230k và 263k",
-     "252k và 298k"
+     "230k và 263k"
     ],
     "a": 0,
-    "e": "Q7: Foot Care 60' = 252k; Body Care no oil = 316k, áp dụng sau 19:00, T2–T6."
+    "e": "Kỳ T9,T10 tại Q7: Foot Care 60' = 266k; Body Care no oil = 330k (kỳ T7,T8 là 252k/316k). Áp dụng sau 19:00, T2–T6, booking trước qua hotline, KHÔNG áp dụng lễ, tết."
    },
    {
     "q": "Khung giờ ưu đãi Lễ 2/9 tại Quận 7 khác Quận 2 như thế nào?",
@@ -1940,13 +1940,13 @@ const TOPICS = [
    {
     "q": "Ưu đãi tối 130k tại Quận 7 áp dụng đến khi nào và có áp dụng ngày lễ không?",
     "o": [
-     "Đến 31/12, ÁP DỤNG lễ",
+     "Đến 31/10, ÁP DỤNG lễ",
      "Đến 30/10, KHÔNG áp dụng lễ",
-     "Đến 31/12, KHÔNG áp dụng lễ",
-     "Đến 01/11, ÁP DỤNG lễ"
+     "Đến 31/12, ÁP DỤNG lễ",
+     "Đến 01/11, KHÔNG áp dụng lễ"
     ],
     "a": 0,
-    "e": "Ưu đãi tối 130k (21:00–24:00, T2–CN) tại Q7 chạy đến 31/12 và ÁP DỤNG cả ngày lễ — khác với hai ưu đãi \"miễn phí\" của Q7 vốn không áp dụng lễ, tết."
+    "e": "Ưu đãi tối 130k (21:00–24:00, T2–CN) tại Q7 chạy đến 31/10 và ÁP DỤNG cả ngày lễ — khác với hai ưu đãi \"miễn phí\" của Q7 vốn không áp dụng lễ, tết."
    },
    {
     "q": "Vé HSSV 90k và Facial Care 60' tại Quận 7 áp dụng đến ngày nào?",
@@ -2797,7 +2797,7 @@ const TOPICS = [
        "Foot care 60'",
        "Giảm 20%",
        "242k",
-       "252k"
+       "252k (T7,T8) · 266k (T9,T10)"
       ]
      ]
     }
@@ -2931,6 +2931,351 @@ const TOPICS = [
     ],
     "a": 0,
     "e": "Cả hai chi nhánh đều tăng từ 230k (T7,T8) lên 263k (T9,T10)."
+   }
+  ]
+ },
+ {
+  "id": "klook-q2",
+  "name": "Klook App (Q2)",
+  "icon": "📱",
+  "tag": "Q2",
+  "summary": "Hướng dẫn riêng cho Lễ tân xử lý booking Klook tại Golden Lotus Healing World Quận 2: kiểm tra app, khách mua nhầm dịch vụ, khách đến thẳng, bằng chứng bắt buộc và redeem tự động.",
+  "review": [
+   {
+    "h": "Nguyên tắc chung",
+    "bullets": [
+     "Booking Klook tại Healing World phải được **kiểm tra liên tục trong ca**.",
+     "Lễ tân xử lý theo **tình trạng chỗ trống thực tế**, không hứa suông.",
+     "Luôn **lưu đủ bằng chứng** cho mọi trường hợp phát sinh.",
+     "**Không tự hứa refund** với khách trong bất kỳ tình huống nào."
+    ],
+    "note": [
+     {
+      "k": "BẮT BUỘC",
+      "t": "Chỉ áp dụng tại chi nhánh Quận 2 (Golden Lotus Retreat World & Jjimjilbang, TP.HCM)."
+     }
+    ]
+   },
+   {
+    "h": "1.1 · Khách mua nhầm dịch vụ",
+    "note": [
+     {
+      "k": "KHÔNG BÙ TIỀN",
+      "t": "Healing World KHÔNG thực hiện bù thêm phần chênh lệch để chuyển từ dịch vụ khách đã mua nhầm sang dịch vụ khác."
+     }
+    ],
+    "bullets": [
+     "Giải thích rõ với khách: mã dịch vụ đã mua nhầm **không thể bù tiền hoặc đổi trực tiếp** tại Healing World.",
+     "Hướng dẫn khách **mua lại đúng dịch vụ** muốn sử dụng trên Klook.",
+     "Sau khi khách mua thành công, kiểm tra **đúng tên dịch vụ, ngày sử dụng và tình trạng mã mới**.",
+     "**Chụp lại** mã dịch vụ mua nhầm và mã dịch vụ mới khách vừa mua.",
+     "Gửi **hai mã** cùng toàn bộ hình ảnh, thông tin khách và nội dung trao đổi cho **team Marketing**.",
+     "Marketing phối hợp với Klook để giải quyết mã dịch vụ mua nhầm cho khách."
+    ],
+    "note2": [
+     {
+      "k": "LỄ TÂN KHÔNG ĐƯỢC",
+      "t": "Tự xác nhận mã mua nhầm chắc chắn được refund · Tự quy đổi dịch vụ · Tự thu phần tiền chênh lệch."
+     }
+    ]
+   },
+   {
+    "h": "1.2 · Quy định kiểm tra Klook App",
+    "table": {
+     "head": [
+      "Thời điểm",
+      "Việc phải thực hiện"
+     ],
+     "rows": [
+      [
+       "Trước ca / đầu ngày",
+       "Đăng nhập và kiểm tra booking mới, booking trong ngày, giờ khách đến và dịch vụ khách đã mua."
+      ],
+      [
+       "Trong ca",
+       "Cứ mỗi **30 phút** kiểm tra app 01 lần để phát hiện booking mới và xác nhận lịch phù hợp."
+      ],
+      [
+       "Sau ca / cuối ngày",
+       "Kiểm tra lại booking chưa xử lý, chat mới, thay đổi lịch và bàn giao đầy đủ cho ca sau."
+      ]
+     ]
+    },
+    "note2": [
+     {
+      "k": "BẮT BUỘC",
+      "t": "Không chỉ chờ thông báo từ app. Lễ tân phải CHỦ ĐỘNG mở và kiểm tra Klook App đúng các mốc trên."
+     }
+    ]
+   },
+   {
+    "h": "1.3 · Khách Klook đến thẳng nhưng chưa đặt lịch",
+    "bullets": [
+     "Tiếp nhận và kiểm tra mã Klook của khách **như khách thông thường**.",
+     "Kiểm tra dịch vụ khách đã mua và **suất trống thực tế** tại Healing World.",
+     "**Còn suất trống:** tiếp nhận khách và thực hiện quy trình check-in.",
+     "**Hết suất:** thông báo rõ tình trạng với khách và đề xuất khung giờ / ngày khác phù hợp nếu có."
+    ],
+    "note2": [
+     {
+      "k": "LƯU Ý",
+      "t": "Khách có mã Klook nhưng chưa đặt lịch KHÔNG được ưu tiên vượt quá khả năng tiếp nhận thực tế của Healing World."
+     }
+    ]
+   },
+   {
+    "h": "1.4 · Bằng chứng bắt buộc phải lưu",
+    "bullets": [
+     "Ảnh chụp **mã booking / mã dịch vụ** và thông tin gói khách đã mua.",
+     "Ảnh chụp **mã mua nhầm và mã mua mới** trong trường hợp đổi dịch vụ.",
+     "Toàn bộ **tin nhắn, thời gian liên hệ và phản hồi** của khách.",
+     "Nội dung **đã gửi Marketing** và kết quả Marketing / Klook phản hồi.",
+     "Thông tin **Spa đã đề xuất** cho khách khi hết suất hoặc cần đổi lịch."
+    ],
+    "note2": [
+     {
+      "k": "MỤC ĐÍCH",
+      "t": "Bằng chứng được sử dụng khi xử lý complaint, tranh chấp hoặc yêu cầu refund với Klook."
+     }
+    ]
+   },
+   {
+    "h": "1.5 · Mẫu trả lời khi khách mua nhầm",
+    "table": {
+     "head": [
+      "Ngôn ngữ",
+      "Nội dung trả lời khách"
+     ],
+     "rows": [
+      [
+       "VI",
+       "Dịch vụ bạn đã mua hiện không thể bù thêm phần chênh lệch để đổi trực tiếp tại Healing World. Vui lòng mua lại đúng dịch vụ muốn sử dụng trên Klook. Sau đó, Lễ tân sẽ chụp lại mã đã mua nhầm và mã mới để chuyển Marketing phối hợp với Klook hỗ trợ xử lý. Hiện tại GL chưa thể xác nhận trước kết quả refund của mã mua nhầm."
+      ],
+      [
+       "EN",
+       "The service purchased by mistake cannot be upgraded by paying the price difference directly at Healing World. Please purchase the correct service on Klook. The Spa will then record both the incorrect and new booking codes and send them to our Marketing team for coordination with Klook. We are unable to confirm the refund outcome for the incorrect booking in advance."
+      ]
+     ]
+    }
+   },
+   {
+    "h": "1.6 · Kiểm tra booking",
+    "bullets": [
+     "Kiểm tra **email và thông tin khách để lại** trên booking Klook.",
+     "Kiểm tra **khu vực chat** (biểu tượng 💬 góc trên) — chỉ thấy chat khi khách **chủ động nhắn trước**."
+    ],
+    "imgs": [
+     {
+      "src": "klook-chat.jpg",
+      "cap": "Khu vực chat trên màn hình chính Klook App."
+     }
+    ]
+   },
+   {
+    "h": "1.7 · REDEEM TỰ ĐỘNG khi khách đổi lịch ⚠️",
+    "note": [
+     {
+      "k": "NGUYÊN TẮC",
+      "t": "Nếu khách KHÔNG hủy hoặc đổi lịch trước mốc 24 giờ, Klook sẽ TỰ ĐỘNG redeem voucher sau khi GL xác nhận (confirmed) lịch đặt. Vì vậy với khách đổi ngày/giờ khác lịch đặt nhưng mã đã tự redeem, Lễ tân phải kiểm tra mã trong mục REDEEM LIST."
+     }
+    ],
+    "bullets": [
+     "**Bước 1 — Mở danh sách redeem:** tại màn hình chính Klook App, chọn mục **Redemptions** ở thanh menu phía dưới.",
+     "**Bước 2 — Tìm kiếm booking:** nhấn biểu tượng **kính lúp** 🔍 ở góc trên bên phải.",
+     "**Bước 3 — Kiểm tra đúng mã đơn:** chọn **Booking Reference ID**, nhập mã booking của khách và đối chiếu đúng dịch vụ, số lượng khách.",
+     "**Bước 4 — Xác nhận trạng thái tự động:** nhấn mũi tên tại mã booking. Nếu hiển thị **“Automatically redeem”** → mã đã được Klook tự động redeem."
+    ],
+    "imgs": [
+     {
+      "src": "klook-1.jpg",
+      "cap": "Bước 1 — chọn Redemptions ở thanh menu dưới."
+     },
+     {
+      "src": "klook-2.jpg",
+      "cap": "Bước 2 — nhấn biểu tượng kính lúp góc trên bên phải."
+     },
+     {
+      "src": "klook-3.jpg",
+      "cap": "Bước 3 — chọn Booking Reference ID và nhập mã booking."
+     },
+     {
+      "src": "klook-4.jpg",
+      "cap": "Bước 4 — dòng “Automatically redeem” xác nhận mã đã tự redeem."
+     },
+     {
+      "src": "klook-madon.jpg",
+      "cap": "Mã đơn hàng (Booking Reference ID) trên máy khách — dùng để tra ở Bước 3."
+     }
+    ]
+   },
+   {
+    "h": "1.7b · Cách tiếp nhận khách bị REDEEM TỰ ĐỘNG",
+    "bullets": [
+     "Khách đặt **Sauna** hoặc **Jjim Jil Bang**: cho khách vào sử dụng dịch vụ.",
+     "Khách đặt **dịch vụ chà da (Peeling)**: kiểm tra suất thực tế — còn suất thì nhận khách; hết suất thì thông báo và xử lý theo **mục 1.3**."
+    ],
+    "note2": [
+     {
+      "k": "LƯU Ý QUAN TRỌNG",
+      "t": "Ngày sử dụng thực tế có thể LỆCH với ngày đặt trên Klook (VD: booking ghi 03/08 nhưng khách đến 04/08). Lễ tân phải ghi chú rõ ngày booking ban đầu và ngày khách sử dụng thực tế lên BILL, hoặc gọi kế toán trước khi xuất bill để khớp với báo cáo kế toán."
+     }
+    ]
+   }
+  ],
+  "questions": [
+   {
+    "q": "Khách Klook mua nhầm dịch vụ và muốn bù thêm tiền để đổi sang dịch vụ khác. Lễ tân xử lý thế nào?",
+    "o": [
+     "Không bù tiền — hướng dẫn khách mua lại đúng dịch vụ trên Klook",
+     "Thu phần chênh lệch và đổi dịch vụ ngay tại quầy",
+     "Đổi dịch vụ miễn phí vì lỗi thuộc về khách",
+     "Từ chối phục vụ khách"
+    ],
+    "a": 0,
+    "e": "Healing World KHÔNG bù thêm phần chênh lệch. Lễ tân giải thích, hướng dẫn khách mua lại đúng dịch vụ trên Klook, rồi chụp cả hai mã gửi Marketing."
+   },
+   {
+    "q": "Sau khi khách mua lại đúng dịch vụ, Lễ tân phải gửi hai mã (mã mua nhầm + mã mới) cho bộ phận nào?",
+    "o": [
+     "Team Marketing",
+     "Kế toán",
+     "Quản lý ca",
+     "Gửi trực tiếp cho Klook"
+    ],
+    "a": 0,
+    "e": "Lễ tân gửi hai mã cùng hình ảnh, thông tin khách và nội dung trao đổi cho team Marketing; Marketing mới là bên phối hợp với Klook."
+   },
+   {
+    "q": "Điều nào Lễ tân KHÔNG được làm khi khách mua nhầm dịch vụ Klook?",
+    "o": [
+     "Cả 3 điều: tự xác nhận chắc chắn được refund, tự quy đổi dịch vụ, tự thu tiền chênh lệch",
+     "Chụp lại mã mua nhầm",
+     "Giải thích cho khách bằng mẫu trả lời VI/EN",
+     "Gửi thông tin cho Marketing"
+    ],
+    "a": 0,
+    "e": "Lễ tân KHÔNG được tự xác nhận mã mua nhầm chắc chắn được refund, không tự quy đổi dịch vụ và không tự thu phần tiền chênh lệch."
+   },
+   {
+    "q": "Trong ca làm việc, bao lâu Lễ tân phải kiểm tra Klook App một lần?",
+    "o": [
+     "Mỗi 30 phút",
+     "Mỗi 15 phút",
+     "Mỗi 1 tiếng",
+     "Chỉ khi có thông báo từ app"
+    ],
+    "a": 0,
+    "e": "Trong ca: cứ mỗi 30 phút kiểm tra app 01 lần. Tuyệt đối không chỉ chờ thông báo — phải chủ động mở app."
+   },
+   {
+    "q": "Đầu ca / trước ca, Lễ tân phải kiểm tra những gì trên Klook App?",
+    "o": [
+     "Booking mới, booking trong ngày, giờ khách đến và dịch vụ khách đã mua",
+     "Chỉ cần xem doanh thu ngày hôm trước",
+     "Chỉ cần xem mục Reviews",
+     "Không cần kiểm tra, chờ khách đến"
+    ],
+    "a": 0,
+    "e": "Trước ca/đầu ngày: đăng nhập và kiểm tra booking mới, booking trong ngày, giờ khách đến và dịch vụ khách đã mua."
+   },
+   {
+    "q": "Khách có mã Klook đến thẳng spa nhưng chưa đặt lịch, mà hôm đó đã hết suất. Xử lý đúng là?",
+    "o": [
+     "Thông báo rõ tình trạng và đề xuất khung giờ/ngày khác phù hợp nếu có",
+     "Nhận khách bằng mọi giá vì khách đã trả tiền cho Klook",
+     "Hủy mã Klook của khách",
+     "Yêu cầu khách tự liên hệ Klook để hoàn tiền"
+    ],
+    "a": 0,
+    "e": "Khách có mã Klook nhưng chưa đặt lịch KHÔNG được ưu tiên vượt quá khả năng tiếp nhận thực tế. Hết suất thì thông báo rõ và đề xuất khung giờ/ngày khác."
+   },
+   {
+    "q": "Bằng chứng bắt buộc phải lưu khi xử lý booking Klook dùng để làm gì?",
+    "o": [
+     "Xử lý complaint, tranh chấp hoặc yêu cầu refund với Klook",
+     "Chấm công nhân viên",
+     "Báo cáo doanh thu hằng ngày",
+     "Gửi cho khách làm kỷ niệm"
+    ],
+    "a": 0,
+    "e": "Bằng chứng (ảnh mã booking, mã mua nhầm/mã mới, tin nhắn, nội dung gửi Marketing, đề xuất của spa) được dùng khi xử lý complaint, tranh chấp hoặc yêu cầu refund với Klook."
+   },
+   {
+    "q": "Klook sẽ TỰ ĐỘNG redeem voucher trong trường hợp nào?",
+    "o": [
+     "Khách không hủy hoặc đổi lịch trước mốc 24 giờ, sau khi GL đã xác nhận lịch đặt",
+     "Ngay khi khách thanh toán trên Klook",
+     "Khi khách check-in tại quầy",
+     "Khi Lễ tân bấm nút redeem thủ công"
+    ],
+    "a": 0,
+    "e": "Nếu khách không hủy hoặc đổi lịch trước mốc 24 giờ, Klook sẽ tự động redeem voucher sau khi GL xác nhận (confirmed) lịch đặt."
+   },
+   {
+    "q": "Trên Klook App, Lễ tân tra mã đã tự động redeem ở mục nào?",
+    "o": [
+     "Redemptions",
+     "Bookings",
+     "Billing stats",
+     "Experience activities"
+    ],
+    "a": 0,
+    "e": "Bước 1: tại màn hình chính chọn mục Redemptions ở thanh menu phía dưới, sau đó nhấn kính lúp để tìm theo Booking Reference ID."
+   },
+   {
+    "q": "Dòng hiển thị nào xác nhận mã đã được Klook tự động redeem?",
+    "o": [
+     "“Automatically redeem”",
+     "“Redeemed by operator”",
+     "“Pending amendment”",
+     "“Taking place today”"
+    ],
+    "a": 0,
+    "e": "Bước 4: nhấn mũi tên tại mã booking, nếu phần chi tiết hiển thị “Automatically redeem” thì mã đã được Klook tự động redeem."
+   },
+   {
+    "q": "Khách bị redeem tự động, đặt dịch vụ chà da (Peeling). Lễ tân làm gì?",
+    "o": [
+     "Kiểm tra suất thực tế — còn suất thì nhận, hết suất thì xử lý theo mục 1.3",
+     "Cho khách vào ngay không cần kiểm tra",
+     "Từ chối vì mã đã redeem",
+     "Bán lại dịch vụ khác cho khách"
+    ],
+    "a": 0,
+    "e": "Khách đặt Sauna hoặc Jjim Jil Bang thì cho vào sử dụng. Riêng dịch vụ chà da (Peeling) phải kiểm tra suất thực tế; hết suất thì thông báo và xử lý theo mục 1.3."
+   },
+   {
+    "q": "Booking Klook ghi ngày 03/08 nhưng khách đến sử dụng ngày 04/08. Lễ tân phải làm gì?",
+    "o": [
+     "Ghi chú rõ ngày booking gốc và ngày sử dụng thực tế lên BILL, hoặc gọi kế toán trước khi xuất bill",
+     "Xuất bill bình thường theo ngày 04/08, không cần ghi chú",
+     "Từ chối phục vụ vì sai ngày",
+     "Tự sửa ngày trên app Klook"
+    ],
+    "a": 0,
+    "e": "Ngày sử dụng thực tế có thể lệch với ngày đặt trên Klook. Phải ghi chú rõ cả hai ngày lên BILL hoặc gọi kế toán trước khi xuất bill để khớp với báo cáo kế toán."
+   },
+   {
+    "q": "Vì sao có khi Lễ tân không thấy khu vực chat của khách trên booking Klook?",
+    "o": [
+     "Chỉ thấy chat khi khách chủ động nhắn trước",
+     "Do app bị lỗi",
+     "Do chưa xác nhận booking",
+     "Do chưa hết 24 giờ"
+    ],
+    "a": 0,
+    "e": "Mục 1.6: kiểm tra email và thông tin khách để lại trên booking; khu vực chat chỉ hiển thị khi khách chủ động nhắn trước."
+   },
+   {
+    "q": "Nguyên tắc chung khi xử lý booking Klook tại Healing World là gì?",
+    "o": [
+     "Kiểm tra liên tục trong ca, xử lý theo chỗ trống thực tế, lưu đủ bằng chứng, không tự hứa refund",
+     "Ưu tiên tuyệt đối khách Klook hơn khách vãng lai",
+     "Chỉ xử lý booking Klook vào đầu ca",
+     "Mọi trường hợp đều chuyển thẳng cho quản lý"
+    ],
+    "a": 0,
+    "e": "Booking Klook được kiểm tra liên tục trong ca; Lễ tân xử lý theo tình trạng chỗ trống thực tế, lưu đủ bằng chứng và không tự hứa refund."
    }
   ]
  }
