@@ -22,13 +22,14 @@ const BRANCHES = [
       lead:'Vé riêng cho khu tắm, không bao gồm khu nghỉ dưỡng.',
       table:{head:['Loại vé','Giá thường'],rows:[['Người lớn','**240k**'],['Trẻ em 0,8 – 1,2m','120k']]} },
 
-    { h:'✨ Skin Care (Peeling — kỳ da Hàn Quốc)',
+    { h:'✨ Skin Care (Peeling — chà da Hàn Quốc)',
       table:{head:['Dịch vụ','Thời lượng','Giá thường'],rows:[
         ["Skin Care Nữ (Peeling Skin)",'45 phút','**350k**'],
         ["Skin Care Nam (Peeling Skin)",'30 phút','290k'],
         ['Skin Care Trẻ em (dưới 1,2m)','—','195k'],
         ['Honey Skin Care (Nữ)','50 phút','**450k**']]},
-      note:'Honey Skin Care = Body Scrub (bắp / hạt sen / sữa muối) + Wrap (chọn 1: cà phê / nghệ / dừa mật ong) + xông nhiệt 20 phút miễn phí.' },
+      note:'Honey Skin Care = Body Scrub (bắp / hạt sen / sữa muối) + Wrap (chọn 1: cà phê / nghệ / dừa mật ong) + xông nhiệt 20 phút miễn phí.',
+      warn:'Khách BẮT BUỘC mua vé Bathhouse trước khi sử dụng dịch vụ chà da — phải ngâm mình cho da mềm ra thì mới chà được. KHÔNG bán chà da riêng lẻ.' },
 
     { h:'💆 Body & Foot care',
       table:{head:['Dịch vụ','Thời lượng','Giá thường'],rows:[
@@ -122,13 +123,14 @@ const BRANCHES = [
       table:{head:['Loại vé','Giá thường'],rows:[['Người lớn','**220k**'],['Trẻ em','110k']]},
       note:'Bathhouse chỉ có Happy Hour buổi sáng (07:00–11:00), không có ca tối.' },
 
-    { h:'✨ Skin Care (Peeling)',
+    { h:'✨ Skin Care (Peeling — chà da Hàn Quốc)',
       table:{head:['Dịch vụ','Thời lượng','Giá thường'],rows:[
         ['Skin Care Nữ (Peeling Skin)','45 phút','**350k**'],
         ['Skin Care Nam (Peeling Skin)','30 phút','290k'],
         ['Skin Care Trẻ em','—','195k'],
         ['Honey Skin Care (Nữ)','50 phút','**450k**']]},
-      note:'Honey Skin Care = scrub (bắp / hạt sen / sữa muối) + wrap (cà phê / nghệ / dừa mật ong) + xông nhiệt 20 phút miễn phí.' },
+      note:'Honey Skin Care = scrub (bắp / hạt sen / sữa muối) + wrap (cà phê / nghệ / dừa mật ong) + xông nhiệt 20 phút miễn phí.',
+      warn:'Khách BẮT BUỘC mua vé Bathhouse trước khi sử dụng dịch vụ chà da — phải ngâm mình cho da mềm ra thì mới chà được. KHÔNG bán chà da riêng lẻ.' },
 
     { h:'💆 Body · Foot · Facial care',
       table:{head:['Dịch vụ','Kỳ T7,T8','Kỳ T9,T10','Giờ'],rows:[
@@ -164,6 +166,7 @@ const BRANCHES = [
     { h:'🏊 Bathhouse & ✨ Skin Care',
       bullets:['**Happy Hour Bathhouse Nam — 176k**, 09:00–12:00, T2–T6, khách trên 1,2m, KHÔNG áp dụng lễ tết.',
         '**Happy Hour Skin Care Nam — 232k**, 09:00–12:00, T2–T6, khách trên 1,2m, KHÔNG áp dụng lễ tết.'],
+      note:'Khách BẮT BUỘC mua vé Bathhouse trước khi sử dụng dịch vụ chà da — phải ngâm mình cho da mềm ra thì mới chà được. KHÔNG bán chà da riêng lẻ.',
       warn:'Giá NIÊM YẾT (giá thường) của Bathhouse và Skin Care Quận 1 chưa có trong tài liệu — cần bảng giá menu Quận 1 để bổ sung.' },
 
     { h:'💆 Body & Foot care',

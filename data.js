@@ -120,6 +120,10 @@ const TOPICS = [
      {
       "k": "DÙNG ĐỂ SO SÁNH",
       "t": "Đây là giá niêm yết trên menu. Mọi ưu đãi nghỉ dưỡng / bathhouse / skin care ở tab Hôm nay đều đối chiếu với bảng này. Nhóm Body / Foot / Facial care KHÔNG có giá cố định để so sánh vì giá thay đổi theo gói khách chọn."
+     },
+     {
+      "k": "BẮT BUỘC",
+      "t": "Khách BẮT BUỘC mua vé Bathhouse trước khi sử dụng dịch vụ chà da (Skin Care / Peeling) — phải ngâm mình cho da mềm ra thì mới chà được. Không bán chà da riêng lẻ."
      }
     ]
    },
@@ -229,6 +233,12 @@ const TOPICS = [
      "Bathhouse **chỉ có Happy Hour buổi sáng**, không có ca tối.",
      "Trẻ em tính theo chiều cao **0,8m – 1,2m**; dưới 0,8m **miễn phí**, phải có người lớn đi kèm.",
      "**Giá trên menu CHƯA bao gồm VAT.**"
+    ],
+    "note2": [
+     {
+      "k": "BẮT BUỘC",
+      "t": "Khách BẮT BUỘC mua vé Bathhouse trước khi sử dụng dịch vụ chà da (Skin Care / Peeling) — phải ngâm mình cho da mềm ra thì mới chà được. Không bán chà da riêng lẻ."
+     }
     ]
    }
   ],
@@ -1534,7 +1544,13 @@ const TOPICS = [
        "Khách cao trên 1.2m · KHÔNG áp dụng lễ, tết"
       ]
      ]
-    }
+    },
+    "note2": [
+     {
+      "k": "BẮT BUỘC",
+      "t": "Khách BẮT BUỘC mua vé Bathhouse trước khi sử dụng dịch vụ chà da (Skin Care / Peeling) — phải ngâm mình cho da mềm ra thì mới chà được. Không bán chà da riêng lẻ."
+     }
+    ]
    },
    {
     "h": "Body / Foot / Facial care Quận 1 (áp dụng đến 30/10 · KHÔNG áp dụng lễ)",
@@ -1863,7 +1879,13 @@ const TOPICS = [
        "5k"
       ]
      ]
-    }
+    },
+    "note2": [
+     {
+      "k": "BẮT BUỘC",
+      "t": "Khách BẮT BUỘC mua vé Bathhouse trước khi sử dụng dịch vụ chà da (Skin Care / Peeling) — phải ngâm mình cho da mềm ra thì mới chà được. Không bán chà da riêng lẻ."
+     }
+    ]
    },
    {
     "h": "Ghi nhớ Happy Hour Quận 7",
@@ -1873,6 +1895,12 @@ const TOPICS = [
      "Ca tối: **Nghỉ dưỡng 19:00–24:00** · **Skin Care 18:00–24:00**.",
      "Honey Skin Care (Nữ) gồm: scrub (bắp / hạt sen / sữa muối) + wrap (chọn 1: cà phê / nghệ / dừa mật ong) + xông nhiệt 20 phút miễn phí.",
      "**Giá trên menu CHƯA bao gồm VAT.**"
+    ],
+    "note2": [
+     {
+      "k": "BẮT BUỘC",
+      "t": "Khách BẮT BUỘC mua vé Bathhouse trước khi sử dụng dịch vụ chà da (Skin Care / Peeling) — phải ngâm mình cho da mềm ra thì mới chà được. Không bán chà da riêng lẻ."
+     }
     ]
    },
    {
@@ -3027,6 +3055,17 @@ const TOPICS = [
     ],
     "a": 0,
     "e": "Cả hai chi nhánh đều tăng từ 230k (T7,T8) lên 263k (T9,T10)."
+   },
+   {
+    "q": "Khách chỉ muốn dùng dịch vụ chà da (Skin Care / Peeling), không dùng gì khác. Lễ tân xử lý thế nào?",
+    "o": [
+     "Bắt buộc bán kèm vé Bathhouse — khách phải ngâm cho da mềm mới chà được",
+     "Bán riêng dịch vụ chà da, không cần vé nào khác",
+     "Bắt buộc bán vé nghỉ dưỡng trọn ngày",
+     "Từ chối phục vụ"
+    ],
+    "a": 0,
+    "e": "Chà da không bán riêng lẻ. Khách BẮT BUỘC mua vé Bathhouse để ngâm mình cho da mềm ra trước, sau đó mới sử dụng dịch vụ chà da."
    }
   ]
  },
