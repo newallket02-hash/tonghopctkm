@@ -85,6 +85,8 @@ header p{margin:0;color:var(--muted);max-width:62ch;font-size:13.5px;display:non
 .searchbox input{width:100%;font:inherit;font-size:16px;padding:11px 38px 11px 34px;
   border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink)}
 .searchbox input:focus{outline:none;background:#fff;border-color:var(--navy);box-shadow:0 0 0 3px rgba(30,45,90,.09)}
+.dsearch{width:100%;margin:0 0 12px}
+.dsearch input{font-size:16px}
 .searchbox input::-webkit-search-cancel-button,.searchbox input::-webkit-search-decoration{-webkit-appearance:none;display:none}
 .sclear{position:absolute;right:8px;border:none;background:var(--navy-soft);color:var(--navy);
   width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:12px;line-height:1;display:grid;place-items:center}
@@ -434,8 +436,12 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
 
   <!-- HÔM NAY / TRA CỨU THEO NGÀY -->
   <section class="panel" id="v-today">
-    <h2>Ưu đãi áp dụng theo ngày</h2>
-    <p class="sub">Chọn ngày — trang lọc đúng những chương trình còn hiệu lực hôm đó.</p>
+    <div class="searchbox dsearch">
+      <span class="si">🔍</span>
+      <input type="search" id="dQ" placeholder="Tìm trong ngày đang chọn: HSSV, tối, combo…"
+             autocomplete="off" autocapitalize="none" spellcheck="false">
+      <button class="sclear" type="button" id="dQClear" hidden aria-label="Xoá">✕</button>
+    </div>
     <div class="datebar">
       <span class="dpwrap">
         <input type="date" id="dPick" aria-label="Chọn ngày">
@@ -462,8 +468,7 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
       <div class="legend" id="legend"></div>
       <div class="grid" id="docGrid"></div>
       <div class="warn">
-        <b>⚠️ Còn 1 con số cần chốt:</b> giá Combo HSSV Golden Kitchen đang lệch giữa 3 sheet nguồn (190/290 · 130/230 · 115/190) nên chưa đưa vào đề.<br>
-        <b>✔ Đã chốt:</b> mức bill tối thiểu Game vòng quay may mắn = <b>200k</b>.
+        <b>⚠️ Còn 2 mục chưa xác nhận có áp dụng ngày lễ hay không:</b> Aqua Garden Cafe và Beauty Passport — gặp khách vào dịp lễ thì hỏi lại quản lý trước khi báo giá.
       </div>
     </div>
     <div id="docDetail" hidden></div>
@@ -750,8 +755,16 @@ function renderDay(){
   $('#dInfo').innerHTML = kh ? `<span class="hol">🎉 ${esc(kh.name)}</span>`
     : hol ? `<span class="hol">🎉 Ngày lễ (tự đánh dấu)</span>` : '';
 
+  const qraw   = $('#dQ') ? $('#dQ').value.trim() : '';
+  const qterms = qraw ? normMap(qraw).split(/\s+/).filter(Boolean) : [];
+  const matchQ = o => {
+    if(!qterms.length) return true;
+    const hay = normMap([o.name,o.price,o.base||'',o.time,dayLabel(o.days),o.period||'',o.cond||'',o.br].join(' '));
+    return qterms.every(t => hay.includes(t));
+  };
+
   const yes=[], warn=[], no=[];
-  OFFERS.filter(o => !dFilter || o.br===dFilter).forEach(o=>{
+  OFFERS.filter(o => (!dFilter || o.br===dFilter) && matchQ(o)).forEach(o=>{
     const r = evalOffer(o, ds, dow, hol);
     (r.st==='y'?yes:r.st==='w'?warn:no).push([o,r]);
   });
@@ -759,7 +772,9 @@ function renderDay(){
   const head = (icon,txt,n) => el('div','gh',`${icon} ${txt} <span class="n">${n}</span>`);
 
   if(yes.length){ L.appendChild(head('✅','Đang áp dụng',yes.length)); yes.forEach(([o,r])=>L.appendChild(offerCard(o,r))); }
-  else L.appendChild(el('div','nores','Không có ưu đãi nào áp dụng vào ngày này.'));
+  else L.appendChild(el('div','nores', qterms.length
+        ? `Không tìm thấy ưu đãi nào khớp “${esc(qraw)}” trong ngày ${vn(ds)}.`
+        : 'Không có ưu đãi nào áp dụng vào ngày này.'));
 
   if(warn.length){ L.appendChild(head('⚠️','Cần kiểm tra lại',warn.length)); warn.forEach(([o,r])=>L.appendChild(offerCard(o,r))); }
 
@@ -778,6 +793,8 @@ function renderDay(){
     $('#dHol').checked=false; $('#dPick').value=iso(n); renderDay(); });
   $('#dPick').addEventListener('change',()=>{ $('#dHol').checked=false; renderDay(); });
   $('#dHol').addEventListener('change',renderDay);
+  $('#dQ').addEventListener('input', ()=>{ $('#dQClear').hidden = !$('#dQ').value; renderDay(); });
+  $('#dQClear').addEventListener('click', ()=>{ $('#dQ').value=''; $('#dQClear').hidden=true; renderDay(); $('#dQ').focus(); });
   const BRS = [...new Set(OFFERS.map(o=>o.br))];
   const mk = (tag,label,n) => {
     const b = el('button','lg '+(tag?bcls(tag):''), `${esc(label)}<small>${n}</small>`);
