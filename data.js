@@ -2531,16 +2531,20 @@ const TOPICS = [
      ],
      "rows": [
       [
-       "Lầu 1",
-       "Public Bathhouse · Snack bar"
+       "Tầng G",
+       "Nail · Hair · Massage cá · Cafe cá · Golden Kitchen"
       ],
       [
-       "Lầu 2",
-       "Các phòng nhiệt nóng/lạnh chuyên đề · Board Game · Khu thư giãn (Relax zone) · Kid zone"
+       "Tầng 1",
+       "Public Bathhouse · Snack bar · Coworking cafe"
       ],
       [
-       "Lầu 3",
-       "Carnival Game · Music Box (Karaoke) · Dance · Yoga · Lớp học miễn phí · Gym · Mini Game tương tác (motion game) · Phòng thuốc bắc · Chiếu phim / TV giải trí · Cafe cá (Fish Cafe) · Khu check-in / chụp hình · Sự kiện theo chủ đề (Party)"
+       "Tầng 2",
+       "Các phòng nhiệt nóng/lạnh chuyên đề · Board Game · Relax zone · Kid zone · Hồ ngâm chân"
+      ],
+      [
+       "Tầng 3",
+       "Music Box · Dance · Yoga · Game Class · Gym · Game zone · Carnival Game · Phòng thuốc bắc · Chiếu phim"
       ]
      ]
     }
@@ -2677,35 +2681,35 @@ const TOPICS = [
    {
     "q": "Public Bathhouse nằm ở tầng nào tại Quận 2?",
     "o": [
-     "Lầu 1",
-     "Lầu 2",
-     "Lầu 3",
-     "Tầng trệt"
+     "Tầng 1",
+     "Tầng G",
+     "Tầng 2",
+     "Tầng 3"
     ],
     "a": 0,
-    "e": "Lầu 1: Public Bathhouse và Snack bar."
+    "e": "Tầng 1: Public Bathhouse · Snack bar · Coworking cafe."
    },
    {
-    "q": "Khu Board Game và Relax zone nằm ở tầng nào?",
+    "q": "Khu Board Game, Relax zone và hồ ngâm chân nằm ở tầng nào?",
     "o": [
-     "Lầu 2",
-     "Lầu 1",
-     "Lầu 3",
-     "Lầu 2 và 3"
+     "Tầng 2",
+     "Tầng 1",
+     "Tầng 3",
+     "Tầng G"
     ],
     "a": 0,
-    "e": "Lầu 2: các phòng nhiệt chuyên đề, Board Game, Khu thư giãn (Relax zone) và Kid zone."
+    "e": "Tầng 2: các phòng nhiệt nóng/lạnh chuyên đề · Board Game · Relax zone · Kid zone · hồ ngâm chân."
    },
    {
-    "q": "Khu vực nào KHÔNG nằm ở Lầu 3?",
+    "q": "Khu vực nào KHÔNG nằm ở Tầng 3?",
     "o": [
-     "Public Bathhouse",
-     "Cafe cá (Fish Cafe)",
+     "Cafe cá",
      "Carnival Game",
-     "Khu check-in / chụp hình"
+     "Phòng thuốc bắc",
+     "Music Box"
     ],
     "a": 0,
-    "e": "Public Bathhouse ở Lầu 1; ba khu còn lại đều ở Lầu 3."
+    "e": "Cafe cá nằm ở Tầng G (cùng Nail, Hair, Massage cá, Golden Kitchen). Carnival Game, Phòng thuốc bắc và Music Box đều ở Tầng 3."
    },
    {
     "q": "Lớp Gym miễn phí có bao nhiêu ca mỗi ngày và áp dụng vào những ngày nào?",
@@ -2798,24 +2802,35 @@ const TOPICS = [
    {
     "q": "Snack bar và Kid zone lần lượt nằm ở tầng nào tại Quận 2?",
     "o": [
-     "Snack bar ở Lầu 1 · Kid zone ở Lầu 2",
-     "Cả hai đều ở Lầu 1",
-     "Snack bar ở Lầu 2 · Kid zone ở Lầu 3",
-     "Cả hai đều ở Lầu 3"
+     "Snack bar ở Tầng 1 · Kid zone ở Tầng 2",
+     "Cả hai đều ở Tầng 1",
+     "Snack bar ở Tầng 2 · Kid zone ở Tầng 3",
+     "Cả hai đều ở Tầng G"
     ],
     "a": 0,
-    "e": "Lầu 1 có Public Bathhouse và Snack bar; Lầu 2 có phòng nhiệt chuyên đề, Board Game, Relax zone và Kid zone."
+    "e": "Tầng 1: Public Bathhouse · Snack bar · Coworking cafe. Tầng 2: phòng nhiệt chuyên đề · Board Game · Relax zone · Kid zone · hồ ngâm chân."
    },
    {
     "q": "Gym và phòng thuốc bắc nằm ở tầng nào?",
     "o": [
-     "Lầu 3",
-     "Lầu 1",
-     "Lầu 2",
-     "Gym ở Lầu 2, phòng thuốc bắc ở Lầu 3"
+     "Tầng 3",
+     "Tầng 1",
+     "Tầng 2",
+     "Gym ở Tầng 2, phòng thuốc bắc ở Tầng 3"
     ],
     "a": 0,
-    "e": "Cả Gym lẫn phòng thuốc bắc đều ở Lầu 3, cùng khu với Carnival Game, Music Box, Dance/Yoga, Mini Game (motion game), Cafe cá và khu check-in."
+    "e": "Cả Gym lẫn phòng thuốc bắc đều ở Tầng 3, cùng khu với Music Box, Dance, Yoga, Game Class, Game zone, Carnival Game và Chiếu phim."
+   },
+   {
+    "q": "Nail, Hair, Massage cá và Golden Kitchen nằm ở tầng nào tại Quận 2?",
+    "o": [
+     "Tầng G",
+     "Tầng 1",
+     "Tầng 2",
+     "Tầng 3"
+    ],
+    "a": 0,
+    "e": "Tầng G: Nail · Hair · Massage cá · Cafe cá · Golden Kitchen."
    }
   ]
  },

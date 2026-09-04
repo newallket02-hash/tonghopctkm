@@ -99,11 +99,12 @@ const BRANCHES = [
         ['Dance','4 ca','4 ca','T2–T6 từ 15:10 · T7–CN từ 12:40'],
         ['Game','3 ca','3 ca','T2–T6 từ 10:30 · T7–CN từ 13:20']]} },
 
-    { h:'🏢 Bố trí các lầu',
+    { h:'🏢 Bố trí các tầng',
       table:{head:['Tầng','Khu vực'],rows:[
-        ['Lầu 1','Public Bathhouse · Snack bar'],
-        ['Lầu 2','Các phòng nhiệt nóng/lạnh chuyên đề · Board Game · Relax zone · Kid zone'],
-        ['Lầu 3','Carnival Game · Music Box (karaoke) · Dance · Yoga · Gym · Mini game tương tác · Phòng thuốc bắc · Chiếu phim · Cafe cá · Khu check-in chụp hình · Sự kiện theo chủ đề']]} },
+        ['Tầng G','Nail · Hair · Massage cá · Cafe cá · Golden Kitchen'],
+        ['Tầng 1','Public Bathhouse · Snack bar · Coworking cafe'],
+        ['Tầng 2','Các phòng nhiệt nóng/lạnh chuyên đề · Board Game · Relax zone · Kid zone · Hồ ngâm chân'],
+        ['Tầng 3','Music Box · Dance · Yoga · Game Class · Gym · Game zone · Carnival Game · Phòng thuốc bắc · Chiếu phim']]} },
 
     { h:'➕ Phụ thu',
       table:{head:['Khoản','Giá'],rows:[['Đồng phục','20k'],['Khăn','5k'],['Phòng VIP','**100k / người**']]} }
