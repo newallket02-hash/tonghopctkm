@@ -467,7 +467,8 @@ const TOPICS = [
       "Giá",
       "Giờ",
       "Ngày",
-      "Thời gian & lưu ý lễ"
+      "Thời gian & lưu ý lễ",
+      "Điều kiện"
      ],
      "rows": [
       [
@@ -475,63 +476,72 @@ const TOPICS = [
        "150k",
        "09:00–12:00 & 16:00–21:00",
        "T2–T6",
-       "03/09–30/10 · KHÔNG áp dụng lễ 29/8–02/09"
+       "03/09–30/10 · KHÔNG áp dụng lễ 29/8–02/09",
+       "Chỉ khách nữ cao trên 1m2 · Like&share FB HOẶC Follow TikTok"
       ],
       [
        "Ưu đãi tối",
        "139k",
        "21:00–24:00",
        "T2–CN",
-       "29/08–01/11 · ÁP DỤNG lễ tết"
+       "29/08–01/11 · ÁP DỤNG lễ tết",
+       "Khách trên 1m2 · Follow TikTok HOẶC Like/Share Fanpage"
       ],
       [
        "Ưu đãi cuối tuần",
        "210k",
        "09:00–10:30 & 16:00–20:00",
        "T7–CN",
-       "05/09–01/11 · KHÔNG áp dụng lễ 29/8–02/09"
+       "05/09–01/11 · KHÔNG áp dụng lễ 29/8–02/09",
+       "Khách trên 1m2 · Follow TikTok HOẶC Like/Share Fanpage"
       ],
       [
        "U60+ (+1 trứng nướng)",
        "125k",
        "09:00–24:00",
        "T2–T6",
-       "04/05–31/12 · KHÔNG áp dụng ngày lễ"
+       "04/05–31/12 · KHÔNG áp dụng ngày lễ",
+       "Khách Việt từ 60 tuổi (sinh 1966 trở về trước) · Mang CCCD"
       ],
       [
        "HSSV ca sáng (+1 trứng nướng)",
        "125k",
        "09:00–11:00",
        "T2–T6",
-       "03/09–30/10 · KHÔNG áp dụng lễ 29/8–02/09"
+       "03/09–30/10 · KHÔNG áp dụng lễ 29/8–02/09",
+       "**BẮT BUỘC nhóm từ 2 HSSV trở lên** · trên 1m2 · thẻ HS/SV hoặc đồng phục trường"
       ],
       [
        "HSSV ca chiều/tối (+1 trứng nướng)",
        "125k",
        "12:00–24:00",
        "T2–T6",
-       "01/04–31/12 · KHÔNG áp dụng ngày lễ"
+       "01/04–31/12 · KHÔNG áp dụng ngày lễ",
+       "**1 người vẫn được áp dụng** · trên 1m2 · thẻ HS/SV hoặc đồng phục trường"
       ],
       [
        "Combo Nam (ND + Skin care)",
        "290k",
        "12:00–17:00",
        "T2–T6",
-       "03/09–30/10 · KHÔNG áp dụng lễ"
+       "03/09–30/10 · KHÔNG áp dụng lễ",
+       "Booking trước qua hotline"
       ],
       [
        "Combo Nam & Nữ (ND + Skin care)",
        "235k",
        "Sau 20:00",
        "T2–CN",
-       "29/8–01/11 · ÁP DỤNG lễ 29/8–02/09"
+       "29/8–01/11 · ÁP DỤNG lễ 29/8–02/09",
+       "Booking trước qua hotline"
       ],
       [
        "Combo Nữ (ND + Honey skin care)",
        "455k",
        "09:00–22:00",
        "T7–CN",
-       "29/8–01/11 · ÁP DỤNG lễ 29/8–02/09"
+       "29/8–01/11 · ÁP DỤNG lễ 29/8–02/09",
+       "Booking trước qua hotline"
       ]
      ]
     }
