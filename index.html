@@ -888,6 +888,16 @@ function renderDay(){
   $('#dNext').addEventListener('click',()=>{ const n=new Date($('#dPick').value+'T00:00:00'); n.setDate(n.getDate()+1);
     $('#dHol').checked=false; $('#dPick').value=iso(n); renderDay(); });
   $('#dPick').addEventListener('change',()=>{ $('#dHol').checked=false; renderDay(); });
+  // Chrome desktop chỉ mở lịch khi bấm đúng icon nhỏ ở mép phải -> ép mở khi bấm bất kỳ đâu trong ô
+  (function(){
+    const el = $('#dPick'), wrap = el.closest('.dpwrap');
+    const open = ev => {
+      if(typeof el.showPicker !== 'function') return;
+      try{ el.showPicker(); if(ev) ev.preventDefault(); }catch(_){}
+    };
+    wrap.addEventListener('pointerdown', e => { el.focus(); open(e); });
+    wrap.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ open(e); } });
+  })();
   $('#dHol').addEventListener('change',renderDay);
   $('#dQ').addEventListener('input', ()=>{ $('#dQClear').hidden = !$('#dQ').value; renderDay(); });
   $('#dQClear').addEventListener('click', ()=>{ $('#dQ').value=''; $('#dQClear').hidden=true; renderDay(); $('#dQ').focus(); });
