@@ -29,7 +29,18 @@ const BRANCHES = [
         ['Skin Care Trẻ em (dưới 1,2m)','—','195k'],
         ['Honey Skin Care (Nữ)','50 phút','**450k**']]},
       note:'Honey Skin Care = Body Scrub (bắp / hạt sen / sữa muối) + Wrap (chọn 1: cà phê / nghệ / dừa mật ong) + xông nhiệt 20 phút miễn phí.',
-      warn:'Chà da bắt buộc phải ngâm cho da mềm ra trước. Khách ĐÃ có vé Nghỉ dưỡng thì ngâm luôn ở khu tắm trong vé — KHÔNG cần mua thêm vé Bathhouse. Khách CHỈ dùng chà da, không mua vé nghỉ dưỡng thì BẮT BUỘC mua vé Bathhouse riêng.' },
+      warnK:'BẮT BUỘC — HAY BỊ COMPLAIN', warn:'Chà da (Peeling) KHÔNG bán lẻ: bắt buộc mua kèm vé Sauna / Jjim Jil Bang hoặc Nghỉ dưỡng, kể cả khi khách đã được miễn phí 20 phút ngâm hồ. Giá chà da tính theo khung giờ (VD Happy Hour Nữ 280k, chưa VAT). Ủ da (Honey Skin Care) là dịch vụ RIÊNG — 450k chưa VAT. Cả chà và ủ đều được miễn phí 20 phút ngâm hồ làm mềm da; muốn ngâm lâu hơn phải mua vé ngâm hồ riêng.' },
+
+    { h:'⚠️ Quy định Chà da & Ủ da (hay bị khách complain)',
+      lead:'Nhóm dịch vụ phát sinh khiếu nại nhiều nhất. Phải nói rõ TRƯỚC khi thu tiền, không để khách tự hiểu.',
+      table:{head:['Nội dung','Quy định'],rows:[
+        ['Chà da bán lẻ được không?','**KHÔNG.** Bắt buộc mua kèm vé **Sauna**, **Jjim Jil Bang** hoặc **Nghỉ dưỡng** — kể cả khi đã có 20 phút ngâm hồ miễn phí.'],
+        ['Giá chà da','Tính **theo khung giờ**, không phải một giá cố định. VD Happy Hour Nữ **280k** (chưa VAT).'],
+        ['Ủ da / Body Scrub (Honey Skin Care)','Dịch vụ **RIÊNG**, khách hay gọi tắt là "ủ". **450k** (chưa VAT).'],
+        ['Ngâm hồ đi kèm','**Miễn phí 20 phút** trước khi chà hoặc ủ, để làm mềm da.'],
+        ['Muốn ngâm lâu hơn 20 phút','**Phải mua thêm vé ngâm hồ riêng.** Không tự động cho ngâm thêm.']]},
+      noteK:'CÂU NÓI CHUẨN KHI TƯ VẤN', note:' "Dạ dịch vụ chà da mình đi kèm với vé (sauna / jjim jil bang / nghỉ dưỡng) ạ. Trước khi chà, mình được ngâm hồ miễn phí 20 phút cho da mềm. Nếu chị muốn ngâm lâu hơn thì mình mua thêm vé ngâm hồ nha chị."',
+      warnK:'VÌ SAO PHẢI NÓI TRƯỚC', warn:'Đa số complain đến từ việc khách tưởng mua chà da là được ngâm hồ thoải mái, hoặc tưởng chà da bán lẻ được. Nói rõ ngay lúc bán sẽ chặn khiếu nại ở khâu thanh toán và khâu ra hồ.' },
 
     { h:'💆 Body & Foot care',
       table:{head:['Dịch vụ','Thời lượng','Giá thường'],rows:[
@@ -131,7 +142,18 @@ const BRANCHES = [
         ['Skin Care Trẻ em','—','195k'],
         ['Honey Skin Care (Nữ)','50 phút','**450k**']]},
       note:'Honey Skin Care = scrub (bắp / hạt sen / sữa muối) + wrap (cà phê / nghệ / dừa mật ong) + xông nhiệt 20 phút miễn phí.',
-      warn:'Chà da bắt buộc phải ngâm cho da mềm ra trước. Khách ĐÃ có vé Nghỉ dưỡng thì ngâm luôn ở khu tắm trong vé — KHÔNG cần mua thêm vé Bathhouse. Khách CHỈ dùng chà da, không mua vé nghỉ dưỡng thì BẮT BUỘC mua vé Bathhouse riêng.' },
+      warnK:'BẮT BUỘC — HAY BỊ COMPLAIN', warn:'Chà da (Peeling) KHÔNG bán lẻ: bắt buộc mua kèm vé Sauna / Jjim Jil Bang hoặc Nghỉ dưỡng, kể cả khi khách đã được miễn phí 20 phút ngâm hồ. Giá chà da tính theo khung giờ (VD Happy Hour Nữ 280k, chưa VAT). Ủ da (Honey Skin Care) là dịch vụ RIÊNG — 450k chưa VAT. Cả chà và ủ đều được miễn phí 20 phút ngâm hồ làm mềm da; muốn ngâm lâu hơn phải mua vé ngâm hồ riêng.' },
+
+    { h:'⚠️ Quy định Chà da & Ủ da (hay bị khách complain)',
+      lead:'Nhóm dịch vụ phát sinh khiếu nại nhiều nhất. Phải nói rõ TRƯỚC khi thu tiền, không để khách tự hiểu.',
+      table:{head:['Nội dung','Quy định'],rows:[
+        ['Chà da bán lẻ được không?','**KHÔNG.** Bắt buộc mua kèm vé **Sauna**, **Jjim Jil Bang** hoặc **Nghỉ dưỡng** — kể cả khi đã có 20 phút ngâm hồ miễn phí.'],
+        ['Giá chà da','Tính **theo khung giờ**, không phải một giá cố định. VD Happy Hour Nữ **280k** (chưa VAT).'],
+        ['Ủ da / Body Scrub (Honey Skin Care)','Dịch vụ **RIÊNG**, khách hay gọi tắt là "ủ". **450k** (chưa VAT).'],
+        ['Ngâm hồ đi kèm','**Miễn phí 20 phút** trước khi chà hoặc ủ, để làm mềm da.'],
+        ['Muốn ngâm lâu hơn 20 phút','**Phải mua thêm vé ngâm hồ riêng.** Không tự động cho ngâm thêm.']]},
+      noteK:'CÂU NÓI CHUẨN KHI TƯ VẤN', note:' "Dạ dịch vụ chà da mình đi kèm với vé (sauna / jjim jil bang / nghỉ dưỡng) ạ. Trước khi chà, mình được ngâm hồ miễn phí 20 phút cho da mềm. Nếu chị muốn ngâm lâu hơn thì mình mua thêm vé ngâm hồ nha chị."',
+      warnK:'VÌ SAO PHẢI NÓI TRƯỚC', warn:'Đa số complain đến từ việc khách tưởng mua chà da là được ngâm hồ thoải mái, hoặc tưởng chà da bán lẻ được. Nói rõ ngay lúc bán sẽ chặn khiếu nại ở khâu thanh toán và khâu ra hồ.' },
 
     { h:'💆 Body · Foot · Facial care',
       table:{head:['Dịch vụ','Kỳ T7,T8','Kỳ T9,T10','Giờ'],rows:[
@@ -167,8 +189,19 @@ const BRANCHES = [
     { h:'🏊 Bathhouse & ✨ Skin Care',
       bullets:['**Happy Hour Bathhouse Nam — 176k**, 09:00–12:00, T2–T6, khách trên 1,2m, KHÔNG áp dụng lễ tết.',
         '**Happy Hour Skin Care Nam — 232k**, 09:00–12:00, T2–T6, khách trên 1,2m, KHÔNG áp dụng lễ tết.'],
-      note:'Chà da bắt buộc phải ngâm cho da mềm ra trước. Khách ĐÃ có vé Nghỉ dưỡng thì ngâm luôn ở khu tắm trong vé — KHÔNG cần mua thêm vé Bathhouse. Khách CHỈ dùng chà da, không mua vé nghỉ dưỡng thì BẮT BUỘC mua vé Bathhouse riêng.',
+      noteK:'BẮT BUỘC — HAY BỊ COMPLAIN', note:'Chà da (Peeling) KHÔNG bán lẻ: bắt buộc mua kèm vé Sauna / Jjim Jil Bang hoặc Nghỉ dưỡng, kể cả khi khách đã được miễn phí 20 phút ngâm hồ. Giá chà da tính theo khung giờ (VD Happy Hour Nữ 280k, chưa VAT). Ủ da (Honey Skin Care) là dịch vụ RIÊNG — 450k chưa VAT. Cả chà và ủ đều được miễn phí 20 phút ngâm hồ làm mềm da; muốn ngâm lâu hơn phải mua vé ngâm hồ riêng.',
       warn:'Giá NIÊM YẾT (giá thường) của Bathhouse và Skin Care Quận 1 chưa có trong tài liệu — cần bảng giá menu Quận 1 để bổ sung.' },
+
+    { h:'⚠️ Quy định Chà da & Ủ da (hay bị khách complain)',
+      lead:'Nhóm dịch vụ phát sinh khiếu nại nhiều nhất. Phải nói rõ TRƯỚC khi thu tiền, không để khách tự hiểu.',
+      table:{head:['Nội dung','Quy định'],rows:[
+        ['Chà da bán lẻ được không?','**KHÔNG.** Bắt buộc mua kèm vé **Sauna**, **Jjim Jil Bang** hoặc **Nghỉ dưỡng** — kể cả khi đã có 20 phút ngâm hồ miễn phí.'],
+        ['Giá chà da','Tính **theo khung giờ**, không phải một giá cố định. VD Happy Hour Nữ **280k** (chưa VAT).'],
+        ['Ủ da / Body Scrub (Honey Skin Care)','Dịch vụ **RIÊNG**, khách hay gọi tắt là "ủ". **450k** (chưa VAT).'],
+        ['Ngâm hồ đi kèm','**Miễn phí 20 phút** trước khi chà hoặc ủ, để làm mềm da.'],
+        ['Muốn ngâm lâu hơn 20 phút','**Phải mua thêm vé ngâm hồ riêng.** Không tự động cho ngâm thêm.']]},
+      noteK:'CÂU NÓI CHUẨN KHI TƯ VẤN', note:' "Dạ dịch vụ chà da mình đi kèm với vé (sauna / jjim jil bang / nghỉ dưỡng) ạ. Trước khi chà, mình được ngâm hồ miễn phí 20 phút cho da mềm. Nếu chị muốn ngâm lâu hơn thì mình mua thêm vé ngâm hồ nha chị."',
+      warnK:'VÌ SAO PHẢI NÓI TRƯỚC', warn:'Đa số complain đến từ việc khách tưởng mua chà da là được ngâm hồ thoải mái, hoặc tưởng chà da bán lẻ được. Nói rõ ngay lúc bán sẽ chặn khiếu nại ở khâu thanh toán và khâu ra hồ.' },
 
     { h:'💆 Body & Foot care',
       table:{head:['Dịch vụ','Thời lượng','Giá thường'],rows:[

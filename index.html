@@ -766,8 +766,8 @@ function openBranch(brc){
     if(g.bullets) h += '<ul>' + g.bullets.map(x=>`<li>${md(x)}</li>`).join('') + '</ul>';
     if(g.yes)     h += `<div class="incl ok"><b>✓ Vé ĐÃ bao gồm</b><ul>${g.yes.map(x=>`<li>${md(x)}</li>`).join('')}</ul></div>`;
     if(g.no)      h += `<div class="incl no"><b>✕ KHÔNG bao gồm — tính phí riêng</b><ul>${g.no.map(x=>`<li>${md(x)}</li>`).join('')}</ul></div>`;
-    if(g.note)    h += noteHTML([{k:'LƯU Ý',t:g.note}]);
-    if(g.warn)    h += noteHTML([{k:'CHƯA CÓ',t:g.warn}]);
+    if(g.note)    h += noteHTML([{k:g.noteK||'LƯU Ý',t:g.note}]);
+    if(g.warn)    h += noteHTML([{k:g.warnK||'CHƯA CÓ',t:g.warn}]);
     h += '</div></details>';
   });
   d.innerHTML = h;
