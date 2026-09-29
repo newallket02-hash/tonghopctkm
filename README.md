@@ -14,6 +14,7 @@ Trang ôn tập nội bộ + ngân hàng câu hỏi trắc nghiệm cho nhân vi
 |---|---|
 | `index.html` | Toàn bộ giao diện + logic bài kiểm tra (không cần build) |
 | `data.js` | Dữ liệu: tài liệu ôn tập và câu hỏi của 11 chủ đề |
+| `menus.js` + thư mục `menu/` | Ảnh menu từng chi nhánh (Q1 · Q2 · Q7) — hiện ở tab Hôm nay khi bấm lọc chi nhánh. Thay menu: ghi đè ảnh cùng tên + tăng `MENU_VER` |
 | `ngan-hang-cau-hoi.csv` | Ngân hàng câu hỏi dạng bảng — Google Sheet dùng `=IMPORTDATA` trỏ vào file này |
 
 Sửa nội dung → chỉ cần sửa `data.js` (và `ngan-hang-cau-hoi.csv` nếu muốn Google Sheet cập nhật theo). Mỗi chủ đề có dạng:
@@ -30,6 +31,7 @@ Thứ tự câu hỏi và thứ tự đáp án được đảo ngẫu nhiên ở
 
 - 3 tab: Tổng quan · Tài liệu ôn tập · Làm bài kiểm tra
 - Thanh tìm kiếm toàn trang (tìm cả tài liệu lẫn câu hỏi, không dấu vẫn ra kết quả, phím tắt `/`)
+- Tab Hôm nay: bấm Q1/Q2/Q7 → hiện menu chi nhánh đó (ảnh nhỏ, bấm để phóng to, vuốt/◀▶ chuyển trang)
 - Màu riêng theo chi nhánh (Q1 xanh lá · Q2 xanh dương · Q7 cam · Chung xám · Tổng hợp tím) + bộ lọc theo chi nhánh
 
 ## Deploy
