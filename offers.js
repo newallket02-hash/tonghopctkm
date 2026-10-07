@@ -26,8 +26,8 @@ const OFFERS = [
     time:'09:00–12:00 & 16:00–21:00', days:'T2-T6', from:'2026-09-03', to:'2026-10-30',
     holiday:false, base:'270k', cond:'Chỉ khách nữ cao trên 1m2 · Like&share FB HOẶC Follow TikTok', period:'Kỳ T9,T10' },
 
-  { br:'Q2', topic:'q2-nghiduong-910', cat:'nd', sec:"CTKM tháng 9,10/2026 — Quận 2", name:'Ưu đãi tối', price:'139k',
-    time:'21:00–24:00', days:'T2-CN', from:'2026-08-29', to:'2026-11-01',
+  { br:'Q2', topic:'q2-nghiduong-910', cat:'nd', sec:"CTKM tháng 9,10/2026 — Quận 2", name:'Ưu đãi tối', price:'139k / vé Healing World',
+    time:'Check-in sau 21:00', days:'T2-CN', from:'2026-07-01', to:'2026-11-01',
     holiday:true, base:'270k', cond:'Khách trên 1m2 · Follow TikTok HOẶC Like/Share Fanpage' },
 
   { br:'Q2', topic:'q2-nghiduong-78', cat:'nd', sec:"Bảng giá vé nghỉ dưỡng (01/07 ~ 31/08/2026)", name:'Ưu đãi cuối tuần', price:'210k',
