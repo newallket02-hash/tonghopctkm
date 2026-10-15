@@ -98,6 +98,16 @@ const BRANCHES = [
         '**Đãi tiệc sinh nhật** — bàn từ 5 người, đặt trước 1 ngày, tặng bánh pizza.',
         '**Game vòng quay may mắn** — bill từ 200k được quay; voucher dùng ở lần sau khi bill từ 300k.'] },
 
+    { h:'🐾 PET CAFE (Coming soon) — Bảng giá dịch vụ',
+      lead:'Bảng giá mới (chị LVy gửi 15/10/2026). Pet Healing **chưa vận hành** — chưa báo giá Pet Healing / Combo cho khách như dịch vụ đang bán.',
+      table:{head:['Dịch vụ','Khách ngoài','Khách Healing World','Giá Event','Thời gian Event'],rows:[
+        ['Aqua','100k','50k','**35k** (gốc 50k)','**01/11 – 30/11/2026**'],
+        ['Pet Healing','130k','70k','**55k** (gốc 70k)','Chưa xác định'],
+        ['Combo Aqua + Pet','190k','90k','**70k**','Chưa xác định']]},
+      bullets:['Khách được hưởng **giá Event** khi **để lại Google Review**.',
+        'Event của **Pet Healing** và **Combo Aqua + Pet** chỉ bắt đầu khi Pet Healing đã **vận hành ổn định**.'],
+      warnK:'CHƯA CHỐT', warn:'Giá Aqua cho khách ngoài: bảng ghi 100k, nhưng Cao Thanh báo giá hiện tại là 95k. Chị LVy sẽ cập nhật lại — chưa có bản mới. Hỏi quản lý trước khi báo giá Aqua cho khách ngoài.' },
+
     { h:'💅 Golden Nail & Hair',
       bullets:['**Nail** — sơn gel, art design tay/chân, cắt da.',
         '**Hair** — color, style, treatment, Keratin / Collagen Treatment 3 step, cắt tóc nam/nữ + gội đầu 10 phút.',
