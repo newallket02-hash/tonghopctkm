@@ -336,6 +336,7 @@ label.lb{font-size:12.5px;font-weight:700;color:var(--muted);text-transform:uppe
 .badge{border-radius:999px;padding:2px 9px;font-size:11px;font-weight:700;white-space:nowrap}
 .badge.d{background:var(--navy-soft);color:var(--navy)}
 .badge.q{background:var(--orange-soft);color:#8a5a00}
+.badge.k{background:#e8f5ec;color:#2f8a57}
 .badge.tp{background:var(--bcs,#f0f2f8);color:var(--bc,var(--muted))}
 .sres .hd{font-weight:600;font-size:14.8px;line-height:1.45;margin-bottom:3px}
 .sres .sn{color:var(--muted);font-size:13.4px;line-height:1.55}
@@ -362,6 +363,34 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
     font-weight:700;font-size:14.5px;padding:10px 12px}
   tr td:first-child::before{display:none}
 }
+
+/* ---------- tab Khái niệm ---------- */
+.cpt{margin-bottom:22px}
+.cpt>h3{font-size:16.5px;margin:0 0 3px;color:var(--navy);display:flex;align-items:center;gap:8px}
+.cpt>.sub{margin-bottom:12px}
+.cpt-pair{display:grid;grid-template-columns:1fr;gap:12px}
+.svc{--tc:var(--navy);--ts:var(--navy-soft);background:var(--card,#fff);border:1px solid var(--line);
+  border-top:4px solid var(--tc);border-radius:18px;padding:15px 16px 14px}
+.svc.peel{--tc:#2f8a57;--ts:#e8f5ec}
+.svc.honey{--tc:#b7791f;--ts:#fdf3e1}
+.svc .hd{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.svc .hd b{font-size:17px;color:var(--tc)}
+.svc .hd .en{font-size:12px;font-weight:700;background:var(--ts);color:var(--tc);border-radius:999px;padding:2px 9px}
+.svc .hd .al{font-size:12.5px;color:var(--muted);font-style:italic}
+.svc .lb2{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);margin:10px 0 5px}
+.svc ol{margin:0;padding:0;list-style:none;counter-reset:st}
+.svc ol li{counter-increment:st;position:relative;padding:0 0 9px 34px;line-height:1.55;font-size:14.3px}
+.svc ol li::before{content:counter(st);position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;
+  background:var(--ts);color:var(--tc);font-weight:800;font-size:12.5px;display:grid;place-items:center}
+.svc ol li:not(:last-child)::after{content:"";position:absolute;left:11.5px;top:26px;bottom:2px;width:1px;background:var(--line)}
+.svc .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;margin-top:6px;padding-top:11px;border-top:1px dashed var(--line);font-size:14px;line-height:1.5}
+.svc .kv dt{color:var(--muted);font-weight:700;white-space:nowrap}
+.svc .kv dd{margin:0}
+.svc .kv strong{color:var(--tc)}
+.cpt .cmp{margin-top:14px}
+.cpt .cmp>summary{cursor:pointer;font-weight:700;color:var(--navy);font-size:14.5px;padding:6px 0}
+.cpt.hit .svc{box-shadow:0 0 0 3px rgba(245,166,35,.45)}
+@media(min-width:760px){ .cpt-pair{grid-template-columns:1fr 1fr} }
 
 /* ================= DESKTOP ================= */
 @media(min-width:760px){
@@ -451,6 +480,7 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
       <button class="tab" role="tab" data-view="doc" aria-selected="false">Thông tin chương trình</button>
       <button class="tab" role="tab" data-view="quiz" aria-selected="false">Làm bài kiểm tra</button>
       <button class="tab" role="tab" data-view="info" aria-selected="false">Tổng quan</button>
+      <button class="tab" role="tab" data-view="concept" aria-selected="false">Khái niệm</button>
     </div>
     <div class="searchbox">
       <span class="si">🔍</span>
@@ -511,6 +541,13 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
       <div class="grid" id="infoGrid"></div>
     </div>
     <div id="infoDetail" hidden></div>
+  </section>
+
+  <!-- KHÁI NIỆM DỊCH VỤ -->
+  <section class="panel" id="v-concept" hidden>
+    <h2>Khái niệm dịch vụ</h2>
+    <p class="sub">Giải thích &amp; phân biệt các dịch vụ dễ nhầm — dùng để tư vấn cho khách.</p>
+    <div id="cptList"></div>
   </section>
 
   <!-- TÀI LIỆU -->
@@ -585,6 +622,7 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
   <button class="bn" role="tab" data-view="doc" aria-selected="false"><i>📖</i>Thông tin</button>
   <button class="bn" role="tab" data-view="quiz" aria-selected="false"><i>📝</i>Kiểm tra</button>
   <button class="bn" role="tab" data-view="info" aria-selected="false"><i>🏢</i>Tổng quan</button>
+  <button class="bn" role="tab" data-view="concept" aria-selected="false"><i>💡</i>Khái niệm</button>
   <button class="bn" id="bnSearch"><i>🔍</i>Tìm</button>
 </nav>
 
@@ -639,6 +677,7 @@ const AUTHKEY = 'glh_ctkm_user';
 <script src="data.js?v=20260902"></script>
 <script src="offers.js?v=20260902"></script>
 <script src="branches.js?v=20260903"></script>
+<script src="concepts.js?v=20261015"></script>
 <script>
 const DATA = TOPICS;
 const $ = s => document.querySelector(s);
@@ -658,7 +697,7 @@ let curView='today', lastView='today';
 function show(v){
   const changed = v!==curView;
   document.querySelectorAll('.tab,.bn[data-view]').forEach(b=>b.setAttribute('aria-selected', b.dataset.view===v));
-  ['today','doc','quiz','search','info'].forEach(k=>$('#v-'+k).hidden = (k!==v));
+  ['today','doc','quiz','search','info','concept'].forEach(k=>$('#v-'+k).hidden = (k!==v));
   if(v!=='search') lastView=v;
   curView=v;
   if(changed) window.scrollTo({top:0,behavior:'smooth'});
@@ -810,6 +849,34 @@ function openBranch(brc){
   $('#infoBack').addEventListener('click',()=>{ d.hidden=true; $('#infoIndex').hidden=false; window.scrollTo({top:0}); });
 }
 BRANCHES.forEach(b=>$('#infoGrid').appendChild(infoCard(b)));
+
+/* ================= KHÁI NIỆM DỊCH VỤ ================= */
+(function(){
+  const list=$('#cptList'); if(typeof CONCEPTS==='undefined') return;
+  CONCEPTS.forEach(c=>{
+    const w=el('div','cpt'); w.id='cpt-'+c.id;
+    let h=`<h3>${c.icon||'💡'} ${esc(c.title)}</h3>`;
+    if(c.sub) h+=`<p class="sub">${md(c.sub)}</p>`;
+    h+='<div class="cpt-pair">';
+    c.items.forEach(it=>{
+      h+=`<div class="svc ${it.tone||''}"><div class="hd"><b>${esc(it.name)}</b>`+
+         (it.en?`<span class="en">${esc(it.en)}</span>`:'')+
+         (it.alias?`<span class="al">(${esc(it.alias)})</span>`:'')+'</div>';
+      if(it.steps&&it.steps.length) h+='<div class="lb2">Quy trình</div><ol>'+it.steps.map(x=>`<li>${md(x)}</li>`).join('')+'</ol>';
+      const kv=[['⏱ Thời gian',it.time],['👤 Đối tượng',it.who],['🎯 Phù hợp',it.fit]].filter(x=>x[1]);
+      if(kv.length) h+='<dl class="kv">'+kv.map(x=>`<dt>${x[0]}</dt><dd>${md(x[1])}</dd>`).join('')+'</dl>';
+      h+='</div>';
+    });
+    h+='</div>';
+    if(c.compare) h+=`<details class="cmp"${isMobile()?'':' open'}><summary>📊 So sánh nhanh</summary>${tableHTML(c.compare)}</details>`;
+    w.innerHTML=h; list.appendChild(w);
+  });
+})();
+function openConcept(id){
+  show('concept');
+  const t=document.getElementById('cpt-'+id); if(!t) return;
+  setTimeout(()=>{ t.scrollIntoView({behavior:'smooth',block:'start'}); t.classList.add('hit'); setTimeout(()=>t.classList.remove('hit'),2200); },60);
+}
 
 /* ================= TRA CỨU THEO NGÀY ================= */
 const DOW = ['Chủ nhật','Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy'];
@@ -1043,6 +1110,14 @@ DATA.forEach(t=>{
     text:q.q+' — '+q.o.join(' / ')+' — '+q.e, q:q.q, ans:q.o[q.a], exp:q.e}));
 });
 IDX.forEach(x=>{ x.n=normMap(x.text); x.topic=DATA.find(t=>t.id===x.tid); });
+const CIDX=[];
+(typeof CONCEPTS!=='undefined'?CONCEPTS:[]).forEach(c=>{
+  c.items.forEach(it=>{
+    const text=[it.name,it.en,it.alias].filter(Boolean).join(' / ')+' — '+
+      [].concat(it.steps||[],it.time?['Thời gian: '+it.time]:[],it.who?['Đối tượng: '+it.who]:[],it.fit?['Phù hợp: '+it.fit]:[]).map(strip).join(' · ');
+    CIDX.push({cid:c.id,title:c.title,icon:c.icon,sec:[it.name,it.en].filter(Boolean).join(' — '),text,n:normMap(text+' '+c.title+' khai niem')});
+  });
+});
 
 function ranges(n,terms){
   const out=[];
@@ -1100,12 +1175,20 @@ function runSearch(){
   if(raw.length<2){ if(!$('#v-search').hidden) show(lastView); return; }
   const terms=normMap(raw).split(/\s+/).filter(Boolean);
   const hits=IDX.filter(x=>terms.every(t=>x.n.includes(t)));
+  const chits=CIDX.filter(x=>terms.every(t=>x.n.includes(t)));
   $('#sTitle').innerHTML = `Kết quả cho “${esc(raw)}”`;
-  $('#sSub').textContent = hits.length
-    ? `${hits.length} kết quả · ${new Set(hits.map(h=>h.tid)).size} chủ đề`
+  $('#sSub').textContent = (hits.length||chits.length)
+    ? `${hits.length+chits.length} kết quả · ${new Set(hits.map(h=>h.tid)).size + (chits.length?1:0)} chủ đề`
     : 'Không tìm thấy kết quả nào';
   const list=$('#sList'); list.innerHTML='';
-  if(!hits.length){
+  chits.forEach(x=>{
+    const b=el('button','sres'); b.type='button';
+    b.innerHTML=`<div class="top"><span class="badge k">Khái niệm</span><span class="badge tp b-chung">${x.icon||'💡'} ${esc(x.title)}</span></div>
+      <div class="hd">${esc(x.sec)}</div><div class="sn">${hl(x.text,terms,true)}</div>`;
+    b.addEventListener('click',()=>openConcept(x.cid));
+    list.appendChild(b);
+  });
+  if(!hits.length && !chits.length){
     list.appendChild(el('div','nores',
       `Không có nội dung nào chứa <b>${esc(raw)}</b>.<br>Thử từ khoá ngắn hơn: <b>gym</b> · <b>combo</b> · <b>vé</b> · <b>HSSV</b> · <b>từ cấm</b> · <b>vòng quay</b>.`));
     show('search'); return;
