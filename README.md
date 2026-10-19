@@ -3,8 +3,8 @@
 Trang ôn tập nội bộ + ngân hàng câu hỏi trắc nghiệm cho nhân viên GLH.
 
 - **Phạm vi:** Quận 1 · Quận 2 · Quận 7
-- **Kỳ:** T7,T8/2026 · Lễ 2/9 · T9,T10/2026
-- **Nội dung:** 11 chủ đề / **136 câu hỏi**
+- **Kỳ:** T7,T8/2026 · Lễ 2/9 · T9,T10/2026 · T11,T12/2026
+- **Nội dung:** 13 chủ đề / **180 câu hỏi**
 - **Nguồn:** `Tổng Hợp CTKM Q2 Q1 Q7.xlsx` (12 sheet) + các đính chính của phòng vận hành (28/08/2026)
 - **Link:** https://tonghopctkmt9.vercel.app
 
