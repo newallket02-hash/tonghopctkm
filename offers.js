@@ -11,10 +11,12 @@
    ========================================================================== */
 
 /* Ngày công ty tính là LỄ / TẾT.
-   Từ 29/08/2026 → 31/12/2026 chỉ có duy nhất dịp Quốc khánh 2/9.
-   Có thêm ngày nào (20/10, Noel, Tết…) thì thêm một dòng vào đây là xong. */
+   Từ 29/08/2026 → 31/12/2026: Quốc khánh 2/9 và Ngày Văn hóa Việt Nam 24/11 (file PROMO T11,T12).
+   24/11 đang tính đúng 1 ngày — nếu công ty nghỉ dài hơn thì sửa 'to'.
+   Có thêm ngày nào (Noel, Tết…) thì thêm một dòng vào đây là xong. */
 const HOLIDAYS = [
-  { from: '2026-08-29', to: '2026-09-02', name: 'Lễ Quốc khánh 2/9' }
+  { from: '2026-08-29', to: '2026-09-02', name: 'Lễ Quốc khánh 2/9' },
+  { from: '2026-11-24', to: '2026-11-24', name: 'Ngày Văn hóa Việt Nam 24/11' }
 ];
 
 const OFFERS = [
@@ -25,21 +27,33 @@ const OFFERS = [
   { br:'Q2', topic:'q2-nghiduong-910', cat:'nd', sec:"CTKM tháng 9,10/2026 — Quận 2", name:'Ưu đãi khách hàng nữ', price:'150k',
     time:'09:00–12:00 & 16:00–21:00', days:'T2-T6', from:'2026-09-03', to:'2026-10-30',
     holiday:false, base:'270k', cond:'Chỉ khách nữ cao trên 1m2 · Like&share FB HOẶC Follow TikTok', period:'Kỳ T9,T10' },
+  { br:'Q2', topic:'q2-nghiduong-1112', cat:'nd', sec:"CTKM tháng 11,12/2026 — Quận 2", name:'Ưu đãi khách hàng nữ', price:'170k',
+    time:'09:00–12:00 & 16:00–20:00', days:'T2-T6', from:'2026-11-02', to:'2026-12-31',
+    holiday:false, base:'290k', cond:'Chỉ khách nữ cao trên 1m2 · Follow TikTok (ưu tiên); đã follow thì Like & share FB', period:'Kỳ T11,T12' },
 
   { br:'Q2', topic:'q2-nghiduong-910', cat:'nd', sec:"CTKM tháng 9,10/2026 — Quận 2", name:'Ưu đãi tối', price:'139k / vé Healing World',
-    time:'Check-in sau 21:00', days:'T2-CN', from:'2026-07-01', to:'2026-11-01',
-    holiday:true, base:'270k', cond:'Khách trên 1m2 · Follow TikTok HOẶC Like/Share Fanpage' },
+    time:'Check-in sau 21:00', days:'T2-CN', from:'2026-07-01', to:'2026-10-31',
+    holiday:true, base:'270k', cond:'Khách trên 1m2 · Follow TikTok HOẶC Like/Share Fanpage', period:'Kỳ T7–T10' },
+  { br:'Q2', topic:'q2-nghiduong-1112', cat:'nd', sec:"CTKM tháng 11,12/2026 — Quận 2", name:'Ưu đãi tối', price:'150k / vé Healing World',
+    time:'Check-in sau 21:00', days:'T2-CN', from:'2026-11-01', to:'2026-12-31',
+    holiday:true, base:'290k', cond:'Tất cả khách hàng', period:'Kỳ T11,T12' },
 
   { br:'Q2', topic:'q2-nghiduong-78', cat:'nd', sec:"Bảng giá vé nghỉ dưỡng (01/07 ~ 31/08/2026)", name:'Ưu đãi cuối tuần', price:'210k',
     time:'09:00–10:30 & 16:00–20:00', days:'T7-CN', from:'2026-07-01', to:'2026-08-31',
     holiday:false, base:'270k', cond:'Khách trên 1m2 · Follow TikTok HOẶC Like/Share Fanpage', period:'Kỳ T7,T8' },
   { br:'Q2', topic:'q2-nghiduong-910', cat:'nd', sec:"CTKM tháng 9,10/2026 — Quận 2", name:'Ưu đãi cuối tuần', price:'210k',
-    time:'09:00–10:30 & 16:00–20:00', days:'T7-CN', from:'2026-09-05', to:'2026-11-01',
+    time:'09:00–10:30 & 16:00–20:00', days:'T7-CN', from:'2026-09-05', to:'2026-10-31',
     holiday:false, base:'270k', cond:'Khách trên 1m2 · Follow TikTok HOẶC Like/Share Fanpage', period:'Kỳ T9,T10' },
+  { br:'Q2', topic:'q2-nghiduong-1112', cat:'nd', sec:"CTKM tháng 11,12/2026 — Quận 2", name:'Ưu đãi cuối tuần', price:'210k',
+    time:'09:00–10:30 & 16:00–20:00', days:'T7-CN', from:'2026-11-01', to:'2026-12-27',
+    holiday:false, base:'290k', cond:'Tất cả khách · Follow TikTok (ưu tiên); đã follow thì Like & share FB · KẾT THÚC 27/12 (không phải 31/12)', period:'Kỳ T11,T12' },
 
   { br:'Q2', topic:'q2-nghiduong-78', cat:'nd', sec:"Bảng giá vé nghỉ dưỡng (01/07 ~ 31/08/2026)", name:'Ưu đãi khách U60+ (+1 trứng nướng)', price:'125k',
-    time:'09:00–24:00', days:'T2-T6', from:'2026-05-04', to:'2026-12-31',
-    holiday:false, base:'270k', cond:'Khách Việt từ 60 tuổi (sinh 1966 trở về trước) · Mang CCCD' },
+    time:'09:00–24:00', days:'T2-T6', from:'2026-05-04', to:'2026-10-31',
+    holiday:false, base:'270k', cond:'Khách Việt từ 60 tuổi (sinh 1966 trở về trước) · Mang CCCD', period:'Kỳ T5–T10' },
+  { br:'Q2', topic:'q2-nghiduong-1112', cat:'nd', sec:"CTKM tháng 11,12/2026 — Quận 2", name:'Ưu đãi khách U60+ (+1 trứng nướng)', price:'125k',
+    time:'09:00–24:00', days:'T2-T6', from:'2026-11-01', to:'2026-12-31',
+    holiday:false, base:'290k', cond:'Khách Việt từ 60 tuổi (sinh 1966 trở về trước) · Mang CCCD', period:'Kỳ T11,T12' },
 
   { br:'Q2', topic:'q2-nghiduong-78', cat:'nd', sec:"Bảng giá vé nghỉ dưỡng (01/07 ~ 31/08/2026)", name:'HSSV ca sáng (+1 trứng nướng)', price:'125k',
     time:'09:00–11:00', days:'T2-T6', from:'2026-07-01', to:'2026-08-31',
@@ -47,9 +61,18 @@ const OFFERS = [
   { br:'Q2', topic:'q2-nghiduong-910', cat:'nd', sec:"CTKM tháng 9,10/2026 — Quận 2", name:'HSSV ca sáng (+1 trứng nướng)', price:'125k',
     time:'09:00–11:00', days:'T2-T6', from:'2026-09-03', to:'2026-10-30',
     holiday:false, base:'270k', cond:'BẮT BUỘC nhóm từ 2 HSSV trở lên · trên 1m2', period:'Kỳ T9,T10' },
+  { br:'Q2', topic:'q2-nghiduong-1112', cat:'nd', sec:"CTKM tháng 11,12/2026 — Quận 2", name:'HSSV ca sáng', price:'125k',
+    time:'09:00–11:00', days:'T2-T6', from:'2026-11-02', to:'2026-12-31',
+    holiday:false, base:'290k', cond:'Đi 1 người vẫn được (bỏ điều kiện nhóm từ 2 HSSV) · HS mặc đồng phục + CCCD / SV xuất trình thẻ · Follow TikTok HOẶC Like + share FB · ⚠️ file không còn ghi tặng trứng nướng — hỏi quản lý', period:'Kỳ T11,T12' },
   { br:'Q2', topic:'q2-nghiduong-78', cat:'nd', sec:"Bảng giá vé nghỉ dưỡng (01/07 ~ 31/08/2026)", name:'HSSV ca chiều/tối (+1 trứng nướng)', price:'125k',
-    time:'12:00–24:00', days:'T2-T6', from:'2026-04-01', to:'2026-12-31',
-    holiday:false, base:'270k', cond:'1 người vẫn được áp dụng · trên 1m2' },
+    time:'12:00–24:00', days:'T2-T6', from:'2026-04-01', to:'2026-10-31',
+    holiday:false, base:'270k', cond:'1 người vẫn được áp dụng · trên 1m2', period:'Kỳ T4–T10' },
+  { br:'Q2', topic:'q2-nghiduong-1112', cat:'nd', sec:"CTKM tháng 11,12/2026 — Quận 2", name:'HSSV ca chiều/tối (+ tham quan Aqua Cafe)', price:'139k',
+    time:'12:00–24:00', days:'T2-T6', from:'2026-11-01', to:'2026-12-31',
+    holiday:false, base:'290k', cond:'Kèm tham quan Aqua Cafe (chụp hình, check-in — KHÔNG gồm nước, kem tuyết) · HS đồng phục + CCCD / SV thẻ · Follow TikTok HOẶC Like + share FB · ⚠️ file chưa ghi ngày bắt đầu giá 139k (web tạm tính từ 01/11) và không còn ghi tặng trứng nướng', period:'Kỳ T11,T12' },
+  { br:'Q2', topic:'q2-nghiduong-1112', cat:'nd', sec:"CTKM tháng 11,12/2026 — Quận 2", name:'🆕 HSSV 70k (giới hạn 50 khách/khung)', price:'70k',
+    time:'09:00–11:00 & 19:00–21:00', days:'T2-T6', from:'2026-10-21', to:'2026-11-20',
+    holiday:false, base:'290k', cond:'Check-in theo khung 9h · 10h · 11h và 19h · 20h · 21h — mỗi khung 50 khách, hết suất về 125k · HS mặc đồng phục + CCCD / SV xuất trình thẻ · BẮT BUỘC check-in bằng Kiosk', period:'21/10–20/11' },
 
   { br:'Q2', topic:'q2-nghiduong-910', cat:'nd', sec:"CTKM tháng 9,10/2026 — Quận 2", name:'ƯU ĐÃI LỄ 2/9 — Quận 2', price:'210k',
     time:'09:00–10:30 & 18:00–20:00', days:'T2-CN', from:'2026-08-29', to:'2026-09-02',
@@ -58,21 +81,37 @@ const OFFERS = [
   /* ---- Combo nghỉ dưỡng + chăm sóc da ---- */
   { br:'Q2', topic:'q2-nghiduong-910', cat:'skin', sec:"CTKM tháng 9,10/2026 — Quận 2", name:'Combo Nam — Nghỉ dưỡng + Skin care (chà da)', price:'290k',
     time:'12:00–17:00', days:'T2-T6', from:'2026-09-03', to:'2026-10-30',
-    holiday:false, base:'560k', cond:'Booking trước qua hotline · Skin care (chà da) bắt buộc đi kèm Bathhouse hoặc Nghỉ dưỡng — combo này ĐÃ gồm vé Nghỉ dưỡng' },
+    holiday:false, base:'560k', cond:'Booking trước qua hotline · Skin care (chà da) bắt buộc đi kèm Bathhouse hoặc Nghỉ dưỡng — combo này ĐÃ gồm vé Nghỉ dưỡng', period:'Kỳ T9,T10' },
+  { br:'Q2', topic:'q2-nghiduong-1112', cat:'skin', sec:"CTKM tháng 11,12/2026 — Quận 2", name:'Combo Nam — Nghỉ dưỡng + Skin care (chà da)', price:'290k',
+    time:'12:00–17:00', days:'T2-T6', from:'2026-11-02', to:'2026-12-31',
+    holiday:false, base:'580k', cond:'Booking trước qua hotline · Skin care (chà da) bắt buộc đi kèm Bathhouse hoặc Nghỉ dưỡng — combo này ĐÃ gồm vé Nghỉ dưỡng', period:'Kỳ T11,T12' },
   { br:'Q2', topic:'q2-nghiduong-78', cat:'skin', sec:"COMBO nghỉ dưỡng + chăm sóc da", name:'Combo Nữ — Nghỉ dưỡng + Honey skin care (ủ)', price:'290k',
     time:'12:00–17:00', days:'T2-T6', from:null, to:'2026-10-30', holiday:false,
-    base:'720k', cond:'Booking trước qua hotline · Honey skin care (body scrub / ủ) KHÔNG bắt buộc mua kèm dịch vụ nào — combo này đã có sẵn vé Nghỉ dưỡng' },
+    base:'720k', cond:'Booking trước qua hotline · Honey skin care (body scrub / ủ) KHÔNG bắt buộc mua kèm dịch vụ nào — combo này đã có sẵn vé Nghỉ dưỡng', period:'Đến T10' },
+  { br:'Q2', topic:'q2-nghiduong-1112', cat:'skin', sec:"CTKM tháng 11,12/2026 — Quận 2", name:'Combo Nữ — Nghỉ dưỡng + Honey skin care (ủ)', price:'290k',
+    time:'12:00–17:00', days:'T2-T6', from:'2026-11-02', to:'2026-12-31', holiday:false,
+    base:'740k', cond:'Booking trước qua hotline · Honey skin care (body scrub / ủ) KHÔNG bắt buộc mua kèm dịch vụ nào — combo này đã có sẵn vé Nghỉ dưỡng · ⚠️ giảm ~61%, sâu hơn Combo Nữ 455k cuối tuần — xác nhận lại trước khi báo khách', period:'Kỳ T11,T12' },
   { br:'Q2', topic:'q2-nghiduong-910', cat:'skin', sec:"CTKM tháng 9,10/2026 — Quận 2", name:'Combo Nam & Nữ — Nghỉ dưỡng + Skin care (chà da)', price:'235k',
-    time:'Sau 20:00', days:'T2-CN', from:'2026-08-29', to:'2026-11-01',
-    holiday:true, cond:'Booking trước qua hotline · Skin care (chà da) bắt buộc đi kèm Bathhouse hoặc Nghỉ dưỡng — combo này ĐÃ gồm vé Nghỉ dưỡng' },
+    time:'Sau 20:00', days:'T2-CN', from:'2026-08-29', to:'2026-10-31',
+    holiday:true, base:'405k (Nam) · 450k (Nữ)', cond:'Booking trước qua hotline · Skin care (chà da) bắt buộc đi kèm Bathhouse hoặc Nghỉ dưỡng — combo này ĐÃ gồm vé Nghỉ dưỡng', period:'Kỳ T9,T10' },
+  { br:'Q2', topic:'q2-nghiduong-1112', cat:'skin', sec:"CTKM tháng 11,12/2026 — Quận 2", name:'Combo Nam & Nữ — Nghỉ dưỡng + Skin care (chà da)', price:'235k',
+    time:'Sau 20:00', days:'T2-CN', from:'2026-11-01', to:'2026-12-31',
+    holiday:true, base:'425k (Nam) · 470k (Nữ)', cond:'Booking trước qua hotline · Skin care (chà da) bắt buộc đi kèm Bathhouse hoặc Nghỉ dưỡng — combo này ĐÃ gồm vé Nghỉ dưỡng', period:'Kỳ T11,T12' },
   { br:'Q2', topic:'q2-nghiduong-910', cat:'skin', sec:"CTKM tháng 9,10/2026 — Quận 2", name:'Combo Nữ — Nghỉ dưỡng + Honey skin care (ủ)', price:'455k',
-    time:'09:00–22:00', days:'T7-CN', from:'2026-08-29', to:'2026-11-01',
-    holiday:true, base:'720k', cond:'Booking trước qua hotline · Honey skin care (body scrub / ủ) KHÔNG bắt buộc mua kèm dịch vụ nào — combo này đã có sẵn vé Nghỉ dưỡng' },
+    time:'09:00–22:00', days:'T7-CN', from:'2026-08-29', to:'2026-10-31',
+    holiday:true, base:'720k', cond:'Booking trước qua hotline · Honey skin care (body scrub / ủ) KHÔNG bắt buộc mua kèm dịch vụ nào — combo này đã có sẵn vé Nghỉ dưỡng', period:'Kỳ T9,T10' },
+  { br:'Q2', topic:'q2-nghiduong-1112', cat:'skin', sec:"CTKM tháng 11,12/2026 — Quận 2", name:'Combo Nữ — Nghỉ dưỡng + Honey skin care (ủ)', price:'455k',
+    time:'09:00–22:00', days:'T7-CN', from:'2026-11-01', to:'2026-12-27',
+    holiday:true, base:'740k', cond:'Booking trước qua hotline · Honey skin care (body scrub / ủ) KHÔNG bắt buộc mua kèm dịch vụ nào — combo này đã có sẵn vé Nghỉ dưỡng · KẾT THÚC 27/12', period:'Kỳ T11,T12' },
 
   { br:'Q2', topic:'q2-nghiduong-78', cat:'nd', sec:"Happy Hour Quận 2 (menu 06/2026 · thường niên)", name:'Happy Hour Nghỉ dưỡng — ca sáng', price:'NL 210k · TE 140k',
-    time:'09:00–11:00', days:'T2-T6', from:null, to:null, holiday:false, annual:true, base:'NL 270k · TE 170k', cond:'Giá menu CHƯA gồm VAT · trẻ em 0,8–1,2m · dưới 0,8m miễn phí · chương trình thường niên' },
+    time:'09:00–11:00', days:'T2-T6', from:null, to:'2026-10-31', holiday:false, annual:true, base:'NL 270k · TE 170k', cond:'Giá menu CHƯA gồm VAT · trẻ em 0,8–1,2m · dưới 0,8m miễn phí · chương trình thường niên' },
   { br:'Q2', topic:'q2-nghiduong-78', cat:'nd', sec:"Happy Hour Quận 2 (menu 06/2026 · thường niên)", name:'Happy Hour Nghỉ dưỡng — ca tối', price:'NL 170k · TE 140k',
-    time:'20:00–24:00', days:'T2-CN', from:null, to:null, holiday:true, annual:true, base:'NL 270k · TE 170k', cond:'Giá menu CHƯA gồm VAT · trẻ em 0,8–1,2m · dưới 0,8m miễn phí · chương trình thường niên' },
+    time:'20:00–24:00', days:'T2-CN', from:null, to:'2026-10-31', holiday:true, annual:true, base:'NL 270k · TE 170k', cond:'Giá menu CHƯA gồm VAT · trẻ em 0,8–1,2m · dưới 0,8m miễn phí · chương trình thường niên' },
+  { br:'Q2', topic:'q2-nghiduong-1112', cat:'nd', sec:"CTKM tháng 11,12/2026 — Quận 2", name:'Happy Hour Nghỉ dưỡng — ca sáng', price:'NL 210k · TE 140k',
+    time:'09:00–11:00', days:'T2-T6', from:'2026-11-01', to:null, holiday:false, annual:true, base:'NL 290k · TE 170k', cond:'Giá vé gốc người lớn tăng lên 290k · trẻ em 0,8–1,2m · dưới 0,8m miễn phí · chương trình thường niên', period:'Từ T11' },
+  { br:'Q2', topic:'q2-nghiduong-1112', cat:'nd', sec:"CTKM tháng 11,12/2026 — Quận 2", name:'Happy Hour Nghỉ dưỡng — ca tối', price:'NL 170k · TE 140k',
+    time:'20:00–24:00', days:'T2-CN', from:'2026-11-01', to:null, holiday:true, annual:true, base:'NL 290k · TE 170k', cond:'Giá vé gốc người lớn tăng lên 290k · trẻ em 0,8–1,2m · dưới 0,8m miễn phí · chương trình thường niên · ⚠️ giá trẻ em: file không ghi có áp dụng lễ không — hỏi quản lý', period:'Từ T11' },
   { br:'Q2', topic:'q2-nghiduong-78', cat:'nd', sec:"Happy Hour Quận 2 (menu 06/2026 · thường niên)", name:'Happy Hour Bathhouse — ca sáng (không có ca tối)', price:'NL 190k · TE 95k',
     time:'09:00–11:00', days:'T2-T6', from:null, to:null, holiday:false, annual:true,
     base:'NL 240k · TE 120k', cond:'Giá menu CHƯA gồm VAT · trẻ em 0,8–1,2m · dưới 0,8m miễn phí · chương trình thường niên' },
