@@ -14,7 +14,7 @@ const BRANCHES = [
     { h:'🛁 Nghỉ dưỡng (Healing World / Jjimjilbang)',
       lead:'Vé vào trọn khu nghỉ dưỡng — dùng cả ngày.',
       table:{head:['Loại vé','Giá thường'],rows:[
-        ['Người lớn','**270k**'],['Trẻ em 0,8 – 1,2m','170k'],['Baby dưới 0,8m','Miễn phí (phải có người lớn đi kèm)']]},
+        ['Người lớn','**290k** từ 01/11/2026 (đến 31/10: 270k)'],['Trẻ em 0,8 – 1,2m','170k'],['Baby dưới 0,8m','Miễn phí (phải có người lớn đi kèm)']]},
       yes:['Tắm & xông hơi','Các phòng nhiệt nóng / lạnh chuyên đề','Gym · Yoga · Dance (lớp miễn phí)','Khu game · Mini game tương tác','Xem phim / TV giải trí','Hồ ngâm chân','Board game','Relax zone'],
       no:['Ăn uống tại Golden Kitchen & Aqua Garden Cafe','Body / Foot / Facial care','Nail · Hair','Peeling skin (Skin Care)','Honey Skin Care','Mua xu chơi game'] },
 
