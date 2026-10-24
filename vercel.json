@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/chat.js": {
+      "includeFiles": "{index.html,kich-ban.js,offers.js,branches.js,concepts.js,data.js}",
+      "maxDuration": 30
+    }
+  }
+}

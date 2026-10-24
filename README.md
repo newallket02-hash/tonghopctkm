@@ -15,6 +15,8 @@ Trang ôn tập nội bộ + ngân hàng câu hỏi trắc nghiệm cho nhân vi
 | `index.html` | Toàn bộ giao diện + logic bài kiểm tra (không cần build) |
 | `data.js` | Dữ liệu: tài liệu ôn tập và câu hỏi của 11 chủ đề |
 | `menus.js` + thư mục `menu/` | Ảnh menu từng chi nhánh (Q1 · Q2 · Q7) — hiện ở tab Hôm nay khi bấm lọc chi nhánh. Thay menu: ghi đè ảnh cùng tên + tăng `MENU_VER` |
+| `kich-ban.js` | Kịch bản tư vấn (câu khách hay hỏi + gói VIP) — dữ liệu cho chatbot **Hỏi nhanh** |
+| `api/chat.js` + `vercel.json` | Chatbot **Hỏi nhanh** (Groq): tìm đoạn liên quan trong kịch bản + CTKM theo ngày rồi trả lời |
 | `ngan-hang-cau-hoi.csv` | Ngân hàng câu hỏi dạng bảng — Google Sheet dùng `=IMPORTDATA` trỏ vào file này |
 
 Sửa nội dung → chỉ cần sửa `data.js` (và `ngan-hang-cau-hoi.csv` nếu muốn Google Sheet cập nhật theo). Mỗi chủ đề có dạng:
@@ -42,3 +44,11 @@ Static site, không cần build. Repo nối với Vercel → Framework Preset: *
 
 - **Giá Combo HSSV Golden Kitchen** — 190k/290k (T7,T8) vs 130k/230k (T9,T10) vs 115k/190k (sheet đang diễn ra). Chưa đưa vào đề.
 - ~~Bill tối thiểu Game vòng quay may mắn~~ → **đã chốt 200k**.
+
+## Chatbot Hỏi nhanh
+
+- Nút **💬 Hỏi nhanh** góc phải dưới (chỉ hiện sau khi đăng nhập). Lễ tân gõ câu khách hỏi → nhận câu trả lời mẫu + nút **Copy gửi khách** + lưu ý nội bộ + nguồn.
+- Dữ liệu: `kich-ban.js` + `offers.js` (chỉ ưu đãi đang/sắp áp dụng theo ngày VN) + `branches.js` + `concepts.js` + `data.js`. Sửa kịch bản → sửa `kich-ban.js`, deploy là chatbot dùng ngay.
+- Câu chưa có câu trả lời: để `tl: ''` → chatbot báo "Chưa có trong kịch bản — hỏi quản lý".
+- Biến môi trường trên Vercel: `GROQ_API_KEY` (bắt buộc), `GROQ_MODEL` (mặc định `openai/gpt-oss-120b`), `GROQ_FALLBACK` (mặc định `openai/gpt-oss-20b`).
+- Chỉ tài khoản có trong `USERS` (index.html) mới gọi được API; giới hạn ~15 câu/phút/người.

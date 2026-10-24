@@ -450,6 +450,60 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
 .mlnav button{flex:1;border:0;border-radius:12px;height:44px;font-weight:700;background:rgba(255,255,255,.14);color:#fff;cursor:pointer}
 .mlnav button:disabled{opacity:.35}
 @media(min-width:720px){.mlview.z img{width:160%}}
+/* ================= HỎI NHANH (chatbot kịch bản) ================= */
+.askfab{position:fixed;right:14px;bottom:calc(var(--navh) + var(--sab) + 14px);z-index:70;border:0;cursor:pointer;
+  display:flex;align-items:center;gap:7px;padding:11px 16px 11px 13px;border-radius:999px;background:var(--navy);color:#fff;
+  font-weight:700;font-size:14.5px;box-shadow:0 6px 20px rgba(43,53,96,.28)}
+.askfab i{font-style:normal;font-size:18px;line-height:1}
+.askfab b{width:8px;height:8px;border-radius:50%;background:var(--orange);margin-left:2px}
+.askfab[hidden]{display:none}
+.askp{position:fixed;inset:0;z-index:900;background:#fff;display:flex;flex-direction:column;
+  padding-top:var(--sat)}
+.askp[hidden]{display:none}
+.askh{display:flex;align-items:center;gap:10px;padding:12px 14px 10px;border-bottom:1px solid var(--line)}
+.askh .t{flex:1;min-width:0}
+.askh .t b{display:block;font-size:16px;color:var(--navy);line-height:1.25}
+.askh .t small{color:var(--muted);font-size:12.5px}
+.askh button{border:0;background:var(--surface);color:var(--ink);width:38px;height:38px;border-radius:12px;font-size:16px;cursor:pointer}
+.askbr{display:flex;gap:6px;padding:9px 14px;border-bottom:1px solid var(--line);overflow-x:auto}
+.askbr button{flex:0 0 auto;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;
+  padding:5px 13px;font-size:13.5px;font-weight:600;cursor:pointer}
+.askbr button[aria-pressed=true]{background:var(--navy);border-color:var(--navy);color:#fff}
+.askbr span{align-self:center;font-size:12.5px;color:var(--muted);margin-right:2px;white-space:nowrap}
+.asklog{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px;background:var(--surface);display:flex;flex-direction:column;gap:10px}
+.askm{max-width:88%;padding:10px 13px;border-radius:16px;font-size:14.5px;line-height:1.55;white-space:pre-wrap;word-wrap:break-word}
+.askm.u{align-self:flex-end;background:var(--navy);color:#fff;border-bottom-right-radius:5px}
+.askm.b{align-self:flex-start;background:#fff;border:1px solid var(--line);border-bottom-left-radius:5px;max-width:94%}
+.askm.err{background:var(--bad-bg);border-color:#f0d3d0;color:var(--bad)}
+.askm .cust{background:var(--orange-soft);border-radius:12px;padding:9px 11px;margin:2px 0 6px}
+.askm .cust .lb,.askm .note .lb{display:block;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:3px}
+.askm .cust .lb{color:#9a6512}
+.askm .note{border-top:1px dashed var(--line);margin-top:6px;padding-top:7px;color:var(--ink)}
+.askm .note .lb{color:var(--navy)}
+.askm .src{display:block;margin-top:7px;font-size:11.5px;color:var(--muted);white-space:normal}
+.askm .cp{margin-top:7px;border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:10px;
+  padding:5px 11px;font-size:13px;font-weight:700;cursor:pointer}
+.askm .cp.ok{background:var(--ok-bg);border-color:var(--ok-bg);color:var(--ok)}
+.askm.typing{color:var(--muted)}
+.askm.typing i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--muted);margin:0 2px;animation:askdot 1s infinite}
+.askm.typing i:nth-child(2){animation-delay:.15s}.askm.typing i:nth-child(3){animation-delay:.3s}
+@keyframes askdot{0%,80%,100%{opacity:.25}40%{opacity:1}}
+.asksug{display:flex;flex-wrap:wrap;gap:7px}
+.asksug button{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:999px;padding:6px 12px;font-size:13.5px;cursor:pointer;text-align:left}
+.askin{display:flex;gap:8px;align-items:flex-end;padding:10px 12px calc(10px + var(--sab));border-top:1px solid var(--line);background:#fff}
+.askin textarea{flex:1;resize:none;border:1px solid var(--line);border-radius:14px;padding:10px 12px;font:inherit;font-size:15px;
+  max-height:130px;min-height:44px;line-height:1.4;background:var(--surface)}
+.askin textarea:focus{outline:none;background:#fff;border-color:var(--navy);box-shadow:0 0 0 3px rgba(30,45,90,.1)}
+.askin button{flex:0 0 auto;height:44px;padding:0 16px;border:0;border-radius:14px;background:var(--orange);color:var(--navy);font-weight:800;cursor:pointer}
+.askin button:disabled{opacity:.5;cursor:default}
+.askfoot{font-size:11.5px;color:var(--muted);text-align:center;padding:0 12px 6px;background:#fff}
+@media(min-width:760px){
+  .askfab{bottom:22px;right:22px}
+  .askp{inset:auto 22px 22px auto;width:420px;height:min(680px,calc(100vh - 44px));border-radius:22px;
+    border:1px solid var(--line);box-shadow:0 18px 50px rgba(43,53,96,.22);overflow:hidden;padding-top:0}
+  .askin{padding-bottom:10px}
+}
+@media(prefers-reduced-motion:reduce){.askm.typing i{animation:none;opacity:.6}}
 </style>
 </head>
 <body>
@@ -1328,6 +1382,93 @@ function finish(){
 if('serviceWorker' in navigator){
   window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 }
+</script>
+<!-- ================= HỎI NHANH (chatbot kịch bản) ================= -->
+<button class="askfab" id="askFab" type="button" aria-label="Mở chatbot hỏi nhanh"><i>💬</i>Hỏi nhanh<b></b></button>
+<section class="askp" id="askP" hidden role="dialog" aria-label="Hỏi nhanh kịch bản tư vấn">
+  <div class="askh">
+    <div class="t"><b>Hỏi nhanh kịch bản</b><small>Nhập câu khách hỏi — trả lời theo kịch bản &amp; CTKM hôm nay</small></div>
+    <button type="button" id="askNew" title="Cuộc trò chuyện mới" aria-label="Cuộc trò chuyện mới">↺</button>
+    <button type="button" id="askX" aria-label="Đóng">✕</button>
+  </div>
+  <div class="askbr" id="askBr"><span>Chi nhánh:</span>
+    <button type="button" data-br="Q2">Q2</button><button type="button" data-br="Q1">Q1</button>
+    <button type="button" data-br="Q7">Q7</button><button type="button" data-br="all">Tất cả</button>
+  </div>
+  <div class="asklog" id="askLog" aria-live="polite"></div>
+  <form class="askin" id="askForm">
+    <textarea id="askQ" rows="1" placeholder="VD: bé cao 1m có mất tiền không?" aria-label="Câu hỏi"></textarea>
+    <button type="submit" id="askSend">Gửi</button>
+  </form>
+  <div class="askfoot">AI có thể nhầm — với giá &amp; ưu đãi, đối chiếu tab Hôm nay trước khi chốt với khách.</div>
+</section>
+<script>
+(function(){
+  const AUTH='glh_ctkm_user', BRK='glh_ask_br';
+  const $a=s=>document.getElementById(s);
+  const fab=$a('askFab'), P=$a('askP'), log=$a('askLog'), form=$a('askForm'), ta=$a('askQ'), send=$a('askSend');
+  const SUG=['Bé cao 1m giá vé bao nhiêu?','Hôm nay HSSV có ưu đãi gì?','Gói VIP gồm những gì, giá bao nhiêu?',
+    'Mặc bikini xuống hồ được không?','Khách chê gói VIP đắt, trả lời sao?','VIP 가격이 얼마예요?'];
+  let hist=[], busy=false;
+  let br=(()=>{try{return localStorage.getItem(BRK)||'Q2'}catch(e){return 'Q2'}})();
+  const uid=()=>{try{return localStorage.getItem(AUTH)||sessionStorage.getItem(AUTH)}catch(e){return null}};
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const md=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>');
+
+  function setBr(v){ br=v; try{localStorage.setItem(BRK,v)}catch(e){}
+    $a('askBr').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.br===v)); }
+  setBr(br);
+  $a('askBr').addEventListener('click',e=>{ const b=e.target.closest('button'); if(b) setBr(b.dataset.br); });
+
+  function bubble(cls,html){ const d=document.createElement('div'); d.className='askm '+cls; d.innerHTML=html; log.appendChild(d); log.scrollTop=log.scrollHeight; return d; }
+  function welcome(){
+    log.innerHTML='';
+    bubble('b','Chào bạn 👋 Gõ đúng câu khách hỏi (có dấu, không dấu, tiếng Hàn đều được). Mình trả lời theo kịch bản tư vấn và CTKM đang áp dụng hôm nay.');
+    const s=document.createElement('div'); s.className='asksug';
+    SUG.forEach(q=>{ const b=document.createElement('button'); b.type='button'; b.textContent=q; b.onclick=()=>ask(q); s.appendChild(b); });
+    log.appendChild(s);
+  }
+  function render(ans,sources){
+    const k=ans.search(/(\*\*)?Lưu ý nội bộ:?(\*\*)?\s*:?/i);
+    let cust=ans, note='';
+    if(k>=0){ cust=ans.slice(0,k); note=ans.slice(k).replace(/^(\*\*)?Lưu ý nội bộ:?(\*\*)?\s*:?\s*/i,''); }
+    const hasCust=/Trả lời khách/i.test(cust);
+    cust=cust.replace(/(\*\*)?Trả lời khách:?(\*\*)?\s*:?\s*/i,'').trim();
+    let h='';
+    if(hasCust){ h+=`<div class="cust"><span class="lb">Trả lời khách</span>${md(cust)}</div><button type="button" class="cp">📋 Copy gửi khách</button>`; }
+    else h+=md(cust);
+    if(note.trim()) h+=`<div class="note"><span class="lb">Lưu ý nội bộ</span>${md(note.trim())}</div>`;
+    if(sources&&sources.length) h+=`<span class="src">Nguồn: ${sources.map(esc).join(' · ')}</span>`;
+    const d=bubble('b',h);
+    const cp=d.querySelector('.cp');
+    if(cp) cp.onclick=async()=>{ try{ await navigator.clipboard.writeText(cust.replace(/\*\*/g,'')); cp.textContent='✓ Đã copy'; cp.classList.add('ok');
+      setTimeout(()=>{cp.textContent='📋 Copy gửi khách'; cp.classList.remove('ok');},1800);}catch(e){ cp.textContent='Không copy được — chọn chữ để copy'; } };
+  }
+  async function ask(q){
+    q=(q||'').trim(); if(!q||busy) return;
+    const u=uid(); if(!u){ bubble('b err','Vui lòng đăng nhập lại trang rồi hỏi nhé.'); return; }
+    busy=true; send.disabled=true; ta.value=''; ta.style.height='';
+    const sg=log.querySelector('.asksug'); if(sg) sg.remove();
+    bubble('u',esc(q));
+    const t=bubble('b typing','<i></i><i></i><i></i>');
+    try{
+      const r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({uid:u,question:q,branch:br,history:hist.slice(-6)})});
+      const j=await r.json().catch(()=>({}));
+      t.remove();
+      if(!r.ok||!j.answer){ bubble('b err',esc(j.error||'Có lỗi, thử lại sau nhé.')); }
+      else { render(j.answer,j.sources); hist.push({role:'user',content:q},{role:'assistant',content:j.answer}); }
+    }catch(e){ t.remove(); bubble('b err','Mất kết nối — kiểm tra mạng rồi thử lại.'); }
+    busy=false; send.disabled=false; ta.focus();
+  }
+  fab.addEventListener('click',()=>{ P.hidden=false; fab.hidden=true; if(!log.children.length) welcome(); setTimeout(()=>ta.focus(),50); });
+  $a('askX').addEventListener('click',()=>{ P.hidden=true; fab.hidden=false; });
+  $a('askNew').addEventListener('click',()=>{ hist=[]; welcome(); ta.focus(); });
+  form.addEventListener('submit',e=>{ e.preventDefault(); ask(ta.value); });
+  ta.addEventListener('keydown',e=>{ if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){ e.preventDefault(); ask(ta.value); } });
+  ta.addEventListener('input',()=>{ ta.style.height='auto'; ta.style.height=Math.min(ta.scrollHeight,130)+'px'; });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!P.hidden){ P.hidden=true; fab.hidden=false; } });
+})();
 </script>
 </body>
 </html>
