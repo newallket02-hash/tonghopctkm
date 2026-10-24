@@ -34,10 +34,10 @@ function loadData() {
   if (DB) return DB;
   const ctx = {};
   vm.createContext(ctx);
-  for (const f of ['kich-ban.js', 'offers.js', 'branches.js', 'concepts.js', 'data.js']) {
+  for (const f of ['kich-ban.js', 'offers.js', 'branches.js', 'concepts.js', 'membership.js', 'data.js']) {
     vm.runInContext(read(f), ctx, { filename: f });
   }
-  const d = vm.runInContext('({KICHBAN, OFFERS, HOLIDAYS, BRANCHES, CONCEPTS, TOPICS})', ctx);
+  const d = vm.runInContext('({KICHBAN, OFFERS, HOLIDAYS, BRANCHES, CONCEPTS, MEMBERSHIP, TOPICS})', ctx);
   // danh sách tài khoản lấy thẳng từ index.html → chỉ một nơi quản lý
   const m = read('index.html').match(/const USERS = (\{.*?\});/);
   d.USERS = m ? JSON.parse(m[1]) : {};
@@ -134,6 +134,14 @@ function buildChunks(d, today) {
       add('Khái niệm', 'Chung', `${c.title}: ${it.name}${it.en ? ' (' + it.en + ')' : ''}`, flatten(it).join('\n'));
     }
     if (c.compare) add('Khái niệm', 'Chung', `${c.title} — so sánh`, flatten(c.compare).join('\n'));
+  }
+
+  // 4b. App Membership
+  for (const c of d.MEMBERSHIP || []) {
+    for (const it of c.items || []) {
+      add('App Membership', 'Q2', `${c.title}: ${it.name}${it.en ? ' (' + it.en + ')' : ''}`, flatten(it).join('\n'));
+    }
+    if (c.notes) add('App Membership', 'Q2', `${c.title} — lưu ý`, c.notes.map(clean).join('\n'));
   }
 
   // 5. Tài liệu ôn tập (bỏ các kỳ đã kết thúc hẳn)

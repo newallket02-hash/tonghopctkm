@@ -371,9 +371,23 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
 }
 
 /* ---------- tab Khái niệm ---------- */
-.cpt{margin-bottom:22px}
-.cpt>h3{font-size:16.5px;margin:0 0 3px;color:var(--navy);display:flex;align-items:center;gap:8px}
-.cpt>.sub{margin-bottom:12px}
+.cpt{margin-bottom:12px;border:1px solid var(--line);border-radius:14px;background:var(--card,#fff)}
+.cpt>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 16px;user-select:none;border-radius:14px}
+.cpt>summary::-webkit-details-marker{display:none}
+.cpt>summary h3{font-size:16.5px;margin:0;color:var(--navy);display:flex;align-items:center;gap:8px;flex:1}
+.cpt>summary .chev{color:var(--muted);font-size:15px;transition:transform .2s}
+.cpt:not([open])>summary .chev{transform:rotate(-90deg)}
+.cpt>summary:hover{background:var(--navy-soft)}
+.cpt[open]>summary{border-bottom:1px solid var(--line);border-radius:14px 14px 0 0}
+.cpt .cbody{padding:12px 14px 16px}
+.cpt .cbody>.sub{margin:0 0 12px}
+.cptbar{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 14px}
+.cptbar .btn{padding:8px 13px;min-height:0;font-size:13.5px;text-decoration:none}
+.svc ul{margin:0;padding-left:18px}
+.svc ul li{padding:0 0 7px 2px;line-height:1.55;font-size:14.3px}
+.cnote{margin-top:12px;background:#fff8ec;border:1px solid #f5d9a8;border-radius:12px;padding:10px 14px;font-size:14px;color:#3a2a10}
+.cnote ul{margin:6px 0 0;padding-left:18px}.cnote li{line-height:1.55;padding-bottom:4px}
+.cnote a,.svc a{color:var(--navy);font-weight:700}
 .cpt-pair{display:grid;grid-template-columns:1fr;gap:12px}
 .svc{--tc:var(--navy);--ts:var(--navy-soft);background:var(--card,#fff);border:1px solid var(--line);
   border-top:4px solid var(--tc);border-radius:18px;padding:15px 16px 14px}
@@ -548,6 +562,7 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
       <button class="tab" role="tab" data-view="quiz" aria-selected="false">Làm bài kiểm tra</button>
       <button class="tab" role="tab" data-view="info" aria-selected="false">Tổng quan</button>
       <button class="tab" role="tab" data-view="concept" aria-selected="false">Khái niệm</button>
+      <button class="tab" role="tab" data-view="member" aria-selected="false">App Membership</button>
     </div>
     <div class="searchbox">
       <span class="si">🔍</span>
@@ -614,7 +629,16 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
   <section class="panel" id="v-concept" hidden>
     <h2>Khái niệm dịch vụ</h2>
     <p class="sub">Giải thích &amp; phân biệt các dịch vụ dễ nhầm — dùng để tư vấn cho khách.</p>
+    <div class="cptbar"><button class="btn alt" type="button" data-all="cptList" data-open="1">Mở tất cả</button><button class="btn alt" type="button" data-all="cptList" data-open="0">Thu gọn tất cả</button></div>
     <div id="cptList"></div>
+  </section>
+
+  <!-- APP MEMBERSHIP -->
+  <section class="panel" id="v-member" hidden>
+    <h2>App Membership</h2>
+    <p class="sub">Hạng thành viên, Point, quà tặng và việc lễ tân cần làm — dùng để tư vấn khách về app.</p>
+    <div class="cptbar"><a class="btn" id="mbGuide" target="_blank" rel="noopener">📘 Hướng dẫn chi tiết (có hình)</a><button class="btn alt" type="button" data-all="mbList" data-open="1">Mở tất cả</button><button class="btn alt" type="button" data-all="mbList" data-open="0">Thu gọn tất cả</button></div>
+    <div id="mbList"></div>
   </section>
 
   <!-- TÀI LIỆU -->
@@ -690,6 +714,7 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
   <button class="bn" role="tab" data-view="quiz" aria-selected="false"><i>📝</i>Kiểm tra</button>
   <button class="bn" role="tab" data-view="info" aria-selected="false"><i>🏢</i>Tổng quan</button>
   <button class="bn" role="tab" data-view="concept" aria-selected="false"><i>💡</i>Khái niệm</button>
+  <button class="bn" role="tab" data-view="member" aria-selected="false"><i>📱</i>Member</button>
   <button class="bn" id="bnSearch"><i>🔍</i>Tìm</button>
 </nav>
 
@@ -744,13 +769,14 @@ const AUTHKEY = 'glh_ctkm_user';
 <script src="data.js?v=20261020"></script>
 <script src="offers.js?v=20261020"></script>
 <script src="branches.js?v=20261020"></script>
-<script src="concepts.js?v=20261015"></script>
+<script src="concepts.js?v=20261024"></script>
+<script src="membership.js?v=20261024"></script>
 <script>
 const DATA = TOPICS;
 const $ = s => document.querySelector(s);
 const el = (t,c,h) => { const e=document.createElement(t); if(c)e.className=c; if(h!==undefined)e.innerHTML=h; return e; };
 const esc = s => String(s).replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
-const md = s => esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+const md = s => esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
 const shuffle = a => { const r=a.slice(); for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];} return r; };
 const isMobile = () => window.matchMedia('(max-width:759px)').matches;
 const totalQ = DATA.reduce((n,t)=>n+t.questions.length,0);
@@ -764,7 +790,7 @@ let curView='today', lastView='today';
 function show(v){
   const changed = v!==curView;
   document.querySelectorAll('.tab,.bn[data-view]').forEach(b=>b.setAttribute('aria-selected', b.dataset.view===v));
-  ['today','doc','quiz','search','info','concept'].forEach(k=>$('#v-'+k).hidden = (k!==v));
+  ['today','doc','quiz','search','info','concept','member'].forEach(k=>$('#v-'+k).hidden = (k!==v));
   if(v!=='search') lastView=v;
   curView=v;
   if(changed) window.scrollTo({top:0,behavior:'smooth'});
@@ -918,31 +944,44 @@ function openBranch(brc){
 }
 BRANCHES.forEach(b=>$('#infoGrid').appendChild(infoCard(b)));
 
-/* ================= KHÁI NIỆM DỊCH VỤ ================= */
-(function(){
-  const list=$('#cptList'); if(typeof CONCEPTS==='undefined') return;
-  CONCEPTS.forEach(c=>{
-    const w=el('div','cpt'); w.id='cpt-'+c.id;
-    let h=`<h3>${c.icon||'💡'} ${esc(c.title)}</h3>`;
+/* ================= KHÁI NIỆM DỊCH VỤ + APP MEMBERSHIP ================= */
+function renderCpts(listId, arr, pfx){
+  const list=$('#'+listId); if(!list||!arr) return;
+  arr.forEach(c=>{
+    const w=el('details','cpt'); w.id=pfx+c.id;
+    let h=`<summary><h3>${c.icon||'💡'} ${esc(c.title)}</h3><span class="chev" aria-hidden="true">▾</span></summary><div class="cbody">`;
     if(c.sub) h+=`<p class="sub">${md(c.sub)}</p>`;
     h+='<div class="cpt-pair">';
-    c.items.forEach(it=>{
+    (c.items||[]).forEach(it=>{
       h+=`<div class="svc ${it.tone||''}"><div class="hd"><b>${esc(it.name)}</b>`+
          (it.en?`<span class="en">${esc(it.en)}</span>`:'')+
          (it.alias?`<span class="al">(${esc(it.alias)})</span>`:'')+'</div>';
-      if(it.steps&&it.steps.length) h+='<div class="lb2">Quy trình</div><ol>'+it.steps.map(x=>`<li>${md(x)}</li>`).join('')+'</ol>';
-      const kv=[['⏱ Thời gian',it.time],['👤 Đối tượng',it.who],['🎯 Phù hợp',it.fit]].filter(x=>x[1]);
-      if(kv.length) h+='<dl class="kv">'+kv.map(x=>`<dt>${x[0]}</dt><dd>${md(x[1])}</dd>`).join('')+'</dl>';
+      if(it.steps&&it.steps.length){
+        const tag=it.list?'ul':'ol';
+        h+=`<div class="lb2">${esc(it.lb||'Quy trình')}</div><${tag}>`+it.steps.map(x=>`<li>${md(x)}</li>`).join('')+`</${tag}>`;
+      }
+      const kv=(it.kv||[]).concat([['⏱ Thời gian',it.time],['👤 Đối tượng',it.who],['🎯 Phù hợp',it.fit]]).filter(x=>x[1]);
+      if(kv.length) h+='<dl class="kv">'+kv.map(x=>`<dt>${esc(x[0])}</dt><dd>${md(x[1])}</dd>`).join('')+'</dl>';
       h+='</div>';
     });
     h+='</div>';
+    if(c.notes&&c.notes.length) h+='<div class="cnote"><b>📌 Lưu ý</b><ul>'+c.notes.map(x=>`<li>${md(x)}</li>`).join('')+'</ul></div>';
     if(c.compare) h+=`<details class="cmp"${isMobile()?'':' open'}><summary>📊 So sánh nhanh</summary>${tableHTML(c.compare)}</details>`;
+    h+='</div>';
     w.innerHTML=h; list.appendChild(w);
   });
-})();
-function openConcept(id){
-  show('concept');
-  const t=document.getElementById('cpt-'+id); if(!t) return;
+}
+renderCpts('cptList', typeof CONCEPTS!=='undefined'?CONCEPTS:null, 'cpt-');
+renderCpts('mbList', typeof MEMBERSHIP!=='undefined'?MEMBERSHIP:null, 'mb-');
+if(typeof MEMBERSHIP_GUIDE!=='undefined') $('#mbGuide').href=MEMBERSHIP_GUIDE; else $('#mbGuide').hidden=true;
+document.querySelectorAll('[data-all]').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#'+b.dataset.all+' > details.cpt').forEach(d=>d.open=b.dataset.open==='1');
+}));
+function openConcept(id, view){
+  view=view||'concept';
+  show(view);
+  const t=document.getElementById((view==='member'?'mb-':'cpt-')+id); if(!t) return;
+  t.open=true;
   setTimeout(()=>{ t.scrollIntoView({behavior:'smooth',block:'start'}); t.classList.add('hit'); setTimeout(()=>t.classList.remove('hit'),2200); },60);
 }
 
@@ -1179,13 +1218,14 @@ DATA.forEach(t=>{
 });
 IDX.forEach(x=>{ x.n=normMap(x.text); x.topic=DATA.find(t=>t.id===x.tid); });
 const CIDX=[];
-(typeof CONCEPTS!=='undefined'?CONCEPTS:[]).forEach(c=>{
+[[typeof CONCEPTS!=='undefined'?CONCEPTS:[],'concept','khai niem'],[typeof MEMBERSHIP!=='undefined'?MEMBERSHIP:[],'member','app membership thanh vien']].forEach(([arr,view,kw])=>arr.forEach(c=>{
+  (c.notes||[]).length && CIDX.push({cid:c.id,view,title:c.title,icon:c.icon,sec:'Lưu ý',text:c.notes.map(strip).join(' · '),n:normMap(c.notes.join(' ')+' '+c.title+' '+kw)});
   c.items.forEach(it=>{
     const text=[it.name,it.en,it.alias].filter(Boolean).join(' / ')+' — '+
-      [].concat(it.steps||[],it.time?['Thời gian: '+it.time]:[],it.who?['Đối tượng: '+it.who]:[],it.fit?['Phù hợp: '+it.fit]:[]).map(strip).join(' · ');
-    CIDX.push({cid:c.id,title:c.title,icon:c.icon,sec:[it.name,it.en].filter(Boolean).join(' — '),text,n:normMap(text+' '+c.title+' khai niem')});
+      [].concat(it.steps||[],(it.kv||[]).map(x=>x[0].replace(/^\S+\s/,'')+': '+x[1]),it.time?['Thời gian: '+it.time]:[],it.who?['Đối tượng: '+it.who]:[],it.fit?['Phù hợp: '+it.fit]:[]).map(strip).join(' · ');
+    CIDX.push({cid:c.id,view,title:c.title,icon:c.icon,sec:[it.name,it.en].filter(Boolean).join(' — '),text,n:normMap(text+' '+c.title+' '+kw)});
   });
-});
+}));
 
 function ranges(n,terms){
   const out=[];
@@ -1251,9 +1291,9 @@ function runSearch(){
   const list=$('#sList'); list.innerHTML='';
   chits.forEach(x=>{
     const b=el('button','sres'); b.type='button';
-    b.innerHTML=`<div class="top"><span class="badge k">Khái niệm</span><span class="badge tp b-chung">${x.icon||'💡'} ${esc(x.title)}</span></div>
+    b.innerHTML=`<div class="top"><span class="badge k">${x.view==='member'?'App Membership':'Khái niệm'}</span><span class="badge tp b-chung">${x.icon||'💡'} ${esc(x.title)}</span></div>
       <div class="hd">${esc(x.sec)}</div><div class="sn">${hl(x.text,terms,true)}</div>`;
-    b.addEventListener('click',()=>openConcept(x.cid));
+    b.addEventListener('click',()=>openConcept(x.cid,x.view));
     list.appendChild(b);
   });
   if(!hits.length && !chits.length){
