@@ -18,7 +18,7 @@ const MODEL = process.env.GROQ_MODEL || 'openai/gpt-oss-120b';
 const FALLBACK = process.env.GROQ_FALLBACK || 'openai/gpt-oss-20b';
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const ROOT = path.join(__dirname, '..');
-const MAX_CTX_CHARS = 7000;
+const MAX_CTX_CHARS = 9000;
 
 /* ---------------- tải dữ liệu (1 lần mỗi instance) ---------------- */
 let DB = null;
@@ -172,13 +172,39 @@ function retrieve(chunks, query, branch) {
     if (branch && branch !== 'all' && c.br !== 'Chung' && c.br !== branch) s *= 0.35;
     if (c.br !== 'Chung' && qn.includes(norm(c.br))) s *= 1.3;
     if (priceIntent && c.src === 'CTKM theo ngày') s *= 1.5;
+    if (c.text.startsWith('[SẮP ÁP DỤNG')) s *= 0.85;
     return { c, s: s * c.boost };
   }).filter(x => x.s > 0).sort((a, b) => b.s - a.s);
   const out = []; let len = 0;
   for (const { c } of scored) {
-    if (out.length >= 12 || len + c.text.length > MAX_CTX_CHARS) continue;
+    if (out.length >= 20 || len + c.text.length > MAX_CTX_CHARS) continue;
     out.push(c); len += c.text.length;
   }
+  return out;
+}
+
+/* bảng giá gọn: giá thường + CTKM đang/sắp áp dụng 8 ngày tới — luôn gửi khi khách hỏi về tiền */
+function priceSheet(d, chunks, today, branch) {
+  const brs = branch === 'all' ? ['Q2', 'Q1', 'Q7'] : [branch];
+  const end = addDays(today, 8);
+  const base = chunks.filter(c => c.src === 'Tổng quan' && brs.includes(c.br) && /Nghỉ dưỡng|Bathhouse|Skin Care \(/i.test(c.title));
+  const lines = d.OFFERS.filter(o => brs.includes(o.br) && !(o.to && o.to < today) && !(o.from && o.from > end)).map(o => {
+    const when = `${o.from && o.from > today ? 'từ ' + fmt(o.from).slice(0, 5) + ' ' : ''}${o.to ? 'đến ' + fmt(o.to).slice(0, 5) : 'không thời hạn'}`;
+    const hol = o.only === 'holiday' ? 'chỉ dịp lễ' : o.holiday === false ? 'không áp dụng lễ' : o.holiday ? 'có áp dụng lễ' : 'lễ: chưa rõ';
+    return `${o.br} | ${o.name} | ${o.price} | ${o.time || '—'} | ${o.days || '—'} | ${when} | ${hol}`;
+  });
+  return { base, text: `BẢNG GIÁ THƯỜNG (chưa VAT):\n${base.map(c => c.title + '\n' + c.text).join('\n\n')}\n\nCTKM ĐANG / SẮP ÁP DỤNG TRONG 8 NGÀY TỚI (chi nhánh | ưu đãi | giá | giờ | ngày trong tuần | thời hạn | ngày lễ) — điều kiện chi tiết xem các mục bên dưới:\n${lines.join('\n')}` };
+}
+
+/* tra từng ý riêng rồi trộn → câu hỏi nhiều ý không bị một chủ đề chiếm hết chỗ */
+function retrieveMulti(chunks, question, kwText, extra, branch, budget = MAX_CTX_CHARS) {
+  const lines = String(kwText || '').split('\n').map(x => x.replace(/^[-*\d.\s]+/, '').trim()).filter(Boolean).slice(0, 6);
+  const lists = lines.map(l => retrieve(chunks, l + ' ' + l, branch).slice(0, 5));
+  lists.push(retrieve(chunks, `${question} ${lines.join(' ')} ${extra}`, branch));
+  const out = [], seen = new Set(); let len = 0;
+  const take = c => { if (seen.has(c) || out.length >= 20 || len + c.text.length > budget) return; seen.add(c); out.push(c); len += c.text.length; };
+  for (let i = 0; i < 5; i++) lists.forEach(l => l[i] && take(l[i]));
+  lists.at(-1).forEach(take);
   return out;
 }
 
@@ -191,7 +217,7 @@ async function groq(model, messages, opts = {}) {
       method: 'POST', signal: ctl.signal,
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.GROQ_API_KEY}` },
       body: JSON.stringify({ model, messages, temperature: opts.temperature ?? 0.2,
-        max_completion_tokens: opts.max || 1200, reasoning_effort: 'low' })
+        max_completion_tokens: opts.max || 1200, reasoning_effort: opts.effort || 'low' })
     });
     const j = await r.json().catch(() => ({}));
     if (!r.ok) { const e = new Error(j.error?.message || `Groq ${r.status}`); e.status = r.status; throw e; }
@@ -211,9 +237,9 @@ async function rewrite(question, history) {
   const last = history.slice(-2).map(m => `${m.role === 'user' ? 'Hỏi' : 'Đáp'}: ${m.content.slice(0, 300)}`).join('\n');
   try {
     return await groq(FALLBACK, [
-      { role: 'system', content: 'Bạn chuyển câu hỏi của khách spa/jjimjilbang Golden Lotus thành từ khóa tìm kiếm TIẾNG VIỆT CÓ DẤU (5–12 từ cho mỗi câu hỏi; tin nhắn nhiều câu hỏi thì gom từ khóa của TẤT CẢ câu, tối đa 30 từ) (dịch nếu là tiếng Hàn/Anh, sửa chính tả, thêm từ đồng nghĩa như "giá vé trẻ em", "ưu đãi HSSV", "gói VIP"). Nếu câu hỏi nối tiếp hội thoại trước thì gộp ngữ cảnh. Chỉ in một dòng từ khóa, không giải thích.' },
+      { role: 'system', content: 'Bạn tách tin nhắn của khách spa/jjimjilbang Golden Lotus thành các Ý CẦN TRA CỨU, mỗi ý một dòng, tối đa 6 dòng. Mỗi dòng 3–8 từ khóa TIẾNG VIỆT CÓ DẤU (dịch nếu là tiếng Hàn/Anh, sửa chính tả, dùng từ như trong bảng giá). Câu hỏi tính tiền thì tách riêng từng thứ cần giá: vd "giá vé nghỉ dưỡng HSSV", "giá vé nghỉ dưỡng người lớn", "giá chà da nữ skin care", "quy định chà da mua kèm vé". Nếu nối tiếp hội thoại trước thì gộp ngữ cảnh. Chỉ in các dòng từ khóa, không đánh số, không giải thích.' },
       { role: 'user', content: (last ? `Hội thoại trước:\n${last}\n\n` : '') + `Câu hỏi: ${question}` }
-    ], { temperature: 0, max: 300, timeout: 8000 });
+    ], { temperature: 0, max: 400, timeout: 8000 });
   } catch (e) { return ''; }
 }
 
@@ -273,21 +299,27 @@ module.exports = async (req, res) => {
     const dow = WD[new Date(today + 'T00:00:00Z').getUTCDay()];
     const hol = (d.HOLIDAYS || []).find(h => h.from <= today && today <= h.to);
     const chunks = buildChunks(d, today);
+    const week = Array.from({ length: 8 }, (_, i) => { const x = addDays(today, i); const h = (d.HOLIDAYS || []).find(h => h.from <= x && x <= h.to);
+      return `${WD[new Date(x + 'T00:00:00Z').getUTCDay()]} ${fmt(x).slice(0, 5)}${h ? ' (LỄ)' : ''}`; }).join(' · ');
 
     const kw = await rewrite(question, history);
     const lastUser = history.filter(m => m.role === 'user').slice(-1).map(m => m.content).join(' ');
-    const found = retrieve(chunks, `${question} ${kw} ${kw} ${lastUser}`, branch);
+    const money = /\b(gia|bao nhieu|tien|tra|tinh|uu dai|giam|khuyen mai|combo|happy hour|phi|tong|price|cost|how much|won|dong)\b|얼마|요금|가격|비용|할인/.test(norm(question + ' ' + kw) + ' ' + question);
+    const sheet = money ? priceSheet(d, chunks, today, branch) : null;
+    const found = retrieveMulti(chunks, question, kw, lastUser, branch, sheet ? 6000 : MAX_CTX_CHARS).filter(c => !(sheet && sheet.base.includes(c)));
 
-    const context = found.map((c, i) => `#${i + 1} [${c.src} · ${c.br}] ${c.title}\n${c.text}`).join('\n\n---\n\n');
+    const context = (sheet ? sheet.text + '\n\n===\n\n' : '') + found.map((c, i) => `#${i + 1} [${c.src} · ${c.br}] ${c.title}\n${c.text}`).join('\n\n---\n\n');
     const system = `Bạn là trợ lý tra cứu nội bộ của lễ tân Golden Lotus Healing World. Lễ tân dán nguyên tin nhắn khách gửi (có thể là tiếng Việt, tiếng Hàn hoặc tiếng Anh; có thể dài, có lời chào, nhiều câu hỏi một lúc), bạn soạn tin trả lời để lễ tân copy gửi khách.
 Hôm nay: ${dow}, ${fmt(today)}${hol ? ` — NGÀY LỄ: ${hol.name}` : ''}. Chi nhánh đang chọn: ${branch === 'all' ? 'chưa chọn (tất cả)' : branch}.
+Lịch 8 ngày tới: ${week}. Khách nói "thứ 2", "mai", "cuối tuần"… thì hiểu là ngày gần nhất sắp tới trong lịch này.
 NGÔN NGỮ TRẢ LỜI KHÁCH: ${L.name}.
 
 QUY TẮC
-1. CHỈ dùng thông tin trong DỮ LIỆU bên dưới. Không tự bịa giá, giờ, quy định, quyền lợi.
-2. Trả lời ĐỦ mọi câu hỏi có trong tin nhắn khách, gộp thành MỘT tin nhắn trả lời liền mạch, tự nhiên như chat (không đánh số "Câu 1, Câu 2" trừ khi khách hỏi theo số).
-3. Câu nào DỮ LIỆU không có, hoặc mục ghi "CHƯA CÓ CÂU TRẢ LỜI": trong tin cho khách nói sẽ kiểm tra lại và phản hồi ngay; trong "Lưu ý nội bộ" ghi rõ "Chưa có trong kịch bản — hỏi quản lý: <câu đó>".
-4. Giá/ưu đãi phụ thuộc ngày: ưu tiên mục [CTKM theo ngày] ĐANG ÁP DỤNG hôm nay (đối chiếu thứ trong tuần, khung giờ, ngày lễ). Khách nhắc ngày khác thì lọc theo ngày đó. Kịch bản và CTKM khác nhau → theo CTKM. Mục SẮP ÁP DỤNG thì nói rõ từ ngày nào. Luôn ghi giá chưa gồm VAT.
+1. Mọi giá, giờ, quy định, quyền lợi phải lấy từ DỮ LIỆU — không bịa con số. Nhưng bạn là tư vấn viên giỏi: được SUY LUẬN và GHÉP nhiều mục dữ liệu lại (vé + dịch vụ + ưu đãi + quy định bắt buộc) để ra câu trả lời hoàn chỉnh.
+2. Câu hỏi về tiền: tính cụ thể TỪNG NGƯỜI và TỔNG, chọn đúng mức giá theo ngày/thứ/khung giờ/đối tượng khách đến. Luôn nhắc quy định bắt buộc liên quan (vd chà da phải mua kèm vé Bathhouse hoặc Nghỉ dưỡng) và ghi giá chưa gồm VAT. Nếu có phương án rẻ hơn hợp lý (combo, khung giờ Happy Hour, đổi sang dịch vụ tương tự) thì gợi ý thêm 1 câu.
+3. Phân loại khách theo quy định trong dữ liệu (giá trẻ em tính theo CHIỀU CAO, trên 1,2m tính như người lớn; ưu đãi HSSV cần thẻ HS hoặc đồng phục + CCCD / thẻ SV). Học sinh cấp 2–3 (lớp 6–12) thường cao trên 1,2m → tính như người lớn với dịch vụ chăm sóc, và được giá HSSV cho vé nghỉ dưỡng nếu CTKM có và đủ giấy tờ.
+4. Thiếu thông tin làm thay đổi giá (ngày cụ thể, chiều cao bé, giới tính, có thẻ HS không, dịch vụ nào): KHÔNG từ chối — báo giá theo giả định hợp lý nhất (nói rõ giả định trong câu trả lời khách) và kết thúc bằng 1 câu hỏi lại ngắn để chốt; hoặc đưa 2 phương án. Trong tin nhắn, trả lời ĐỦ mọi câu khách hỏi, gộp thành MỘT tin liền mạch, tự nhiên như chat.
+Chỉ khi dữ liệu HOÀN TOÀN không có quy định nào liên quan (hoặc mục ghi "CHƯA CÓ CÂU TRẢ LỜI") mới nói sẽ kiểm tra lại và phản hồi khách; khi đó ghi trong "Lưu ý nội bộ": "Chưa có trong kịch bản — hỏi quản lý: <câu đó>".
 5. Câu hỏi phụ thuộc chi nhánh mà chưa rõ → theo chi nhánh đang chọn; nếu "tất cả" thì tách theo từng chi nhánh có dữ liệu.
 6. Phần trả lời khách: ${L.rule}
 7. ĐỊNH DẠNG BẮT BUỘC — giữ nguyên các nhãn tiếng Việt dưới đây, không dùng bảng, không dùng tiêu đề #:
@@ -296,7 +328,7 @@ Trả lời khách:
 Dịch cho lễ tân:
 <bản dịch tiếng Việt của tin nhắn trên, để lễ tân hiểu mình đang gửi gì>`}
 Lưu ý nội bộ:
-- <1–3 ý bằng tiếng Việt: điều kiện, ngoại lệ, điều cần hỏi lại; bỏ cả phần này nếu không cần>
+- <bằng tiếng Việt: cách tính tiền từng dòng (nếu có), giả định đã dùng, điều kiện/giấy tờ cần kiểm tra khi khách đến; tối đa 5 gạch>
 8. Nếu lễ tân hỏi nghiệp vụ nội bộ (quy trình, kịch bản bán hàng, không phải tin nhắn khách) thì trả lời thẳng bằng tiếng Việt, không cần các nhãn trên.
 
 DỮ LIỆU
@@ -304,7 +336,7 @@ ${context || '(không tìm thấy đoạn nào liên quan)'}`;
 
     const { text, model } = await groqWithFallback(
       [{ role: 'system', content: system }, ...history, { role: 'user', content: question }],
-      { temperature: 0.2, max: 1400 });
+      { temperature: 0.2, max: 2500, effort: 'medium' });
 
     return res.status(200).json({
       answer: text || 'Chưa có câu trả lời — thử hỏi cách khác hoặc hỏi quản lý nhé.',
@@ -320,4 +352,4 @@ ${context || '(không tìm thấy đoạn nào liên quan)'}`;
 };
 
 /* cho phép test cục bộ: node api/chat.js "câu hỏi" */
-module.exports._test = { loadData, buildChunks, retrieve, todayVN, detectLang };
+module.exports._test = { priceSheet, loadData, buildChunks, retrieve, retrieveMulti, todayVN, detectLang };
