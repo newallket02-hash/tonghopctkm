@@ -123,7 +123,7 @@ const BRANCHES = [
 
     { h:'🏢 Bố trí các tầng',
       table:{head:['Tầng','Khu vực'],rows:[
-        ['Tầng G','Nail · Hair · Massage cá · Cafe cá · Golden Kitchen'],
+        ['Tầng G','Nail · Hair · Massage cá · Cafe cá · Nhà hàng Golden Kitchen'],
         ['Tầng 1','Public Bathhouse · Snack bar · Coworking cafe'],
         ['Tầng 2','Các phòng nhiệt nóng/lạnh chuyên đề · Board Game · Relax zone · Kid zone · Hồ ngâm chân · Góc tường chụp ảnh 3D'],
         ['Tầng 3','Music Box · Dance · Yoga · Game Class · Gym · Game zone · Carnival Game · Phòng thuốc bắc · Chiếu phim · Góc tường chụp ảnh 3D']]} },

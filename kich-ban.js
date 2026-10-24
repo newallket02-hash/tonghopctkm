@@ -12,6 +12,8 @@
 const KICHBAN = [
 
 /* ---------- THÔNG TIN CHUNG ---------- */
+{ br:'Q2', nhom:'Thông tin chung', hoi:['Nhà hàng nằm đâu', 'Nhà hàng ở tầng mấy', 'Golden Kitchen ở đâu', 'Chỗ ăn uống ở đâu', 'Restaurant where', '식당 어디', '레스토랑 몇 층'],
+  tl:'Dạ nhà hàng Á–Âu Golden Kitchen nằm tại tầng G của khu nghỉ dưỡng Golden Lotus Healing World (16A Đường Số 10, An Khánh, Hồ Chí Minh) ạ. Tầng G còn có Nail, Hair, Massage cá và Cafe cá.' },
 { br:'Q2', nhom:'Thông tin chung', hoi:['Giờ hoạt động', 'Mấy giờ mở cửa, mấy giờ đóng cửa', 'Địa chỉ ở đâu', 'Hotline số điện thoại', 'Xin map, website'],
   tl:'Dạ Golden Lotus Healing World mở cửa 09:00 – 24:00 ạ.\n📍 Địa chỉ: 16A Đường Số 10, An Khánh, Hồ Chí Minh\n📞 Hotline: (028) 3622 9870 – (028) 3622 9871 – (028) 38 239 000\n🗺 Map: maps.app.goo.gl/DSKWVtexRyMkj2hc8\n🌐 Website: goldenlotusspa.vn' },
 { br:'Q2', nhom:'Thông tin chung', hoi:['Đi nghỉ dưỡng có cần đặt trước không', 'Có cần book trước không', 'Đặt chỗ'],
