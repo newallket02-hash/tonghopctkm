@@ -211,7 +211,7 @@ async function rewrite(question, history) {
   const last = history.slice(-2).map(m => `${m.role === 'user' ? 'Hỏi' : 'Đáp'}: ${m.content.slice(0, 300)}`).join('\n');
   try {
     return await groq(FALLBACK, [
-      { role: 'system', content: 'Bạn chuyển câu hỏi của khách spa/jjimjilbang Golden Lotus thành 5–12 từ khóa tìm kiếm TIẾNG VIỆT CÓ DẤU (dịch nếu là tiếng Hàn/Anh, sửa chính tả, thêm từ đồng nghĩa như "giá vé trẻ em", "ưu đãi HSSV", "gói VIP"). Nếu câu hỏi nối tiếp hội thoại trước thì gộp ngữ cảnh. Chỉ in một dòng từ khóa, không giải thích.' },
+      { role: 'system', content: 'Bạn chuyển câu hỏi của khách spa/jjimjilbang Golden Lotus thành từ khóa tìm kiếm TIẾNG VIỆT CÓ DẤU (5–12 từ cho mỗi câu hỏi; tin nhắn nhiều câu hỏi thì gom từ khóa của TẤT CẢ câu, tối đa 30 từ) (dịch nếu là tiếng Hàn/Anh, sửa chính tả, thêm từ đồng nghĩa như "giá vé trẻ em", "ưu đãi HSSV", "gói VIP"). Nếu câu hỏi nối tiếp hội thoại trước thì gộp ngữ cảnh. Chỉ in một dòng từ khóa, không giải thích.' },
       { role: 'user', content: (last ? `Hội thoại trước:\n${last}\n\n` : '') + `Câu hỏi: ${question}` }
     ], { temperature: 0, max: 300, timeout: 8000 });
   } catch (e) { return ''; }
@@ -224,6 +224,25 @@ function limited(uid) {
   arr.push(now); hits.set(uid, arr);
   return arr.length > 15;
 }
+
+/* ---------------- nhận diện ngôn ngữ tin nhắn khách ---------------- */
+function detectLang(q) {
+  const t = String(q || '');
+  const hangul = (t.match(/[\uac00-\ud7a3\u3131-\u318e]/g) || []).length;
+  const letters = (t.match(/\p{L}/gu) || []).length || 1;
+  if (hangul / letters > 0.15) return 'ko';
+  if (/[ăâđêôơưàáạảãèéẹẻẽìíịỉĩòóọỏõùúụủũỳýỵỷỹ]/i.test(t)) return 'vi';
+  const w = norm(t).split(' ');
+  const VI = ['khong', 'ko', 'gia', 've', 'bao', 'nhieu', 'minh', 'dc', 'duoc', 'em', 'chi', 'oi', 'nhe', 'nha', 'co', 'cho', 'ben', 'hom', 'nay', 'mai', 'tre', 'be', 'uu', 'dai'];
+  const EN = ['the', 'is', 'are', 'how', 'what', 'much', 'price', 'do', 'does', 'you', 'can', 'i', 'we', 'my', 'open', 'ticket', 'kids', 'child', 'hello', 'hi', 'please', 'have', 'there', 'any', 'for', 'and', 'to', 'of'];
+  const vi = w.filter(x => VI.includes(x)).length, en = w.filter(x => EN.includes(x)).length;
+  return en > vi ? 'en' : 'vi';
+}
+const LANG = {
+  vi: { name: 'tiếng Việt', rule: 'Viết bằng tiếng Việt, bắt đầu bằng "Dạ", xưng "em", gọi "anh/chị". Tiền viết dạng 170.000đ.' },
+  ko: { name: 'tiếng Hàn', rule: 'Viết bằng tiếng Hàn kính ngữ tự nhiên như nhân viên CSKH Hàn Quốc (존댓말, gọi 고객님, chào "안녕하세요, 골든로터스 힐링월드입니다."). Tiền viết dạng 170,000동. Tên phòng/dịch vụ dịch sang tiếng Hàn tự nhiên (찜질방, 사우나, 바디 스크럽…).' },
+  en: { name: 'tiếng Anh', rule: 'Write in friendly, professional English customer-service tone ("Hello, this is Golden Lotus Healing World."). Prices as 170,000 VND.' }
+};
 
 /* ---------------- handler ---------------- */
 module.exports = async (req, res) => {
@@ -240,9 +259,11 @@ module.exports = async (req, res) => {
   if (!d.USERS[uid]) return res.status(401).json({ error: 'Vui lòng đăng nhập lại.' });
   if (limited(uid)) return res.status(429).json({ error: 'Hỏi nhanh quá — đợi 1 phút rồi thử lại nhé.' });
 
-  const question = String(body.question || '').trim().slice(0, 600);
+  const question = String(body.question || '').trim().slice(0, 2000);
   if (!question) return res.status(400).json({ error: 'Chưa có câu hỏi.' });
   const branch = ['Q1', 'Q2', 'Q7'].includes(body.branch) ? body.branch : 'all';
+  const lang = ['vi', 'ko', 'en'].includes(body.lang) ? body.lang : detectLang(question);
+  const L = LANG[lang];
   const history = (Array.isArray(body.history) ? body.history : [])
     .filter(m => m && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string')
     .slice(-6).map(m => ({ role: m.role, content: m.content.slice(0, 1500) }));
@@ -258,21 +279,25 @@ module.exports = async (req, res) => {
     const found = retrieve(chunks, `${question} ${kw} ${kw} ${lastUser}`, branch);
 
     const context = found.map((c, i) => `#${i + 1} [${c.src} · ${c.br}] ${c.title}\n${c.text}`).join('\n\n---\n\n');
-    const system = `Bạn là trợ lý tra cứu nội bộ của lễ tân Golden Lotus Healing World. Lễ tân nhập câu khách hỏi, bạn trả về câu trả lời để lễ tân gửi khách.
+    const system = `Bạn là trợ lý tra cứu nội bộ của lễ tân Golden Lotus Healing World. Lễ tân dán nguyên tin nhắn khách gửi (có thể là tiếng Việt, tiếng Hàn hoặc tiếng Anh; có thể dài, có lời chào, nhiều câu hỏi một lúc), bạn soạn tin trả lời để lễ tân copy gửi khách.
 Hôm nay: ${dow}, ${fmt(today)}${hol ? ` — NGÀY LỄ: ${hol.name}` : ''}. Chi nhánh đang chọn: ${branch === 'all' ? 'chưa chọn (tất cả)' : branch}.
+NGÔN NGỮ TRẢ LỜI KHÁCH: ${L.name}.
 
 QUY TẮC
 1. CHỈ dùng thông tin trong DỮ LIỆU bên dưới. Không tự bịa giá, giờ, quy định, quyền lợi.
-2. Nếu DỮ LIỆU không có câu trả lời, hoặc mục ghi "CHƯA CÓ CÂU TRẢ LỜI": nói rõ "Chưa có trong kịch bản — hỏi quản lý", và đưa câu tạm cho khách: "Dạ em xin phép kiểm tra lại và báo anh/chị ngay ạ."
-3. Giá/ưu đãi phụ thuộc ngày: ưu tiên mục [CTKM theo ngày] ĐANG ÁP DỤNG hôm nay (đối chiếu thứ trong tuần, khung giờ, ngày lễ). Khách hỏi ngày khác thì lọc theo ngày đó. Kịch bản và CTKM khác nhau → theo CTKM. Mục SẮP ÁP DỤNG thì nói rõ từ ngày nào.
-4. Câu hỏi phụ thuộc chi nhánh mà chưa rõ chi nhánh → trả lời theo chi nhánh đang chọn; nếu "tất cả" thì tách theo từng chi nhánh có dữ liệu.
-5. Định dạng (không dùng bảng, không dùng tiêu đề #):
+2. Trả lời ĐỦ mọi câu hỏi có trong tin nhắn khách, gộp thành MỘT tin nhắn trả lời liền mạch, tự nhiên như chat (không đánh số "Câu 1, Câu 2" trừ khi khách hỏi theo số).
+3. Câu nào DỮ LIỆU không có, hoặc mục ghi "CHƯA CÓ CÂU TRẢ LỜI": trong tin cho khách nói sẽ kiểm tra lại và phản hồi ngay; trong "Lưu ý nội bộ" ghi rõ "Chưa có trong kịch bản — hỏi quản lý: <câu đó>".
+4. Giá/ưu đãi phụ thuộc ngày: ưu tiên mục [CTKM theo ngày] ĐANG ÁP DỤNG hôm nay (đối chiếu thứ trong tuần, khung giờ, ngày lễ). Khách nhắc ngày khác thì lọc theo ngày đó. Kịch bản và CTKM khác nhau → theo CTKM. Mục SẮP ÁP DỤNG thì nói rõ từ ngày nào. Luôn ghi giá chưa gồm VAT.
+5. Câu hỏi phụ thuộc chi nhánh mà chưa rõ → theo chi nhánh đang chọn; nếu "tất cả" thì tách theo từng chi nhánh có dữ liệu.
+6. Phần trả lời khách: ${L.rule}
+7. ĐỊNH DẠNG BẮT BUỘC — giữ nguyên các nhãn tiếng Việt dưới đây, không dùng bảng, không dùng tiêu đề #:
 Trả lời khách:
-<câu trả lời sẵn để copy gửi khách, bắt đầu bằng "Dạ", xưng "em", gọi "anh/chị", lịch sự, ngắn gọn, có thể gạch đầu dòng>
+<tin nhắn hoàn chỉnh bằng ${L.name}, sẵn để copy gửi khách, có thể gạch đầu dòng>${lang === 'vi' ? '' : `
+Dịch cho lễ tân:
+<bản dịch tiếng Việt của tin nhắn trên, để lễ tân hiểu mình đang gửi gì>`}
 Lưu ý nội bộ:
-- <1–3 ý: điều kiện, ngoại lệ, điều cần hỏi lại; bỏ phần này nếu không cần>
-6. Khách hỏi bằng tiếng Hàn → phần "Trả lời khách" viết tiếng Hàn kính ngữ (존댓말); tiếng Anh → tiếng Anh. "Lưu ý nội bộ" luôn bằng tiếng Việt.
-7. Nếu lễ tân hỏi nghiệp vụ nội bộ (quy trình, kịch bản bán hàng) thì trả lời thẳng, không cần phần "Trả lời khách".
+- <1–3 ý bằng tiếng Việt: điều kiện, ngoại lệ, điều cần hỏi lại; bỏ cả phần này nếu không cần>
+8. Nếu lễ tân hỏi nghiệp vụ nội bộ (quy trình, kịch bản bán hàng, không phải tin nhắn khách) thì trả lời thẳng bằng tiếng Việt, không cần các nhãn trên.
 
 DỮ LIỆU
 ${context || '(không tìm thấy đoạn nào liên quan)'}`;
@@ -284,7 +309,7 @@ ${context || '(không tìm thấy đoạn nào liên quan)'}`;
     return res.status(200).json({
       answer: text || 'Chưa có câu trả lời — thử hỏi cách khác hoặc hỏi quản lý nhé.',
       sources: [...new Set(found.slice(0, 5).map(c => `${c.src} · ${c.title}`))],
-      model
+      lang, model
     });
   } catch (e) {
     const busy = e.status === 429;
@@ -295,4 +320,4 @@ ${context || '(không tìm thấy đoạn nào liên quan)'}`;
 };
 
 /* cho phép test cục bộ: node api/chat.js "câu hỏi" */
-module.exports._test = { loadData, buildChunks, retrieve, todayVN };
+module.exports._test = { loadData, buildChunks, retrieve, todayVN, detectLang };
