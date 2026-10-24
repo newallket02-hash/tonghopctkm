@@ -455,7 +455,13 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
   display:flex;align-items:center;gap:7px;padding:11px 16px 11px 13px;border-radius:999px;background:var(--navy);color:#fff;
   font-weight:700;font-size:14.5px;box-shadow:0 6px 20px rgba(43,53,96,.28)}
 .askfab i{font-style:normal;font-size:18px;line-height:1}
-.askfab b{width:8px;height:8px;border-radius:50%;background:var(--orange);margin-left:2px}
+.askfab b{background:var(--orange);color:var(--navy);font-size:10.5px;font-weight:800;letter-spacing:.06em;
+  padding:2px 7px;border-radius:999px;margin-left:2px;line-height:1.4;animation:asknew 1.1s ease-in-out infinite}
+.askfab{animation:askpulse 1.8s ease-out infinite}
+@keyframes askpulse{0%{box-shadow:0 6px 20px rgba(43,53,96,.28),0 0 0 0 rgba(233,162,59,.75)}
+  70%{box-shadow:0 6px 20px rgba(43,53,96,.28),0 0 0 14px rgba(233,162,59,0)}
+  100%{box-shadow:0 6px 20px rgba(43,53,96,.28),0 0 0 0 rgba(233,162,59,0)}}
+@keyframes asknew{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.92)}}
 .askfab[hidden]{display:none}
 .askp{position:fixed;inset:0;z-index:900;background:#fff;display:flex;flex-direction:column;
   padding-top:var(--sat)}
@@ -504,7 +510,7 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
     border:1px solid var(--line);box-shadow:0 18px 50px rgba(43,53,96,.22);overflow:hidden;padding-top:0}
   .askin{padding-bottom:10px}
 }
-@media(prefers-reduced-motion:reduce){.askm.typing i{animation:none;opacity:.6}}
+@media(prefers-reduced-motion:reduce){.askm.typing i{animation:none;opacity:.6}.askfab,.askfab b{animation:none}}
 </style>
 </head>
 <body>
@@ -1385,7 +1391,7 @@ if('serviceWorker' in navigator){
 }
 </script>
 <!-- ================= HỎI NHANH (chatbot kịch bản) ================= -->
-<button class="askfab" id="askFab" type="button" aria-label="Mở chatbot hỏi nhanh"><i>💬</i>Hỏi nhanh<b></b></button>
+<button class="askfab" id="askFab" type="button" aria-label="Mở chatbot hỏi nhanh"><i>💬</i>Hỏi nhanh<b>NEW</b></button>
 <section class="askp" id="askP" hidden role="dialog" aria-label="Hỏi nhanh kịch bản tư vấn">
   <div class="askh">
     <div class="t"><b>Hỏi nhanh kịch bản</b><small>Dán tin nhắn khách (Việt · Hàn · Anh) — soạn trả lời theo kịch bản &amp; CTKM hôm nay</small></div>
