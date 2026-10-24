@@ -50,5 +50,6 @@ Static site, không cần build. Repo nối với Vercel → Framework Preset: *
 - Nút **💬 Hỏi nhanh** góc phải dưới (chỉ hiện sau khi đăng nhập). Lễ tân gõ câu khách hỏi → nhận câu trả lời mẫu + nút **Copy gửi khách** + lưu ý nội bộ + nguồn.
 - Dữ liệu: `kich-ban.js` + `offers.js` (chỉ ưu đãi đang/sắp áp dụng theo ngày VN) + `branches.js` + `concepts.js` + `data.js`. Sửa kịch bản → sửa `kich-ban.js`, deploy là chatbot dùng ngay.
 - Câu chưa có câu trả lời: để `tl: ''` → chatbot báo "Chưa có trong kịch bản — hỏi quản lý".
-- Biến môi trường trên Vercel: `GROQ_API_KEY` (bắt buộc), `GROQ_MODEL` (mặc định `openai/gpt-oss-120b`), `GROQ_FALLBACK` (mặc định `openai/gpt-oss-20b`).
+- Biến môi trường trên Vercel: `GROQ_API_KEY` (bắt buộc), `GROQ_MODEL` (mặc định `openai/gpt-oss-120b`), `GROQ_FALLBACK` (mặc định `openai/gpt-oss-20b`), `GROQ_TPM` (mặc định 8000 = gói miễn phí; lên Dev tier thì đặt theo giới hạn mới, vd 250000, để bot đọc nhiều dữ liệu và suy luận kỹ hơn).
+- Gói Groq miễn phí: 8.000 token/phút/model → mỗi câu hỏi dùng ~7.500 token, nên chỉ ~1 câu/phút/model (bot tự chuyển sang model dự phòng khi quá tải).
 - Chỉ tài khoản có trong `USERS` (index.html) mới gọi được API; giới hạn ~15 câu/phút/người.

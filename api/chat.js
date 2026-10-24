@@ -19,6 +19,13 @@ const FALLBACK = process.env.GROQ_FALLBACK || 'openai/gpt-oss-20b';
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const ROOT = path.join(__dirname, '..');
 const MAX_CTX_CHARS = 9000;
+/* Giới hạn token/phút của gói Groq (gói miễn phí: 8000). Groq tính cả prompt + max_completion_tokens vào 1 lần gọi.
+   Nâng lên Dev tier thì đặt biến GROQ_TPM trên Vercel (vd 250000) để bot đọc nhiều dữ liệu hơn & suy luận kỹ hơn. */
+const TPM = Number(process.env.GROQ_TPM) || 8000;
+const BIG = TPM >= 20000;
+const OUT_TOKENS = BIG ? 3000 : 1600;
+const EFFORT = BIG ? 'medium' : 'low';
+const estTok = s => Math.ceil(String(s).length / 2.7);   // ước lượng an toàn cho tiếng Việt/Hàn
 
 /* ---------------- tải dữ liệu (1 lần mỗi instance) ---------------- */
 let DB = null;
@@ -308,8 +315,9 @@ module.exports = async (req, res) => {
     const sheet = money ? priceSheet(d, chunks, today, branch) : null;
     const found = retrieveMulti(chunks, question, kw, lastUser, branch, sheet ? 6000 : MAX_CTX_CHARS).filter(c => !(sheet && sheet.base.includes(c)));
 
-    const context = (sheet ? sheet.text + '\n\n===\n\n' : '') + found.map((c, i) => `#${i + 1} [${c.src} · ${c.br}] ${c.title}\n${c.text}`).join('\n\n---\n\n');
-    const system = `Bạn là trợ lý tra cứu nội bộ của lễ tân Golden Lotus Healing World. Lễ tân dán nguyên tin nhắn khách gửi (có thể là tiếng Việt, tiếng Hàn hoặc tiếng Anh; có thể dài, có lời chào, nhiều câu hỏi một lúc), bạn soạn tin trả lời để lễ tân copy gửi khách.
+    const makeSystem = list => {
+      const context = (sheet ? sheet.text + '\n\n===\n\n' : '') + list.map((c, i) => `#${i + 1} [${c.src} · ${c.br}] ${c.title}\n${c.text}`).join('\n\n---\n\n');
+      return `Bạn là trợ lý tra cứu nội bộ của lễ tân Golden Lotus Healing World. Lễ tân dán nguyên tin nhắn khách gửi (có thể là tiếng Việt, tiếng Hàn hoặc tiếng Anh; có thể dài, có lời chào, nhiều câu hỏi một lúc), bạn soạn tin trả lời để lễ tân copy gửi khách.
 Hôm nay: ${dow}, ${fmt(today)}${hol ? ` — NGÀY LỄ: ${hol.name}` : ''}. Chi nhánh đang chọn: ${branch === 'all' ? 'chưa chọn (tất cả)' : branch}.
 Lịch 8 ngày tới: ${week}. Khách nói "thứ 2", "mai", "cuối tuần"… thì hiểu là ngày gần nhất sắp tới trong lịch này.
 NGÔN NGỮ TRẢ LỜI KHÁCH: ${L.name}.
@@ -334,20 +342,35 @@ Lưu ý nội bộ:
 
 DỮ LIỆU
 ${context || '(không tìm thấy đoạn nào liên quan)'}`;
+    };
+
+    // giữ tổng (prompt + câu trả lời) dưới giới hạn TPM: bớt đoạn ít liên quan nhất, rồi bớt lịch sử cũ
+    const budget = TPM - OUT_TOKENS - 400;
+    let list = found.slice(), system = makeSystem(list);
+    // lịch sử: giữ 4 tin gần nhất, mỗi tin tối đa 700 ký tự (đủ để hiểu khách đang trả lời câu hỏi lại)
+    let hist = history.slice(-4).map(m => ({ role: m.role, content: m.content.length > 700 ? m.content.slice(0, 700) + '…' : m.content }));
+    const size = () => estTok(system) + estTok(question) + hist.reduce((n, m) => n + estTok(m.content) + 8, 0);
+    while (size() > budget && list.length > 4) { list.pop(); system = makeSystem(list); }
+    while (size() > budget && hist.length) hist.shift();
+    while (size() > budget && list.length) { list.pop(); system = makeSystem(list); }
 
     const { text, model } = await groqWithFallback(
-      [{ role: 'system', content: system }, ...history, { role: 'user', content: question }],
-      { temperature: 0.2, max: 2500, effort: 'medium' });
+      [{ role: 'system', content: system }, ...hist, { role: 'user', content: question }],
+      { temperature: 0.2, max: OUT_TOKENS, effort: EFFORT });
 
     return res.status(200).json({
-      answer: text || 'Chưa có câu trả lời — thử hỏi cách khác hoặc hỏi quản lý nhé.',
-      sources: [...new Set(found.slice(0, 5).map(c => `${c.src} · ${c.title}`))],
+      answer: text || 'Bot chưa soạn xong câu trả lời (câu hỏi quá dài/phức tạp so với gói miễn phí) — thử tách thành câu ngắn hơn nhé.',
+      sources: [...new Set(list.slice(0, 5).map(c => `${c.src} · ${c.title}`))],
       lang, model
     });
   } catch (e) {
-    const busy = e.status === 429;
-    return res.status(busy ? 429 : 502).json({
-      error: busy ? 'Chatbot đang quá tải (giới hạn gói miễn phí Groq) — thử lại sau ít phút.' : 'Không kết nối được AI: ' + e.message
+    const m = String(e.message || '');
+    const tooBig = /too large|reduce your message/i.test(m);
+    const busy = e.status === 429 || /rate limit|tokens per minute|requests per/i.test(m);
+    return res.status(busy || tooBig ? 429 : 502).json({
+      error: tooBig ? 'Tin nhắn quá dài so với giới hạn gói Groq miễn phí — rút gọn tin hoặc bấm ↺ để bắt đầu cuộc trò chuyện mới rồi hỏi lại.'
+        : busy ? 'Đang nhiều người hỏi cùng lúc (gói Groq miễn phí giới hạn số chữ mỗi phút) — đợi khoảng 1 phút rồi bấm gửi lại nhé.'
+        : 'Không kết nối được AI: ' + m
     });
   }
 };
