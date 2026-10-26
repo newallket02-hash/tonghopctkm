@@ -397,6 +397,8 @@ mark{background:#ffe08a;color:inherit;border-radius:3px;padding:0 2px}
 .svc .hd b{font-size:17px;color:var(--tc)}
 .svc .hd .en{font-size:12px;font-weight:700;background:var(--ts);color:var(--tc);border-radius:999px;padding:2px 9px}
 .svc .hd .al{font-size:12.5px;color:var(--muted);font-style:italic}
+.svc .svlink{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:12px;padding:10px 14px;border-radius:12px;background:var(--ts);color:var(--tc);border:1px solid currentColor;font-weight:700;font-size:14px;text-decoration:none}
+.svc .svlink:hover{filter:brightness(.97);text-decoration:underline}
 .svc .lb2{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);margin:10px 0 5px}
 .svc ol{margin:0;padding:0;list-style:none;counter-reset:st}
 .svc ol li{counter-increment:st;position:relative;padding:0 0 9px 34px;line-height:1.55;font-size:14.3px}
@@ -962,6 +964,7 @@ function renderCpts(listId, arr, pfx){
       }
       const kv=(it.kv||[]).concat([['⏱ Thời gian',it.time],['👤 Đối tượng',it.who],['🎯 Phù hợp',it.fit]]).filter(x=>x[1]);
       if(kv.length) h+='<dl class="kv">'+kv.map(x=>`<dt>${esc(x[0])}</dt><dd>${md(x[1])}</dd>`).join('')+'</dl>';
+      if(it.link&&it.link.url) h+=`<a class="svlink" href="${esc(it.link.url)}" target="_blank" rel="noopener">${esc(it.link.label||'Xem hướng dẫn')}</a>`;
       h+='</div>';
     });
     h+='</div>';

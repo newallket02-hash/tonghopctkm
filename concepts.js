@@ -80,7 +80,8 @@ const CONCEPTS = [
         'Check-in và **giao đồng phục theo size** in trên hóa đơn.'
       ],
       who:'**Lễ tân** tiếp nhận khách đã order trên Kiosk',
-      fit:'Hóa đơn ghi **số phiếu, số khách và size áo** của cả nhóm — dùng hóa đơn này để check-in.'
+      fit:'Hóa đơn ghi **số phiếu, số khách và size áo** của cả nhóm — dùng hóa đơn này để check-in.',
+      link:{label:'📘 Hướng dẫn lễ tân thao tác (PDF)', url:'https://drive.google.com/file/d/1_IpUqRi_riDnTaoTgEedm7fkhTphD7W5/view?usp=sharing'}
     }
   ],
   compare:{
