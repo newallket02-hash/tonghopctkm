@@ -105,8 +105,8 @@ const KICHBAN = [
   tl:'Hướng xử lý (nội bộ): menu massage KHÔNG có bản tiếng Việt. Hỏi khách đang quan tâm massage body hay massage chân rồi tư vấn tiếp. Nếu khách muốn làm body thì liệt kê ví dụ: "Dạ bên em có các gói body có dầu / không dầu, massage Thái, body đá nóng, thảo dược… Anh/chị quan tâm gói nào để em tư vấn chi tiết ạ?"' },
 { br:'Q2', nhom:'Xử lý tình huống', hoi:['Phòng xông hơi ồn, khách nói chuyện to tiếng', 'Khách phàn nàn ồn ào'],
   tl:'Dạ em xin lỗi anh/chị vì trải nghiệm chưa được thoải mái này ạ. Em sẽ báo cho bộ phận nhân viên để nhắc nhở các khách hàng giữ gìn không gian yên tĩnh chung, nhằm đảm bảo trải nghiệm thư giãn tốt nhất cho anh/chị cũng như tất cả mọi người ạ. Cảm ơn anh/chị đã phản hồi ạ.' },
-{ br:'Q2', nhom:'Dịch vụ chăm sóc', hoi:['Đặt dịch vụ nail hair như thế nào', 'Book nail tóc'],
-  tl:'Dạ, để đặt lịch làm nail hoặc tóc, anh/chị vui lòng liên hệ Zalo Golden Nail/Hair hoặc gọi vào số hotline để được tư vấn và đặt lịch nhanh chóng ạ.' },
+{ br:'Q2', nhom:'Dịch vụ chăm sóc', hoi:['Đặt dịch vụ nail hair như thế nào', 'Book nail tóc', 'Số điện thoại nail', 'Hotline hair', 'Zalo nail hair', 'Đặt lịch làm tóc'],
+  tl:'Dạ, để đặt lịch làm nail hoặc tóc, anh/chị vui lòng liên hệ Zalo Golden Nail/Hair hoặc gọi hotline để được tư vấn và đặt lịch nhanh chóng ạ:\n💬 Zalo Golden Nail/Hair: https://zalo.me/2216222540401952152\n💅 Hotline Nail: 028 3622 9863\n💇 Hotline Hair: 028 3622 9864' },
 
 /* ---------- GÓI VIP 5 THÁNG (Q2) ---------- */
 { br:'Q2', nhom:'Gói VIP', hoi:['Gói VIP gồm những gì', 'Thẻ VIP có quyền lợi gì', 'Gói VIP 5 tháng', 'Membership VIP'],
