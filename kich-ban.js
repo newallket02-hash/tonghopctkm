@@ -1,7 +1,7 @@
 /* ==========================================================================
    KỊCH BẢN TƯ VẤN — dữ liệu cho chatbot "Hỏi nhanh" (api/chat.js)
    --------------------------------------------------------------------------
-   Nguồn: sheet "Câu hỏi khách thường hỏi" + kịch bản gói VIP 5 tháng (24/10/2026).
+   Nguồn: sheet "Câu hỏi khách thường hỏi" + kịch bản gói VIP 5 tháng (24/10/2026) + mẫu VIP tiếng Hàn (27/10/2026).
    Mỗi mục: { br, nhom, hoi: [các cách khách hay hỏi], tl: 'câu trả lời mẫu' }
      br  : 'Q2' | 'Q1' | 'Q7' | 'Chung'
      hoi : càng nhiều cách hỏi, chatbot càng dễ tìm đúng mục
@@ -104,6 +104,8 @@ const KICHBAN = [
 /* ---------- GÓI VIP 5 THÁNG (Q2) ---------- */
 { br:'Q2', nhom:'Gói VIP', hoi:['Gói VIP gồm những gì', 'Thẻ VIP có quyền lợi gì', 'Gói VIP 5 tháng', 'Membership VIP'],
   tl:'Dạ GÓI VIP 5 THÁNG – NGHỈ DƯỠNG KHÔNG GIỚI HẠN tại Golden Lotus Healing World Thảo Điền gồm:\n🌿 Đặc quyền nghỉ dưỡng & tập luyện\n- Phòng nhiệt nóng/lạnh và khu nghỉ dưỡng MỖI NGÀY, miễn phí, không giới hạn\n- Sử dụng phòng Gym\n- Mỗi lần đến được dẫn theo 1 người đi cùng MIỄN PHÍ, hưởng quyền lợi tương đương\n- Locker VIP riêng tư\n💆 Ưu đãi dịch vụ\n- Giảm 15% Massage – Nail – Hair\n- Giảm 10% Ẩm thực & khu Giải trí (game)\n🕒 Thời gian: 5 tháng kể từ ngày kích hoạt thẻ VIP' },
+{ br:'Q2', nhom:'Gói VIP', hoi:['Tư vấn khách VIP tiếng Hàn', 'Gửi khách Hàn gói VIP', 'VIP 멤버십 안내', 'VIP 5개월 멤버십 가격', '무제한 힐링 회원권', '찜질방 회원권 얼마'],
+  tl:'Mẫu tin nhắn tiếng Hàn đã duyệt — khách Hàn hỏi gói VIP thì gửi đúng mẫu này (trong tiếng Hàn, dịch vụ nghỉ dưỡng / Healing gọi là 찜질방 서비스):\n\n안녕하세요, 고객님.\n\n골든로터스 힐링월드 타오디엔점 「VIP 5개월 멤버십 – 무제한 힐링」 안내드립니다.\n\n🌿 힐링 & 운동 특전\n• 온열/냉방 테마룸 및 휴식 공간 매일 무료 이용\n• 헬스장(Gym) 이용\n• 방문 시마다 동반 1인 무료 (동일 혜택 적용)\n• VIP 전용 개인 락커 제공\n\n💆 서비스 할인\n• 마사지 · 네일 · 헤어 15% 할인\n• 식음료 및 게임존 10% 할인\n\n🕒 이용 기간\n✅ VIP 카드 활성화일로부터 5개월\n✅ 기간 동안 힐링 시설 무제한 이용\n\n💰 금액\n• 30,000,000동 / 5개월 (VAT 8% 별도)\n• 현금 결제 시 1,000,000동 즉시 할인 → 29,000,000동\n\n월 약 600만 동으로 두 분이 매일 이용하실 수 있고, 다양한 서비스 할인 혜택도 함께 누리실 수 있습니다.\n\n계약 희망하시는 날짜를 알려주시면 서류를 미리 준비해 두겠습니다. VAT 계산서 발행이 필요하신 경우 별도로 상세 견적 안내드리겠습니다.\n\n감사합니다.' },
 { br:'Q2', nhom:'Gói VIP', hoi:['Gói VIP giá bao nhiêu', 'Thẻ VIP bao nhiêu tiền', 'VIP trả tiền mặt có giảm không'],
   tl:'Dạ gói VIP 5 tháng là 30.000.000đ, chưa bao gồm VAT 8%. Nếu anh/chị thanh toán tiền mặt thì được giảm ngay 1.000.000đ, còn 29.000.000đ ạ. Tính ra khoảng 6 triệu/tháng (chừng 200 nghìn/ngày) cho 2 người dùng mỗi ngày. Nếu cần xuất hóa đơn VAT, em sẽ báo giá chi tiết riêng ạ.' },
 { br:'Q2', nhom:'Gói VIP', hoi:['Kịch bản tư vấn gói VIP', 'Cách chào bán gói VIP', 'Tư vấn khách VIP thế nào'],
