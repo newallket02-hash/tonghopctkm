@@ -93,13 +93,20 @@ const KICHBAN = [
 
 /* ---------- CHƯA CÓ CÂU TRẢ LỜI (hỏi quản lý) ---------- */
 { br:'Q2', nhom:'Chưa có câu trả lời', hoi:['Tiền dư trong voucher TikTok có dùng mua nước được không'], tl:'' },
-{ br:'Q2', nhom:'Chưa có câu trả lời', hoi:['Có bán nước gạo mang về không'], tl:'' },
-{ br:'Chung', nhom:'Chưa có câu trả lời', hoi:['Không lấy hóa đơn thì có phải xuất VAT không'], tl:'' },
-{ br:'Q2', nhom:'Chưa có câu trả lời', hoi:['Mua vé rồi ra ngoài rồi vào lại được không', 'Ra ngoài vào lại'], tl:'' },
-{ br:'Q2', nhom:'Chưa có câu trả lời', hoi:['Khách LGBT vào phòng thay đồ nào', 'Người chuyển giới phòng thay đồ'], tl:'' },
-{ br:'Q2', nhom:'Chưa có câu trả lời', hoi:['Khách cần menu Care bằng tiếng Việt'], tl:'' },
-{ br:'Q2', nhom:'Chưa có câu trả lời', hoi:['Phòng xông hơi ồn, khách nói chuyện to tiếng', 'Khách phàn nàn ồn ào'], tl:'' },
-{ br:'Q2', nhom:'Chưa có câu trả lời', hoi:['Đặt dịch vụ nail hair như thế nào', 'Book nail tóc'], tl:'' },
+{ br:'Q2', nhom:'Dịch vụ & ăn uống', hoi:['Có bán nước gạo mang về không'],
+  tl:'Dạ, bên em có phục vụ nước gạo mang về ạ. Anh/chị muốn mua ly để em báo quầy chuẩn bị cho mình nhé?' },
+{ br:'Chung', nhom:'Giá & thanh toán', hoi:['Không lấy hóa đơn thì có phải xuất VAT không'],
+  tl:'Dạ, VAT là thuế theo quy định của Nhà nước nên không phụ thuộc vào việc khách có lấy hóa đơn hay không ạ. Việc tính và kê khai VAT là nghĩa vụ thuế của doanh nghiệp đối với dịch vụ thuộc diện chịu thuế. Vì vậy, giá chưa bao gồm VAT thì VAT vẫn được tính theo quy định ạ.' },
+{ br:'Q2', nhom:'Quy định', hoi:['Mua vé rồi ra ngoài rồi vào lại được không', 'Ra ngoài vào lại'],
+  tl:'Dạ vé vào cổng của bên em chỉ áp dụng cho một lần ra vào thôi ạ. Nếu anh/chị ra ngoài có việc thì cần check-out, và khi quay lại mình sẽ cần mua vé mới ạ.' },
+{ br:'Q2', nhom:'Khách đặc biệt', hoi:['Khách LGBT vào phòng thay đồ nào', 'Người chuyển giới phòng thay đồ'],
+  tl:'Dạ tại Golden Lotus, khu vực phòng thay đồ được phân chia theo giới tính nam và nữ. Quý khách có thể lựa chọn không gian thay đồ nào mà mình cảm thấy thoải mái và phù hợp nhất ạ.' },
+{ br:'Q2', nhom:'Dịch vụ chăm sóc', hoi:['Khách cần menu Care bằng tiếng Việt'],
+  tl:'Hướng xử lý (nội bộ): menu massage KHÔNG có bản tiếng Việt. Hỏi khách đang quan tâm massage body hay massage chân rồi tư vấn tiếp. Nếu khách muốn làm body thì liệt kê ví dụ: "Dạ bên em có các gói body có dầu / không dầu, massage Thái, body đá nóng, thảo dược… Anh/chị quan tâm gói nào để em tư vấn chi tiết ạ?"' },
+{ br:'Q2', nhom:'Xử lý tình huống', hoi:['Phòng xông hơi ồn, khách nói chuyện to tiếng', 'Khách phàn nàn ồn ào'],
+  tl:'Dạ em xin lỗi anh/chị vì trải nghiệm chưa được thoải mái này ạ. Em sẽ báo cho bộ phận nhân viên để nhắc nhở các khách hàng giữ gìn không gian yên tĩnh chung, nhằm đảm bảo trải nghiệm thư giãn tốt nhất cho anh/chị cũng như tất cả mọi người ạ. Cảm ơn anh/chị đã phản hồi ạ.' },
+{ br:'Q2', nhom:'Dịch vụ chăm sóc', hoi:['Đặt dịch vụ nail hair như thế nào', 'Book nail tóc'],
+  tl:'Dạ, để đặt lịch làm nail hoặc tóc, anh/chị vui lòng liên hệ Zalo Golden Nail/Hair hoặc gọi vào số hotline để được tư vấn và đặt lịch nhanh chóng ạ.' },
 
 /* ---------- GÓI VIP 5 THÁNG (Q2) ---------- */
 { br:'Q2', nhom:'Gói VIP', hoi:['Gói VIP gồm những gì', 'Thẻ VIP có quyền lợi gì', 'Gói VIP 5 tháng', 'Membership VIP'],
