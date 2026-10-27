@@ -28,7 +28,7 @@ const CONCEPTS = [
     {
       name:'Honey Skin Care', en:'Body Scrub', alias:'ủ da', tone:'honey',
       steps:[
-        'Quý khách **ngâm hồ 20–30 phút** để thư giãn cơ thể.',
+        'Quý khách được **miễn phí 20 phút ngâm hồ HOẶC xông nhiệt** (chọn 1) để thư giãn cơ thể. Muốn lâu hơn → **mua thêm vé ngâm hồ**.',
         'Nhân viên **chà nhẹ nhàng trong 5 phút**.',
         'Tiến hành **ủ dưỡng da** bằng thành phần thiên nhiên lành tính: **cà phê, mật ong, nghệ…**'
       ],
@@ -41,7 +41,7 @@ const CONCEPTS = [
     head:['', 'Skin Care (chà da)', 'Honey Skin Care (ủ da)'],
     rows:[
       ['Tên gọi khác', 'Skin Peeling', 'Body Scrub'],
-      ['Ngâm hồ trước', '20–30 phút — làm mềm da', '20–30 phút — thư giãn cơ thể'],
+      ['Trước khi làm', 'Ngâm hồ (miễn phí 20 phút) — làm mềm da', 'Ngâm hồ HOẶC xông nhiệt (miễn phí 20 phút, chọn 1) — thư giãn'],
       ['Chà', 'Chà sạch tế bào chết bằng găng tay Hàn Quốc', 'Chà nhẹ nhàng 5 phút'],
       ['Bước cuối', 'Thoa kem dưỡng ẩm', 'Ủ dưỡng da: cà phê, mật ong, nghệ…'],
       ['Thời gian', '~45 phút (nữ) · ~30 phút (nam)', '—'],
