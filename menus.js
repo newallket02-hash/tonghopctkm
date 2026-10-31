@@ -5,7 +5,7 @@
                                  <chi-nhanh>-<so>-t.jpg (ảnh nhỏ, rộng 240px)
    Thay menu mới: ghi đè ảnh cùng tên rồi TĂNG MENU_VER để máy nhân viên tải lại.
    ========================================================================== */
-const MENU_VER = '20260929';
+const MENU_VER = '20261031';
 const MENUS = {
   Q1: [
     { f:'q1-1', cap:'Bathhouse · Skin Care · Facial' },
