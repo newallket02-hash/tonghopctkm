@@ -135,8 +135,8 @@ const BRANCHES = [
 
 {
   br:'Q7', tag:'Q7', icon:'7️⃣',
-  name:'Golden Lotus Retreat World & Jjimjilbang — Quận 7',
-  sub:'Nghỉ dưỡng + bathhouse + skin care + nhóm care. Happy Hour mở sớm hơn Quận 2.',
+  name:'Golden Lotus Healing Land — Quận 7',
+  sub:'139 Tôn Dật Tiên, Tân Phong, Phường Tân Hưng, TP.HCM · 08:00–24:00 · Tel (028) 5410 7171 – 5410 7272 · Hotline/Zalo 0906 799 137 · Kỳ ưu đãi 01/10 ~ 31/12/2026 · Giá chưa gồm VAT.',
   groups:[
     { h:'🛁 Nghỉ dưỡng (Golden Lotus Relaxation)',
       table:{head:['Loại vé','Giá thường'],rows:[
@@ -167,23 +167,31 @@ const BRANCHES = [
       noteK:'CÂU NÓI CHUẨN KHI TƯ VẤN', note:'"Dạ dịch vụ chà da mình đi kèm với vé Bathhouse hoặc vé Nghỉ dưỡng ạ. Trước khi chà, mình được ngâm hồ miễn phí 20 phút cho da mềm. Nếu chị muốn ngâm lâu hơn thì mình mua thêm vé ngâm hồ nha chị. Còn ủ da thì mình dùng riêng được, không cần mua thêm vé ạ — trước khi ủ mình được miễn phí 20 phút ngâm hồ hoặc xông nhiệt (chọn 1), muốn lâu hơn thì mua thêm vé ngâm hồ; sau đó nhân viên chà nhẹ 5 phút rồi ủ dưỡng."',
       warnK:'VÌ SAO PHẢI NÓI TRƯỚC', warn:'Đa số complain đến từ việc khách tưởng mua chà da là được ngâm hồ thoải mái, tưởng chà da bán lẻ được, hoặc ngược lại tưởng ủ da cũng phải mua kèm vé. Nói rõ ngay lúc bán sẽ chặn khiếu nại ở khâu thanh toán và khâu ra hồ.' },
 
-    { h:'💆 Body · Foot · Facial care',
-      table:{head:['Dịch vụ','Kỳ T7,T8','Kỳ T9,T10','Giờ'],rows:[
-        ["Facial Care 60'",'230k','263k','10:00–22:00, T2–T6'],
-        ["Foot Care 60' (giảm 20%)",'252k','266k','Sau 19:00, T2–T6'],
-        ['Body Care no oil (giảm 20%)','316k','330k','Sau 19:00, T2–T6']]},
-      note:'Facial Care booking trước ít nhất 1 tiếng. Foot / Body care booking qua hotline, KHÔNG áp dụng lễ tết.' },
+    { h:'💆 Facial · Foot · Body care (01/10 ~ 31/12/2026)',
+      table:{head:['Dịch vụ','Giá','Giờ'],rows:[
+        ["Chăm sóc Facial 60'",'263k','10:00–22:00, T2–T6'],
+        ["Thư giãn chân 60' (giảm 20%)",'252k','Sau 19:00, T2–T6'],
+        ["Thư giãn toàn thân 60' không dầu (giảm 20%)",'316k','Sau 19:00, T2–T6']]},
+      note:'Facial booking trước ít nhất 1 tiếng. Foot / Body phải đặt lịch trước qua hotline 028 5410 7171 – 028 5410 7272 – 0906 799 137. KHÔNG áp dụng Lễ, Tết, 24/11/2026.' },
+
+    { h:'🎁 Ưu đãi cuối năm (01/10 ~ 31/12/2026)',
+      table:{head:['Gói','Giá','Check-in'],rows:[
+        ['Ưu đãi tối (khách trên 1.2m)','**130k**','21:00–24:00, T2–CN'],
+        ['HSSV (+1 trứng nướng)','**90k**','08:00–11:00 & 12:00–24:00, T2–T6'],
+        ['Miễn phí BẠN GÁI đi cùng bạn trai','Vé bạn trai 150k','Từ 19:00, T2–CN'],
+        ['Miễn phí 1 NGƯỜI LỚN từ 60 tuổi (kèm 1 người ≥18t)','Vé đi kèm 150k','Từ 19:00, T2–CN']]},
+      note:'HSSV: Like&share FB hoặc Follow TikTok; HS mặc đồng phục + CCCD/thẻ HS; SV có thẻ SV cứng/online. Cặp đôi 15–35 tuổi áo đôi + CCCD. Các gói HSSV / cặp đôi / U60 KHÔNG áp dụng Lễ, Tết, 24/11/2026.' },
 
     { h:'⏰ Happy Hour — mở sớm hơn Quận 2',
       table:{head:['Hạng mục','Ca sáng T2–T6','Ca tối T2–CN'],rows:[
-        ['Nghỉ dưỡng — Người lớn','**190k** (08:00–11:00)','**150k** (19:00–24:00)'],
-        ['Nghỉ dưỡng — Trẻ em','115k','115k'],
+        ['Vé nghỉ dưỡng (khách trên 1.2m)','**190k** (08:00–11:00)','**150k** (19:00–24:00)'],
+        ['Nghỉ dưỡng — Trẻ em (menu 06/2026)','115k','115k'],
         ['Bathhouse — Người lớn','**175k** (07:00–11:00)','— không có'],
         ['Bathhouse — Trẻ em','85k','—'],
         ['Skin Care — Nữ (chà da)','**280k** (07:00–11:00)','**280k** (18:00–24:00)'],
         ['Skin Care — Nam (chà da)','235k','235k'],
         ['Skin Care — Trẻ em (chà da)','155k','155k']]},
-      note:'Ca sáng KHÔNG áp dụng ngày lễ · ca tối CÓ áp dụng ngày lễ.' },
+      note:'Ca sáng KHÔNG áp dụng T7, CN, Lễ, Tết, 24/11/2026.' },
 
     { h:'➕ Phụ thu',
       table:{head:['Khoản','Giá'],rows:[['Đồng phục','20k'],['Khăn','5k']]} },
