@@ -18,6 +18,8 @@ const KICHBAN = [
   tl:'Dạ mình đến sẽ có bảo vệ hướng dẫn chỗ đậu xe ạ.' },
 { br:'Q2', nhom:'Thông tin chung', hoi:['Giờ hoạt động', 'Mấy giờ mở cửa, mấy giờ đóng cửa', 'Địa chỉ ở đâu', 'Hotline số điện thoại', 'Xin map, website'],
   tl:'Dạ Golden Lotus Healing World mở cửa 09:00 – 24:00 ạ.\n📍 Địa chỉ: 16A Đường Số 10, An Khánh, Hồ Chí Minh\n📞 Hotline: (028) 3622 9870 – (028) 3622 9871 – (028) 38 239 000\n🗺 Map: maps.app.goo.gl/DSKWVtexRyMkj2hc8\n🌐 Website: goldenlotusspa.vn' },
+{ br:'Q7', nhom:'Thông tin chung', hoi:['Giờ hoạt động Q7', 'Địa chỉ Quận 7', 'Hotline số điện thoại Q7', 'Golden Lotus Healing Land ở đâu', 'Xin map website Q7'],
+  tl:'Dạ Golden Lotus Healing Land Quận 7 mở cửa 08:00 – 24:00 (T2 ~ CN) ạ.\n📍 Địa chỉ: 139 Tôn Dật Tiên, Tân Phong, Phường Tân Hưng, TP. Hồ Chí Minh\n📞 Tel: (028) 5410 7171 – (028) 5410 7272\n☎️ Hotline / Zalo: 0906 799 137\n🌐 Website: goldenlotusland.vn' },
 { br:'Q2', nhom:'Thông tin chung', hoi:['Đi nghỉ dưỡng có cần đặt trước không', 'Có cần book trước không', 'Đặt chỗ'],
   tl:'Dạ dịch vụ nghỉ dưỡng không cần đặt trước ạ. Anh/chị đến check-in trực tiếp tại quầy bất kỳ khung giờ nào trong giờ hoạt động.' },
 { br:'Q2', nhom:'Thông tin chung', hoi:['Dịch vụ nghỉ dưỡng có giới hạn thời gian không', 'Được ở bao lâu', 'Vé dùng mấy tiếng'],
